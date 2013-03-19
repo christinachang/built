@@ -39,7 +39,8 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   # POST /projects.json
-  def create
+ 
+    def create
     @project = Project.new(params[:project])
 
     respond_to do |format|
