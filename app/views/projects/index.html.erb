@@ -10,6 +10,7 @@
   <tr>
     <td><%= link_to project.name, project %></td>
     <td><%= project.subtitle %></td>
+    <td><%= image_tag project.thumbnail.url(:medium) %></td>
   </tr>
 <% end %>
 </table>
