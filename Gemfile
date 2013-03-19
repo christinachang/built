@@ -22,8 +22,8 @@ end
 
 gem 'jquery-rails'
 gem 'paperclip', '~> 3.0'
-gem 'rmagick'
-gem "cocaine", "= 0.3.2"
+# gem 'rmagick'
+gem "cocaine"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
