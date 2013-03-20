@@ -16,7 +16,8 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
-    @project.images.build
+   @project.images.build
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,7 +34,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-   
+    
     @project = Project.new
     @project.repo_name = params[:repo_name]
     @project.repo_url = @project.get_html_url(params[:repo_name])

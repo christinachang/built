@@ -1,13 +1,9 @@
 class Project < ActiveRecord::Base
 
   attr_accessible :description, :github_link, :repo_name, :subtitle, :url, :images_attributes
-  has_attached_file :thumbnail,
   has_many :images
   accepts_nested_attributes_for :images
 
-
-  :styles => { :medium => "300x300>", :thumb => "100x100>" },
-  :default_url => "/images/:style/missing.png"
 
   @@octokit_client = Octokit::Client.new(:login => "flatiron-001", 
                                           :password => "flatiron001")

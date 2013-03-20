@@ -11,10 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130320200345) do
-=======
-ActiveRecord::Schema.define(:version => 20130320154018) do
 
   create_table "images", :force => true do |t|
     t.string   "url"
@@ -27,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20130320154018) do
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
   end
->>>>>>> 32a75b6d97619fde84f9480d5c9de3e8c5751c90
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -35,20 +31,11 @@ ActiveRecord::Schema.define(:version => 20130320154018) do
     t.text     "description"
     t.string   "url"
     t.string   "github_link"
-<<<<<<< HEAD
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-    t.string   "thumbnail_file_name"
-    t.string   "thumbnail_content_type"
-    t.integer  "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "repo_name"
     t.string   "repo_url"
     t.string   "ssh_url"
-=======
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
->>>>>>> 32a75b6d97619fde84f9480d5c9de3e8c5751c90
   end
 
 end
