@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <b>Subtitle:</b>
-  <%= @project.subtitle %>
+  <b>Repo URL</b>
+  <%= @project.repo_url %>
 </p>
 
 <p>
@@ -16,18 +16,15 @@
 </p>
 
 <p>
-  <b>Url:</b>
-  <%= @project.url %>
+  <b>Clone Url(ssh):</b>
+  <%= @project.ssh_url %>
 </p>
 
-<p>
-  <b>Github link:</b>
-  <%= @project.github_link %>
-</p>
 
+<!-- 
 <%= image_tag @project.thumbnail.url %>
 <%= image_tag @project.thumbnail.url(:medium) %>
-<%= image_tag @project.thumbnail.url(:thumb) %>
+<%= image_tag @project.thumbnail.url(:thumb) %> -->
 
 <%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', projects_path %>

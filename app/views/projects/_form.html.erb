@@ -15,26 +15,11 @@
     <label>Repo Name</label><br />
     <input type="text_field" name="repo_name">
   </div>
-  <div class="field">
-    <%= f.label :subtitle %><br />
-    <%= f.text_field :subtitle %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :github_link %><br />
-    <%= f.text_field :github_link %>
-  </div>
+ 
 
   <%= f.file_field :thumbnail %>
 
-  <div class="actions">
+
     <%= f.submit %>
-  </div>
+
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320190240) do
+ActiveRecord::Schema.define(:version => 20130320200345) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130320190240) do
     t.datetime "thumbnail_updated_at"
     t.string   "repo_name"
     t.string   "repo_url"
+    t.string   "ssh_url"
   end
 
 end
