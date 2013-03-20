@@ -25,9 +25,9 @@
   <%= @project.github_link %>
 </p>
 
-<%= image_tag @project.thumbnail.url %>
-<%= image_tag @project.thumbnail.url(:medium) %>
-<%= image_tag @project.thumbnail.url(:thumb) %>
+<%#= image_tag @project.thumbnail.url %>
+<%#= image_tag @project.thumbnail.url(:medium) %>
+<%#= image_tag @project.thumbnail.url(:thumb) %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', projects_path %>

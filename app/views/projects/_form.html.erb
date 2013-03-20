@@ -32,7 +32,17 @@
     <%= f.text_field :github_link %>
   </div>
 
-  <%= f.file_field :thumbnail %>
+  <div class="field">
+    <% f.fields_for :images do |builder| %>
+      <%= builder.file_field :upload %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :images do |field| %>
+    Upload  : <%= field.file_field :upload %>
+  <% end %>
+</div>
 
   <div class="actions">
     <%= f.submit %>
