@@ -25,7 +25,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-    @image = Image.new
 
     @project.images.build
 

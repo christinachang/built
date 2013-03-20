@@ -33,9 +33,23 @@
   </div>
 
   <div class="field">
+    <p>Upload cover image for your app:</p>
     <%= f.fields_for :images do |field| %>
-    Image Upload:
       <%= field.file_field :upload %>
+      <%= field.hidden_field :image_type, :value => "cover" %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <p>Upload screenshots of your app:</p>
+    <%= f.fields_for :images do |field| %>
+      <%= field.file_field :upload %>
+      <%= field.hidden_field :image_type, :value => "screenshot" %>
+    <% end %>
+    <br>
+    <%= f.fields_for :images do |field| %>
+      <%= field.file_field :upload %>
+      <%= field.hidden_field :image_type, :value => "screenshot" %>
     <% end %>
   </div>
 
