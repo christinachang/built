@@ -1,6 +1,11 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :github_link, :repo_name, :subtitle, :url, :thumbnail
+
+  attr_accessible :description, :github_link, :repo_name, :subtitle, :url, :images_attributes
   has_attached_file :thumbnail,
+  has_many :images
+  accepts_nested_attributes_for :images
+
+
   :styles => { :medium => "300x300>", :thumb => "100x100>" },
   :default_url => "/images/:style/missing.png"
 
@@ -16,8 +21,6 @@ class Project < ActiveRecord::Base
     repo_hash = @@octokit_client.repo(repo_name)
     repo_hash[:ssh_url]
   end
-
-
 
   def get_description(repo_name)
     repo_hash = @@octokit_client.repo(repo_name)

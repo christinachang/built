@@ -1,4 +1,7 @@
 Built::Application.routes.draw do
+  resources :images
+
+
   resources :projects
 
 
