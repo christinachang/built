@@ -26,7 +26,7 @@ gem 'paperclip', '~> 3.0'
 # gem "rmagick", "~> 2.13.2"
 gem "cocaine"
 
-gem 'pry'
+gem "pry", "~> 0.9.12"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
