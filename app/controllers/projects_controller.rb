@@ -26,8 +26,13 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
+   
     @project = Project.new
-    @project.repo_url = @project.get_ssh_url(params[:repo_name])
+    @project.repo_name = params[:repo_name]
+    @project.repo_url = @project.get_html_url(params[:repo_name])
+    @project.ssh_url = @project.get_ssh_url(params[:repo_name])
+    @project.description = @project.get_description(params[:repo_name])
+    @project.save
     redirect_to(@project)
   end
 

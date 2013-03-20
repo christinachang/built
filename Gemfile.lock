@@ -129,7 +129,7 @@ DEPENDENCIES
   cocaine
   coffee-rails (~> 3.2.1)
   jquery-rails
-  octokit
+  octokit (~> 1.23.0)
   paperclip (~> 3.0)
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
