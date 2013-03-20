@@ -23,5 +23,4 @@ class Project < ActiveRecord::Base
     repo_hash[:description]
   end
 
-
 end
