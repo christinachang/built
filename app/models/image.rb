@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :image_type, :url, :upload, :images_attributes
+  attr_accessible :image_type, :upload, :images_attributes
   belongs_to :project
 
   has_attached_file :upload,

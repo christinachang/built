@@ -25,6 +25,17 @@
   <%= @project.github_link %>
 </p>
 
+<p>
+  <b>Images:</b><br/>
+  <% @project.images.each do |image| %>
+    <%= image_tag image.upload.url(:medium) %>
+  <%end%>
+</p>
+
+<%#= image_tag @project.images.each do |i| %>
+  <%#= i.url %>
+  <%# end %>
+
 <%#= image_tag @project.thumbnail.url %>
 <%#= image_tag @project.thumbnail.url(:medium) %>
 <%#= image_tag @project.thumbnail.url(:thumb) %>

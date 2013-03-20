@@ -1,4 +1,4 @@
-<%= form_for(@project, :url => projects_path, :html => { :multipart => true }) do |f| %>
+<%= form_for(@project, :html => { :multipart => true }) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -33,16 +33,11 @@
   </div>
 
   <div class="field">
-    <% f.fields_for :images do |builder| %>
-      <%= builder.file_field :upload %>
+    <%= f.fields_for :images do |field| %>
+    Image Upload:
+      <%= field.file_field :upload %>
     <% end %>
   </div>
-
-  <div class="field">
-    <%= f.fields_for :images do |field| %>
-    Upload  : <%= field.file_field :upload %>
-  <% end %>
-</div>
 
   <div class="actions">
     <%= f.submit %>
