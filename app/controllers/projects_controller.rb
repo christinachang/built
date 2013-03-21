@@ -38,10 +38,8 @@ class ProjectsController < ApplicationController
  
   def create
     @project = Project.new(params[:project])
-    @project.repo_name = params[:repo_name]
-    @project.repo_url = @project.get_html_url(params[:repo_name])
-    @project.ssh_url = @project.get_ssh_url(params[:repo_name])
-    @project.description = @project.get_description(params[:repo_name])
+    @project.set_attributes
+    @project.create_associated_user_records
 
     @project.save
     redirect_to(@project)
