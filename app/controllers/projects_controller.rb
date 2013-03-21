@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+
+  before_filter :authorize, only: [:new, :create]
+
   # GET /projects
   # GET /projects.json
   def index
@@ -34,7 +37,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-    
     @project = Project.new(params[:project])
     @project.repo_name = params[:repo_name]
     @project.repo_url = @project.get_html_url(params[:repo_name])
