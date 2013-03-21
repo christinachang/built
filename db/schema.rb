@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321180131) do
+ActiveRecord::Schema.define(:version => 20130321190950) do
 
   create_table "images", :force => true do |t|
     t.string   "image_type"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20130321180131) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "full_name"
+    t.string   "github_html_url"
+    t.string   "github_login"
   end
 
 end
