@@ -134,7 +134,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby
   cocaine
   coffee-rails (~> 3.2.1)
   jquery-rails
