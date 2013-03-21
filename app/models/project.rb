@@ -2,24 +2,30 @@ class Project < ActiveRecord::Base
 
   attr_accessible :description, :github_link, :repo_name, :subtitle, :url, :images_attributes
   has_many :images
+  has_many :project_users
+  has_many :users, :through => :project_users
+
   accepts_nested_attributes_for :images
 
-class Project
   @@octokit_client = Octokit::Client.new(:login => "flatiron-001", 
-                                          :password => "flatiron001")
+                                         :password => "flatiron001")
+
+  def get_repo_hash(repo_name)
+    @@octokit_client.repo(repo_name)
+  end
 
   def get_html_url(repo_name)
-    repo_hash = @@octokit_client.repo(repo_name)
+    repo_hash = self.get_repo_hash(repo_name)
     repo_hash[:html_url]
   end
 
   def get_ssh_url(repo_name)
-    repo_hash = @@octokit_client.repo(repo_name)
+    repo_hash = self.get_repo_hash(repo_name)
     repo_hash[:ssh_url]
   end
 
   def get_description(repo_name)
-    repo_hash = @@octokit_client.repo(repo_name)
+    repo_hash = self.get_repo_hash(repo_name)
     repo_hash[:description]
   end
 
@@ -30,7 +36,6 @@ class Project
     self.description = self.get_description(params[:repo_name])
   end
 
-'johnkellyferguson/octomaps'
   def get_collaborator_logins(repo_name)
      repo_hash = @@octokit_client.collabs(repo_name)
      repo_hash.collect do |collaborator|
@@ -46,7 +51,6 @@ class Project
     @@octokit_client.user(login[:github_login]).html_url
   end
 
-'johnkellyferguson/octomaps'
   def prepare_mass_assignment(repo_name)
     logins = get_collaborator_logins(repo_name)
     logins.collect do |login|

@@ -16,11 +16,24 @@
 </p>
 
 <p>
-  <b>Clone Url(ssh):</b>
+  <b>Git Clone URL (SSH):</b>
   <%= @project.ssh_url %>
 </p>
 
+<p>
+  <b>Contribs' Name:</b>
+  <%= @project.users.each do |user| %>
+    <%= user.full_name %>
+  <%end%>
+</p>
 
+<p>
+  <b>Contribs' GitHub Links:</b>
+  <%= @project.users.each do |user| %>
+  <a href = "<%= user.github_html_url %>">
+    <%= user.github_login %></a>
+  <%end%>
+</p>
 
 <p>
   <b>Images:</b><br/>
@@ -28,7 +41,6 @@
     <%= image_tag image.upload.url(:medium) %>
   <%end%>
 </p>
-
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
