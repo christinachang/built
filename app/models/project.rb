@@ -27,24 +27,24 @@ class Project < ActiveRecord::Base
     repo_hash[:description]
   end
 
-  def get_collaborator_logins(repo_name)
-     repo_hash = @@octokit_client.collabs(repo_name)
-     repo_hash.collect do |collaborator|
-       {:login_name => collaborator.login}
-    end
-  end
+#   def get_collaborator_logins(repo_name)
+#      repo_hash = @@octokit_client.collabs(repo_name)
+#      repo_hash.collect do |collaborator|
+#        {:login_name => collaborator.login}
+#     end
+#   end
 
-'JohnKellyFerguson/octomaps'
+# 'JohnKellyFerguson/octomaps'
 
-  def get_fullnames_from_logins(repo_name)
-    logins = get_logins_from_repo_hash(repo_name)
-    logins.collect do |login|
-      @@octokit_client.user(login[:login_name]).name
-    end
-  end
+#   def get_fullnames_from_logins(repo_name)
+#     logins = get_logins_from_repo_hash(repo_name)
+#     logins.collect do |login|
+#       @@octokit_client.user(login[:login_name]).name
+#     end
+#   end
 
-  [{:name => 'Jon', login =>'whatever:}, {}]
+#   [{:name => 'Jon', login =>'whatever:}, {}]
 
   
 
-end
+# end
