@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130321150936) do
 
-  create_table "collaborators", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "login"
-  end
-
   create_table "images", :force => true do |t|
     t.string   "image_type"
     t.datetime "created_at",          :null => false
