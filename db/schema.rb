@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321150936) do
-
-  create_table "collaborators", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "login"
-  end
+ActiveRecord::Schema.define(:version => 20130321180131) do
 
   create_table "images", :force => true do |t|
     t.string   "image_type"
@@ -31,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20130321150936) do
     t.datetime "upload_updated_at"
   end
 
-  create_table "project_collaborators", :id => false, :force => true do |t|
-    t.integer "project_id",      :null => false
-    t.integer "collaborator_id", :null => false
+  create_table "project_users", :id => false, :force => true do |t|
+    t.integer "project_id", :null => false
+    t.integer "user_id",    :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -47,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130321150936) do
     t.string   "repo_name"
     t.string   "repo_url"
     t.string   "ssh_url"
-    t.string   "full_name"
   end
 
   create_table "users", :force => true do |t|
@@ -55,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130321150936) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "full_name"
   end
 
 end
