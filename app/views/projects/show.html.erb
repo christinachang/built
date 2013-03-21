@@ -21,18 +21,18 @@
 </p>
 
 <p>
-  <b>Contribs' Name:</b>
-  <%= @project.users.each do |user| %>
-    <%= user.full_name %>
+  <b>Contribs' Names:</b>
+  <% @project.users.each do |user| %>
+    <%= user.full_name %>, 
   <%end%>
 </p>
 
 <p>
   <b>Contribs' GitHub Links:</b>
-  <%= @project.users.each do |user| %>
-  <a href = "<%= user.github_html_url %>">
-    <%= user.github_login %></a>
-  <%end%>
+  <ul><% @project.users.each do |user| %>
+  <li><a href = "<%= user.github_html_url %>">
+    <%= user.github_login %></a></li>
+  <%end%></ul>
 </p>
 
 <p>

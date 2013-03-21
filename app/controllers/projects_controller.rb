@@ -38,9 +38,8 @@ class ProjectsController < ApplicationController
  
   def create
     @project = Project.new(params[:project])
-    @project.set_attributes
-    @project.create_associated_user_records
-
+    @project.set_attributes(params)
+    @project.create_associated_user_records(params)
     @project.save
     redirect_to(@project)
   end

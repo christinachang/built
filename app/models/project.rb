@@ -29,7 +29,7 @@ class Project < ActiveRecord::Base
     repo_hash[:description]
   end
 
-  def set_attributes
+  def set_attributes(params) 
     self.repo_name = params[:repo_name]
     self.repo_url = self.get_html_url(params[:repo_name])
     self.ssh_url = self.get_ssh_url(params[:repo_name])
@@ -43,28 +43,29 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def get_name_from_login(user)
+  def get_name_from_login(login)
     @@octokit_client.user(login[:github_login]).name
   end
 
-  def get_github_html_url_from_login(user)
+  def get_github_html_url_from_login(login)
     @@octokit_client.user(login[:github_login]).html_url
   end
 
   def prepare_mass_assignment(repo_name)
     logins = get_collaborator_logins(repo_name)
     logins.collect do |login|
-      name = get_name_from_login(login[:github_login])
-      html_url = get_github_html_url_from_login(login[:github_login])
+      name = get_name_from_login(login)
+      html_url = get_github_html_url_from_login(login)
     {:github_login=> login[:github_login], :full_name => name, :github_html_url => html_url}
     end
   end
 
-  def create_associated_users
+  def create_associated_user_records(params)
     assignment_hash = self.prepare_mass_assignment(params[:repo_name])
     assignment_hash.each do |attributes|
-      @user = @project.user.build(attributes)
+      @user = self.users.build(attributes)
       @user.save
+    end
   end
 
 end
