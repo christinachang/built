@@ -16,3 +16,10 @@
 
 #Ignore DS_Store
 *.DS_Store
+
+
+#Ignore our image uploads
+/public/system/images/uploads/
+
+#Ignore our image uploads
+db/migrate/Schema.rb
