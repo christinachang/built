@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-  attr_accessible :description, :github_link, :repo_name, :subtitle, :url, :images_attributes
+  attr_accessible :description, :github_link, :repo_name, :url, :forks, :watchers, :language, :images_attributes
   has_many :images
   has_many :project_users
   has_many :users, :through => :project_users
@@ -29,11 +29,29 @@ class Project < ActiveRecord::Base
     repo_hash[:description]
   end
 
+  def get_forks(repo_name)
+    repo_hash = self.get_repo_hash(repo_name)
+    repo_hash[:forks]
+  end
+
+  def get_watchers(repo_name)
+    repo_hash = self.get_repo_hash(repo_name)
+    repo_hash[:watchers]
+  end
+
+  def get_language(repo_name)
+    repo_hash = self.get_repo_hash(repo_name)
+    repo_hash[:language]
+  end
+
   def set_attributes(params) 
     self.repo_name = params[:repo_name]
     self.repo_url = self.get_html_url(params[:repo_name])
     self.ssh_url = self.get_ssh_url(params[:repo_name])
     self.description = self.get_description(params[:repo_name])
+    self.language = self.get_language(params[:repo_name])
+    self.watchers = self.get_watchers(params[:repo_name])
+    self.forks = self.get_forks(params[:repo_name])
   end
 
   def get_collaborator_logins(repo_name)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321190950) do
+ActiveRecord::Schema.define(:version => 20130322122854) do
 
   create_table "images", :force => true do |t|
     t.string   "image_type"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(:version => 20130321190950) do
     t.string   "repo_name"
     t.string   "repo_url"
     t.string   "ssh_url"
+    t.integer  "watchers"
+    t.integer  "forks"
+    t.string   "language"
   end
 
   create_table "users", :force => true do |t|

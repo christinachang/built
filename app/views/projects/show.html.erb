@@ -21,6 +21,21 @@
 </p>
 
 <p>
+  <b>GitHub Forks Count:</b>
+  <%= @project.forks %>
+</p>
+
+<p>
+  <b>GitHub Watchers Count:</b>
+  <%= @project.watchers %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%= @project.language %>
+</p>
+
+<p>
   <b>Contribs' Names:</b>
   <% @project.users.each do |user| %>
     <%= user.full_name %>, 
