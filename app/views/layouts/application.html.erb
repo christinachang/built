@@ -7,18 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div>
-		<%= flash[:alert] %> 
-	</div>
+<div class='navbar navbar-fixed-top'>
+    <div class='navbar-inner'>
+  <ul class="nav">
 	<% if current_user %>
-	Logged in as <%= current_user.email %>
-	<%= link_to "Log Out", logout_path %>
+	<li>Logged in as <%= current_user.email %></li>
+	<li><%= link_to "Log Out", logout_path %></li>
 	<% else %>
-	<%= link_to "Sign Up", signup_path %>
-	<%= link_to "Log In", login_path %>
+	<li><%= link_to "Sign Up", signup_path %></li>
+	<li><%= link_to "Log In", login_path %></li>
 	<% end %>
-
+</ul>
+  </div>
+    <div>
+    <%= flash[:alert] %> 
+  </div>
+</div>
+<div class="container-fluid">
+  <div id="row-fluid">
+  <div class="span12">
 			<%= yield %>
-
+    </div>
+  </div>
+</div>
 </body>
 </html>
