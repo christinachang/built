@@ -18,7 +18,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-
     @project.images.build
 
     respond_to do |format|
@@ -36,9 +35,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
+    raise params.inspect
     @project = Project.new(params[:project])
+    
     @project.set_attributes(params)
-    @project.create_associated_user_records(params)
+    @project.create_associated_user_records(params) 
     @project.save
     redirect_to(@project)
   end
@@ -47,7 +48,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
-
+   
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }

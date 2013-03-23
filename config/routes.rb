@@ -4,6 +4,8 @@ Built::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  match '/auth/github/callback', to: 'sessions#create'
+  
   resources :users
 
   resources :images

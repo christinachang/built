@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-
+gem 'omniauth'
+gem 'omniauth-github'
+gem "pry", "~> 0.9.12"
 gem 'rails', '3.2.12'
 gem "octokit", "~> 1.23.0"
 

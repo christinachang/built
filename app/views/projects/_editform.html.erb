@@ -1,0 +1,75 @@
+<script type="text/javascript">
+$('document').ready(function(){
+  var counter = 1;
+  $('#add').click(function(){
+      counter++;
+      var new_field = '<div class="screenshot"><input id="project_images_attributes_'+counter+'_upload" name="project[images_attributes]['+counter+'][upload]" type="file"><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][image_type]" type="hidden" value="screenshot"></div><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][position]" type="hidden" value="'+counter+'"></div>';
+        $('.screenshot:last').append(new_field);
+  });
+})
+</script>
+
+<%= form_for(@project, :html => { :multipart => true }) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+ <div class="field">
+ 		<% unless @project.images.find_by_image_type('cover') %>
+ 			<p> <i> <%= "No Cover Photo Uploaded" %> </i> </p>
+    	<p>Upload cover image:
+        <%= f.fields_for :images do |field| %>
+      	<%= field.file_field :upload %>
+      	<%= field.hidden_field :image_type, :value => "cover" %>
+        <%end%>
+    	</p>
+ 		<% else %>
+    <p><%= "Current cover image for your app:"%></p>
+     <br/>
+      <%= image_tag @project.images.find_by_image_type('cover').upload.url%>
+      <p> change image: </p>
+        <input id="project_images_attributes_0_upload" name="project[images_attributes][0][upload]" type="file">
+        <input id="project_images_attributes_0_image_type" name="project[images_attributes][0][image_type]" type="hidden" value="cover">
+        <input id="project_images_attributes_0_position" name="project[images_attributes][0][position]" type="hidden" value="0">
+    <% end %>
+  </div>
+
+
+   <div class="field">
+   	<% unless @project.images.find_by_image_type('screenshot') %>
+ 			<p> <i> <%= "No Screenshots Uploaded" %> </i> </p>
+	  <div class="field">
+	    <p>Upload screenshots of your app:</p>
+	    <div class="screenshot">
+        <%= f.fields_for :images do |field| %>
+	      <%= field.file_field :upload %>
+	      <%= field.hidden_field :image_type, :value => "screenshot" %>
+        <%end%>
+	    </div>
+	  </div>
+	  <input type="button" name="add" id="add" value="+" /><br>
+    	</p>
+ 		<% else %>
+    	<p>Current screenshot images for your app:</p>
+    	<ul style="display:inline">
+    	<% @project.images.where(:image_type => 'screenshot').order('position').each do |image| %>
+    <li><%= "Screenshot " + (image.position).to_s %>
+    <%= image_tag image.upload.url(:medium) %></li>
+    <% end %>
+
+
+    </ul>
+    <% end %>
+
+<br>
+    <%= f.submit %>
+
+<% end %>

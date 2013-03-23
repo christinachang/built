@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323004610) do
+ActiveRecord::Schema.define(:version => 20130323142607) do
 
   create_table "images", :force => true do |t|
-    t.string   "image_type"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "project_id"
@@ -22,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20130323004610) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+    t.integer  "position"
+    t.string   "image_type"
   end
 
   create_table "project_users", :id => false, :force => true do |t|
@@ -45,13 +46,17 @@ ActiveRecord::Schema.define(:version => 20130323004610) do
   end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.string   "github_login"
-    t.string   "password_token"
     t.string   "email"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "full_name"
     t.string   "github_html_url"
+    t.string   "github_login"
+    t.string   "token"
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.integer  "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
   end
 
 end
