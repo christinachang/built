@@ -3,13 +3,11 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Subtitle</th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
     <td><%= link_to project.name, project %></td>
-    <td><%= project.subtitle %></td>
 <!--     <td><%#= image_tag project.images.upload.url(:medium) %></td> -->
   </tr>
 <% end %>

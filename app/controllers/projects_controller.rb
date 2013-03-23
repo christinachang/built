@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
     @project = Project.new
 
     @project.images.build
-    
 
     respond_to do |format|
       format.html # new.html.erb

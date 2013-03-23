@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322122854) do
+ActiveRecord::Schema.define(:version => 20130323001720) do
 
   create_table "images", :force => true do |t|
     t.string   "image_type"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20130322122854) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.string   "subtitle"
     t.text     "description"
     t.string   "url"
     t.string   "github_link"
@@ -46,13 +45,10 @@ ActiveRecord::Schema.define(:version => 20130322122854) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.string   "full_name"
-    t.string   "github_html_url"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "github_login"
+    t.string   "password_token"
   end
 
 end
