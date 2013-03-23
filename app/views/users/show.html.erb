@@ -1,0 +1,34 @@
+<h1> <%=@user.github_login%>'s Edit Page <h1>
+
+<h2> Your Projects: </h2>
+<ul>
+<% @user.projects.each do |project| %>
+<li><%= project.name %> <%= link_to "edit", edit_project_path(project) %></li>
+<% end %>
+</ul>
+
+<%= form_for @user do |f| %>	
+<h2> CoverPhoto: </h2>
+ <div class="field">
+ 	<%= "current cover photo:" %>
+ 	<% if @user.profile_image %>
+ 	<%= image_tag @user.profile_image.url(:medium) %>
+ 	<% else %>
+ 	<%= "nothing" %>
+ 	<% end %>
+	<br/>
+    <p>Upload a profile photo:</p>
+      <%= f.file_field :profile_image %>
+      <%= f.hidden_field :image_type, :value => "profile" %>
+ </div>
+
+<h2> Share Contact Info: </h2>
+<%= "current email:" + (@user.email || "nothing") %>
+<br/>
+<%= label_tag(:email, "update email:") %>
+<input type="textfield" name="user[email]" %>
+<br/>
+<%= f.submit "update profile" %>
+<% end %>
+
+<%= link_to 'Add A Project', new_project_path %>
