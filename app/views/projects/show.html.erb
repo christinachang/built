@@ -31,12 +31,12 @@
 </p>
 
 <p>
-  <b>Language:</b>
+  <b>Technologies:</b>
   <%= @project.language %>
 </p>
 
 <p>
-  <b>Contribs' Names:</b>
+  <b>Project Team Members:</b>
   <% @project.users.each do |user| %>
     <%= user.full_name %>, 
   <%end%>
