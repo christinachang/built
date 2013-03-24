@@ -6,6 +6,8 @@ Built::Application.routes.draw do
 
   match '/auth/github/callback', to: 'sessions#create'
   
+  resources :badge
+  
   resources :users
 
   resources :images
