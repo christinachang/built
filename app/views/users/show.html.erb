@@ -8,9 +8,9 @@
 </ul>
 
 <%= form_for @user do |f| %>	
-<h2> CoverPhoto: </h2>
+<h2> Profile Photo: </h2>
  <div class="field">
- 	<%= "current cover photo:" %>
+ 	<%= "current profile photo:" %>
  	<% if @user.profile_image %>
  	<%= image_tag @user.profile_image.url(:medium) %>
  	<% else %>

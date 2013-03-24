@@ -35,11 +35,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-    raise params.inspect
-    @project = Project.new(params[:project])
     
-    @project.set_attributes(params)
-    @project.create_associated_user_records(params) 
+    @project = Project.new(params[:project])
+ 
+    @project.set_attributes(params,current_user)
+    @project.create_associated_user_records(params,current_user) 
     @project.save
     redirect_to(@project)
   end

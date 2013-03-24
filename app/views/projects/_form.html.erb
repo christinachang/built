@@ -3,7 +3,7 @@ $('document').ready(function(){
   var counter = 1;
   $('#add').click(function(){
       counter++;
-      var new_field = '<div class="screenshot"><input id="project_images_attributes_'+counter+'_upload" name="project[images_attributes]['+counter+'][upload]" type="file"><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][image_type]" type="hidden" value="screenshot"></div>';
+      var new_field = '<div class="screenshot"><input id="project_images_attributes_'+counter+'_upload" name="project[images_attributes]['+counter+'][upload]" type="file"><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][image_type]" type="hidden" value="screenshot"><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][image_type]" type="hidden" value="blah"></div>';
         $('.screenshot:last').append(new_field);
   });
 })
@@ -33,6 +33,7 @@ $('document').ready(function(){
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "cover" %>
+      <%= field.hidden_field :position, :value => "0" %>
     <% end %>
   </div>
 
@@ -41,7 +42,7 @@ $('document').ready(function(){
     <div class="screenshot">
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
-      <%= field.hidden_field :image_type, :value => "screenshot" %>
+      <%= field.hidden_field :position, :value => "1" %>
     <% end %>
     </div>
   </div>

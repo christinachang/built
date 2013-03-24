@@ -7,83 +7,93 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :images
 
-  @@octokit_client = Octokit::Client.new(:login => "flatiron-001", 
-                                         :password => "flatiron001")
 
-  def get_repo_hash(repo_name)
-    @@octokit_client.repo(repo_name)
+
+  def create_github_client(current_user)
+    @@octokit_client = Octokit::Client.new(:login => current_user.github_login, :oauth_token => current_user.token)
   end
 
-  def get_html_url(repo_name)
-    repo_hash = self.get_repo_hash(repo_name)
+  def get_repo_hash(repo_name, current_user)
+    create_github_client(current_user).repo(repo_name)
+    
+  end
+
+  def get_html_url(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:html_url]
   end
 
-  def get_ssh_url(repo_name)
-    repo_hash = self.get_repo_hash(repo_name)
+  def get_ssh_url(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:ssh_url]
   end
 
-  def get_description(repo_name)
-    repo_hash = self.get_repo_hash(repo_name)
+  def get_description(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:description]
   end
 
-  def get_forks(repo_name)
-    repo_hash = self.get_repo_hash(repo_name)
+  def get_forks(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:forks]
   end
 
-  def get_watchers(repo_name)
-    repo_hash = self.get_repo_hash(repo_name)
+  def get_watchers(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:watchers]
   end
 
-  def get_language(repo_name)
-    repo_hash = self.get_repo_hash(repo_name)
+  def get_language(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:language]
   end
 
-  def set_attributes(params) 
-    self.repo_name = params[:repo_name]
-    self.repo_url = self.get_html_url(params[:repo_name])
-    self.ssh_url = self.get_ssh_url(params[:repo_name])
-    self.description = self.get_description(params[:repo_name])
-    self.language = self.get_language(params[:repo_name])
-    self.watchers = self.get_watchers(params[:repo_name])
-    self.forks = self.get_forks(params[:repo_name])
+  def get_repo_name(repo_name, current_user)
+    repo_hash = self.get_repo_hash(repo_name, current_user)
+    repo_hash[:name]
   end
 
-  def get_collaborator_logins(repo_name)
-     repo_hash = @@octokit_client.collabs(repo_name)
+  def set_attributes(params, current_user) 
+    self.repo_name = params[:repo_name]
+    self.repo_url = self.get_html_url(params[:repo_name],current_user)
+    self.ssh_url = self.get_ssh_url(params[:repo_name],current_user)
+    self.description = self.get_description(params[:repo_name],current_user)
+    self.language = self.get_language(params[:repo_name],current_user)
+    self.watchers = self.get_watchers(params[:repo_name],current_user)
+    self.forks = self.get_forks(params[:repo_name],current_user)
+    self.name = self.get_repo_name(params[:repo_name],current_user)
+  end
+
+  def get_collaborator_logins(repo_name, current_user)
+     repo_hash = create_github_client(current_user).collabs(repo_name)
      repo_hash.collect do |collaborator|
        {:github_login=> collaborator.login}
     end
   end
 
-  def get_name_from_login(login)
-    @@octokit_client.user(login[:github_login]).name
+  def get_name_from_login(login, current_user)
+    create_github_client(current_user).user(login[:github_login]).name
   end
 
-  def get_github_html_url_from_login(login)
-    @@octokit_client.user(login[:github_login]).html_url
+  def get_github_html_url_from_login(login, current_user)
+    create_github_client(current_user).user(login[:github_login]).html_url
   end
 
-  def prepare_mass_assignment(repo_name)
-    logins = get_collaborator_logins(repo_name)
+  def prepare_mass_assignment(repo_name, current_user)
+    logins = get_collaborator_logins(repo_name, current_user)
     logins.collect do |login|
-      name = get_name_from_login(login)
-      html_url = get_github_html_url_from_login(login)
+      name = get_name_from_login(login, current_user)
+      html_url = get_github_html_url_from_login(login, current_user)
     {:github_login=> login[:github_login], :full_name => name, :github_html_url => html_url}
     end
   end
 
-  def create_associated_user_records(params)
-    assignment_hash = self.prepare_mass_assignment(params[:repo_name])
+  def create_associated_user_records(params, current_user)
+    assignment_hash = self.prepare_mass_assignment(params[:repo_name],current_user)
     assignment_hash.each do |attributes|
       @user = User.find_by_github_login(attributes[:github_login])
       ##if the user being iterated over doesn't exist,create a user w/ an association 
-      if @user == []
+    unless @user
       @user = self.users.build(attributes)
       @user.save
     else #if user being iterated over DOES exist, just build the join row

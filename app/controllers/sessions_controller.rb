@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
     #check if the User exists (find by github login)
     #if user exists, log them in 
     #if user doesn't exist, create new user record
+
     github_oauth_return_hash = request.env['omniauth.auth']
     returned_github_token = github_oauth_return_hash[:credentials][:token]
     returned_github_login = github_oauth_return_hash[:extra][:raw_info][:login]
     returned_github_image_url = github_oauth_return_hash[:info][:image]
-    @user = User.find_or_create_by_github_login(:github_login => returned_github_login) if returned_github_login
-    @user.token ||= returned_github_token 
-    
+    @user = User.find_or_create_by_github_login(:github_login => returned_github_login, :token => returned_github_token)
+
   	if @user
   		session[:user_id] = @user.id
   		redirect_to @user, notice: "Logged in!"

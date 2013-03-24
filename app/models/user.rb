@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :github_login, :full_name, :github_html_url, :profile_image
+  attr_accessible :email, :password, :password_confirmation, :token, :github_login, :full_name, :github_html_url, :profile_image
   has_many :project_users
   has_many :projects, :through => :project_users
 
