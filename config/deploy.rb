@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 
 set :application, "built"
-set :repository,  "flatiron-school/built.git"
+set :repository,  "git@github.com:flatiron-school/built.git"
 
 set :user, 'Feline'
 set :deploy_to, "/home/#{user}/#{application}"
