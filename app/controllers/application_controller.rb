@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
+before_filter
 
 helper_method :current_user
 
@@ -12,7 +12,7 @@ private
 	helper_method :current_user
 
 	def authorize
-		redirect_to login_path, alert: "Please log in" if current_user.nil?
+		redirect_to projects_path, alert: "Please log in" if current_user.nil?
 	end
 
 end

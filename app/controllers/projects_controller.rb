@@ -1,6 +1,12 @@
 class ProjectsController < ApplicationController
 
-  before_filter :authorize, only: [:new, :create]
+  before_filter :authorize, only: [:new, :edit]
+  before_filter :project_edit_authorization [:edit, :destroy]
+
+  def project_edit_athorization
+
+
+  end
 
   # GET /projects
   # GET /projects.json
