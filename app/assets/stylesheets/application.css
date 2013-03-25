@@ -16,3 +16,8 @@
 .container-fluid{
   padding-top:50px;
 }
+
+.navbar-inner{
+/*  background-image:url('assets/noun_project_13681.svg');*/
+  color:#ff0000;
+}
