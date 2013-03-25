@@ -14,10 +14,16 @@ class UsersController < ApplicationController
 
 	def update
 		@user = current_user
-		@user.email = params[:user][:email] unless params[:user][:email].strip == ""
-		@user.profile_image = params[:user][:profile_image] if params[:user][:profile_image]
+
+		attributes = params[:user].reject{ |k| k == "profile_image" }.keys
+		 @user.profile_image = params[:user][:profile_image] if params[:user][:profile_image]
+		
+		attributes.each do |attribute|
+			@user.update_attribute(params, attribute)
 		@user.save
-		render 'show'
+	 end
+	 	render 'show'
 	end
+
 
 end

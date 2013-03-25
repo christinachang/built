@@ -3,7 +3,7 @@ $('document').ready(function(){
   var counter = 1;
   $('#add').click(function(){
       counter++;
-      var new_field = '<div class="screenshot"><input id="project_images_attributes_'+counter+'_upload" name="project[images_attributes]['+counter+'][upload]" type="file"><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][image_type]" type="hidden" value="screenshot"></div>';
+      var new_field = '<div class="screenshot"><input id="project_images_attributes_'+counter+'_upload" name="project[images_attributes]['+counter+'][upload]" type="file"><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][image_type]" type="hidden" value="screenshot"></div><input id="project_images_attributes_'+counter+'_image_type" name="project[images_attributes]['+counter+'][position]" type="hidden" value="'+counter+'"></div>';
         $('.screenshot:last').append(new_field);
   });
 })
@@ -64,6 +64,7 @@ $('document').ready(function(){
     <li><%= "Screenshot " + (image.position).to_s %>
     <%= image_tag image.upload.url(:medium) %></li>
     <% end %>
+
 
     </ul>
     <% end %>

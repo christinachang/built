@@ -19,15 +19,10 @@
 	<br/>
     <p>Upload a profile photo:</p>
       <%= f.file_field :profile_image %>
-      <%= f.hidden_field :image_type, :value => "profile" %>
  </div>
 
-<h2> Share Contact Info: </h2>
-<%= "current email:" + (@user.email || "nothing") %>
-<br/>
-<%= label_tag(:email, "update email:") %>
-<input type="textfield" name="user[email]" %>
-<br/>
+<%= render :partial => "contact_info", :locals => {:user => @user, :f => f} %>
+
 <%= f.submit "update profile" %>
 <% end %>
 

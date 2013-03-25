@@ -6,33 +6,26 @@ class User < ActiveRecord::Base
   has_attached_file :profile_image,
   :styles => { :medium => "300x300>", :thumb => "100x100>" },
   :default_url => "/images/:style/missing.png"
-  # validates_presence_of :email
-  # validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
-  # validates_uniqueness_of :email, :case_sensitive => false
-  # validates_presence_of :password
-  # # validates_confirmation_of :password
-  # has_secure_password
 
-  # before_save :encrypt_password
 
-  # def encrypt_password
-  #   if password.present?
-  #     self.password_salt = BCrypt::Engine.generate_salt
-  #     self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-  #   end
-  # end
-
-  # def self.authenticate(email, password)
-  #   user = find_by_email(email)
-  #   if user && user.password_hash == BCrypt::Engine.hash_secret(password, password_salt)
-  #     user
-  #   else
-  #     nil
-  #   end
-  # end
-
-def self.authenticate(email, password)
+  def self.authenticate(email, password)
     find_by_email(email).try(:authenticate, password)
-end
+  end
+
+  def is_filled_out?(params, attribute_name_as_string)
+    params[:user][attribute_name_as_string.to_sym].strip != ""
+  end  
+
+  def attribute_value(params, attribute_name_as_string)
+    params[:user][attribute_name_as_string.to_sym]
+  end
+
+  def update_attribute(params, attribute_name_as_string)
+    updated_value ||= self.attribute_value(params, attribute_name_as_string) if self.is_filled_out?(params, attribute_name_as_string)
+    self.send("#{attribute_name_as_string}=", updated_value) 
+  end
+
+
+
 
 end

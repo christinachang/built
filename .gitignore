@@ -20,6 +20,7 @@
 
 #Ignore our image uploads
 /public/system/images/uploads/
+/public/system/users/profile_images/
 
 #Ignore our image uploads
 db/migrate/Schema.rb
