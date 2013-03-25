@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @project.name%></h1>
+
 <p>
-  <b>Repo Name:</b>
+  <b>Repo Owner/Name:</b>
   <%= @project.repo_name %>
 </p>
 
 <p>
   <b>Repo URL</b>
-  <%= @project.repo_url %>
+  <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
 </p>
 
 <p>
@@ -38,20 +40,20 @@
 <p>
   <b>Project Team Members:</b>
   <% @project.users.each do |user| %>
-    <%= user.full_name %>, 
+    <a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a>, 
   <%end%>
 </p>
-
-<p>
+<!-- <p>
   <b>Contribs' GitHub Links:</b>
   <ul><% @project.users.each do |user| %>
   <li><a href = "<%= user.github_html_url %>">
     <%= user.github_login %></a></li>
   <%end%></ul>
-</p>
+</p> -->
+
 
 <p>
-  <b>Images:</b><br/>
+  <b>Project Images:</b><br/>
   <% @project.images.each do |image| %>
     <%= image_tag image.upload.url(:medium) %>
   <%end%>

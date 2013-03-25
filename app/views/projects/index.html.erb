@@ -3,12 +3,17 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Description</th>
+    <th>Project Cover Image</th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
     <td><%= link_to project.name, project %></td>
-<!--     <td><%#= image_tag project.images.upload.url(:medium) %></td> -->
+    <td><%= project.description %></td>
+    <td><% project.images.where(image_type: "cover").each do |cover| %>
+          <%= image_tag cover.upload.url(:medium)%>
+        <%end%></td>
   </tr>
 <% end %>
 
