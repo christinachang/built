@@ -18,3 +18,57 @@
   <b>Live URL:</b>
   <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
 </p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Git Clone URL (SSH):</b>
+  <%= @project.ssh_url %>
+</p>
+
+<p>
+  <b>GitHub Forks Count:</b>
+  <%= @project.forks %>
+</p>
+
+<p>
+  <b>GitHub Star Count:</b>
+  <%= @project.watchers %>
+</p>
+
+<p>
+  <b>Technologies (ex: C++):</b>
+  <%= @project.language %>
+</p>
+
+<p>
+  <b>Project Team Members:</b>
+  <% @project.users.each do |user| %>
+    <a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a>, 
+  <%end%>
+</p>
+<!-- <p>
+  <b>Contribs' GitHub Links:</b>
+  <ul><% @project.users.each do |user| %>
+  <li><a href = "<%= user.github_html_url %>">
+    <%= user.github_login %></a></li>
+  <%end%></ul>
+</p> -->
+
+
+<p>
+  <b>Project Images:</b><br/>
+  <% @project.images.each do |image| %>
+    <%= image_tag image.upload.url(:medium) %>
+  <%end%>
+</p>
+
+<% if current_user.is_authorized?(params) %>
+<%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', projects_path %>
+
+</div>
