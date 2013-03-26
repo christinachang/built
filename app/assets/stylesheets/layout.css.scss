@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
 
 .container{
@@ -13,6 +14,15 @@
 
 .navbar-inner .container{
   padding-top:0px
+=======
+.container-fluid{
+  padding-top:50px;
+}
+
+.navbar-inner{
+  color:#ff0000;
+  height:110px;
+>>>>>>> add logo placeholder, move login status, modify project index
 }
 
 #built-logo{
@@ -32,6 +42,7 @@
 }
 
 .project{
+<<<<<<< HEAD
   padding:10px;
   display:inline-block;
   height:300px;
@@ -53,16 +64,26 @@
   display:block;
   margin:0 auto;
   width:100%;
+=======
+  border:2px solid black;
+  padding:10px;
+  width:275px;
+  display:inline-block;
+  margin:5px;
+>>>>>>> add logo placeholder, move login status, modify project index
 }
 
 .project h4{
   text-align:center;
+<<<<<<< HEAD
   color:#ccc;
 }
 
 .project h4 a{
  color:#0ba7f5;
 /*color:#317191; */
+=======
+>>>>>>> add logo placeholder, move login status, modify project index
 }
 
 .project h5{
@@ -85,3 +106,10 @@
   width:940px;
 }
 
+<<<<<<< HEAD
+=======
+.cover-image{
+  border:2px solid orange;
+  padding:10px;
+}
+>>>>>>> add logo placeholder, move login status, modify project index
