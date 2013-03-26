@@ -7,24 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <div class='navbar navbar-fixed-top'>
-    <div class='navbar-inner'>
-  <ul class="nav">
-	<% if current_user %>
-	Logged in as <%= current_user.github_login %>
-	<%= link_to "Log Out", logout_path %>
-	<% else %>
-	<%= link_to "Sign up / Login with Github", login_path %>
-	<% end %>
-</ul>
+  <div class='navbar-inner'>
+    <ul class="login-status-text">
+    	<% if current_user %>
+    	   Logged in as <%= current_user.github_login %>
+    	   <%= link_to "Log Out", logout_path %>
+    	<% else %>
+    	   <%= link_to "Sign up / Login with Github", login_path %>
+    	<% end %>
+    </ul>
+    <div id="built-logo">
+    </div>
   </div>
-    <div>
+
+
+  <div>
     <%= flash[:alert] %> 
   </div>
 </div>
+
+
 <div class="container-fluid">
   <div id="row-fluid">
-  <div class="span12">
 			<%= yield %>
     </div>
   </div>

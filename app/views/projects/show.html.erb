@@ -1,3 +1,5 @@
+<div id="built-main-container">
+
 <p id="notice"><%= notice %></p>
 
 <h1><%= @project.name%></h1>
@@ -68,3 +70,5 @@
 <%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
 <%= link_to 'Back', projects_path %>
+
+</div>
