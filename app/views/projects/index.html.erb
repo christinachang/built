@@ -1,5 +1,6 @@
 <!-- <div id="built-main-container"> -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="row-fluid">
 <h1></h1>
 </div>
@@ -41,4 +42,52 @@
 
 <div class = "project span4"><%= link_to 'Submit a Project', new_project_path %></div>
 
+=======
+<h1>Built @ Flatiron</h1>
+
+<!-- <div class="project-gallery"> -->
+  <!-- <div class="gallery-row"> -->
+    <% @projects.each do |project| %>
+      <div class="project span4"> 
+        <div class="box">
+          <div class="cover-image">
+            <% project.images.where(image_type: "cover").each do |cover| %>
+                <%= image_tag cover.upload.url(:medium)%>
+            <%end%>
+          </div>
+        </div>
+          <h4><%= link_to project.name, project %></h4>
+          <h5><%= project.description %></h5>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+
+
+
+<!-- <table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Project Cover Image</th>
+  </tr>
+
+<% #@projects.each do |project| %>
+  <tr>
+    <td><%#= link_to project.name, project %></td>
+    <td><%#= project.description %></td>
+    <td><%# project.images.where(image_type: "cover").each do |cover| %>
+          <%#= image_tag cover.upload.url(:medium)%>
+        <%#end%></td>
+  </tr>
+<%# end %>
+
+</table>
+
+<br /> -->
+
+<%= link_to 'Submit A Project', new_project_path %>
+
+>>>>>>> add logo placeholder, move login status, modify project index
 </div>
