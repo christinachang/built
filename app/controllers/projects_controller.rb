@@ -36,7 +36,6 @@ class ProjectsController < ApplicationController
  
   def create
     @project = Project.new(params[:project])
- 
     @project.set_attributes(params,current_user)
     @project.create_associated_user_records(params,current_user) 
     @project.save
@@ -46,9 +45,15 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    
     @project = Project.find(params[:id])
-    
+
+    @project.images.each do |image|
+      if image.id == nil
+        params[:project][:images_attributes].each do |k, v|
+          @project.images << Image.create(params[:project][:images_attributes][k])
+        end
+      end
+    end
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
