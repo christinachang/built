@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 @import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
 
@@ -99,4 +100,66 @@ padding-top: 70px;
 
 .project h5{
   text-align:center;
+=======
+.container-fluid{
+  padding-top:50px;
+}
+
+.navbar-inner{
+  color:#ff0000;
+  height:110px;
+}
+
+#built-logo{
+  background-image:url(image_path('cat-logo.jpg'));
+  height:100px;
+  width:220px;
+  margin:5px;
+}
+
+#built-main-container{
+  padding-top:50px;
+}
+
+.login-status-text{
+  float:right;
+  padding-right:10px;
+}
+
+.project{
+  border:2px solid black;
+  padding:10px;
+  width:275px;
+  display:inline-block;
+  margin:5px;
+}
+
+.project h4{
+  text-align:center;
+}
+
+.project h5{
+  text-align:center;
+}
+
+.box{
+  border:2px solid red;
+  padding:10px;
+}
+
+.project-gallery{
+  border:2px solid green;
+  padding:10px;
+}
+
+.gallery-row{
+  border:2px solid blue;
+  padding:10px;
+  width:940px;
+}
+
+.cover-image{
+  border:2px solid orange;
+  padding:10px;
+>>>>>>> add logo placeholder, move login status, modify project index
 }
