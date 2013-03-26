@@ -2,28 +2,19 @@
 
 <p id="notice"><%= notice %></p>
 
-  <h1 class="repo_name"><%= @project.name%></h1>
+<h1><%= @project.name%></h1>
 
-    <%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
+<p>
+  <b>Repo Owner/Name:</b>
+  <%= @project.repo_name %>
+</p>
 
-<div class="row fluid">
-  <div class="span5 github_stats_window cover-image">
-<%= render :partial => 'github_info', :locals => {:project => @project} %>
- </div>
+<p>
+  <b>Github Repo URL:</b>
+  <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
+</p>
 
-  <div class="span6 collaborator_box">
-<%= render :partial => 'collaborators_info', :locals => {:project => @project} %>
- </div>
-</div>
-
-<div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
-
-<br>
-<% if current_user %>
-<% if current_user.is_authorized?(params) %>
-<%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
-<% end %>
-<%= link_to 'Back', projects_path %>
-
-</div>
+<p>
+  <b>Live URL:</b>
+  <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
+</p>
