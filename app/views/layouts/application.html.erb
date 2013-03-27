@@ -8,8 +8,9 @@
 </head>
 <body>
 
-<div class='navbar navbar-fixed-top'>
+<div class='navbar navbar-inverse navbar-fixed-top'>
   <div class='navbar-inner'>
+    <div class="container">
     <ul class="login-status-text">
     	<% if current_user %>
     	   Logged in as <%= current_user.github_login %>
@@ -21,7 +22,7 @@
     <div id="built-logo">
     </div>
   </div>
-
+</div>
 
   <div>
     <%= flash[:alert] %> 
@@ -29,11 +30,9 @@
 </div>
 
 
-<div class="container-fluid">
-  <div id="row-fluid">
+<div class="container">
 			<%= yield %>
-    </div>
-  </div>
+</div>
 </div>
 </body>
 </html>
