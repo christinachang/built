@@ -8,8 +8,6 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <div class='navbar navbar-inverse navbar-fixed-top'>
   <div class='navbar-inner'>
     <div class="container">
@@ -28,47 +26,13 @@
   </div>
 </div>
   </div>
-=======
-=======
->>>>>>> add logo placeholder, move login status, modify project index
-<div class='navbar navbar-fixed-top'>
-  <div class='navbar-inner'>
-    <ul class="login-status-text">
-    	<% if current_user %>
-    	   Logged in as <%= current_user.github_login %>
-    	   <%= link_to "Log Out", logout_path %>
-    	<% else %>
-    	   <%= link_to "Sign up / Login with Github", login_path %>
-    	<% end %>
-    </ul>
-    <div id="built-logo">
-    </div>
-  </div>
-
-
-<<<<<<< HEAD
->>>>>>> add logo placeholder, move login status, modify project index
-=======
->>>>>>> add logo placeholder, move login status, modify project index
   <div>
     <%= flash[:alert] %> 
   </div>
 </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <div class="container">
 
-=======
-
-<div class="container-fluid">
-  <div id="row-fluid">
->>>>>>> add logo placeholder, move login status, modify project index
-=======
-
-<div class="container-fluid">
-  <div id="row-fluid">
->>>>>>> add logo placeholder, move login status, modify project index
 			<%= yield %>
 </div>
 </div>
