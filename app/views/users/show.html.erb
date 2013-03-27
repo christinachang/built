@@ -1,7 +1,4 @@
-<% @user.projects.each do |project| %>
-<li><%= project.name %> <%= link_to "edit", edit_project_path(project) %></li>
-<% end %>
-</ul>
+<% render :partial => "project_users/show", :locals => {:project_user => @project_user} %>
 
 <%= link_to 'Edit Profile', edit_user_path %>
 

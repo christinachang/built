@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new
-		
+		@user = User.new		
 	end
 
 	def show
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
 
 	def update
 		@user = current_user
