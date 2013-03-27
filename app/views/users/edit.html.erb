@@ -10,6 +10,7 @@
     </div>
   <% end %>
 
+<<<<<<< HEAD
 <h3> Share Contact Info: </h3>
 
 
@@ -36,3 +37,40 @@
 
 <p><%= label_tag :twitter_url %>
 <%= f.text_field :twitter_url %></p>
+=======
+<h2>Your Contact Info: </h2>
+<b>full name:</b> <%= (@user.full_name || "(nothing entered)  ") %>
+<%= label_tag(:full_name, "| update full name") %>
+<%= f.text_field :full_name%>
+<br/>
+<b>current email:</b> <%=(@user.email || "(nothing entered) ") %>
+<%= label_tag(:email, "| update email") %>
+<%= f.text_field :email%>
+<br/>
+<b>current github_url: github.</b> <%=(@user.github_html_url || "(nothing entered) | ") %>
+<%= label_tag(:github_url, "| update github_url") %>
+<b> www.linkedin.com/ </b>
+<%= f.text_field :github_html_url%>
+<br/>
+<b>current linkedin_url:</b> <%=(@user.linkedin_url || "(nothing entered) | ") %>
+<%= label_tag(:linkedin_url, "| update linkedin_url") %>
+<b> www.linkedin.com/ </b>
+<%= f.text_field :linkedin_url%>
+<br/>
+<b>current facebook_urll:</b> <%=(@user.facebook_url || "(nothing entered) | ") %>
+<%= label_tag(:facebook_url, "| update facebook_url") %>
+<b> www.facebook.com/ </b>
+<%= f.text_field :facebook_url%>
+<br/>
+<b>current twitter_url:</b> <%=(@user.twitter_url || "(nothing entered) | ") %>
+<%= label_tag(:twitter_url, "| update twitter_url") %>
+<b> www.twitter.com/ </b>
+<%= f.text_field :twitter_url%>
+<br/>
+
+    <%= f.submit %>
+<% end %>
+
+
+
+>>>>>>> commit at end of day before getting user projects to appear
