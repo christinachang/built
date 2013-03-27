@@ -7,11 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> add logo placeholder, move login status, modify project index
 <div class='navbar navbar-inverse navbar-fixed-top'>
   <div class='navbar-inner'>
     <div class="container">
@@ -19,6 +15,9 @@
           <li class="submitproj"><%= link_to 'Submit A Project', new_project_path %></li>
     	<% if current_user %>
     	  <li> Logged in as <%= current_user.github_login %></li>
+
+        <li><%= link_to "Profile Page", current_user %></li>
+
     	   <li><%= link_to "Log Out", logout_path %></li>
     	<% else %>
     	  <li> <%= link_to "Sign up / Login with Github", login_path %></li>
@@ -33,20 +32,8 @@
   </div>
 </div>
 
-<<<<<<< HEAD
-
 <div class="container">
 
-=======
-<<<<<<< HEAD
-<div class="container">
-=======
-
-<div class="container-fluid">
-  <div id="row-fluid">
-
->>>>>>> add logo placeholder, move login status, modify project index
->>>>>>> add logo placeholder, move login status, modify project index
 			<%= yield %>
 </div>
 </div>
