@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= fields_for :projects do |project_field| %>
-    <%= project_field.label :project_id %><br />
-    <%= project_field.text_field :project_id %>
+    <ul><% @user.projects.each do |project| %>
+    <li><%= project.name %></li>
+    <% end %>
+    </ul>
   </div>
 
-  <div class="actions">
-    <%= user.submit %>
-  </div>
 <% end %>
