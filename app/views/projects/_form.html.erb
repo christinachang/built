@@ -23,13 +23,18 @@ $('document').ready(function(){
   <% end %>
 
   <div class="field">
-    <label>Github Repository (username/repo-name)</label><br />
+    <label>Github Repository (username/repo-name)</label>
     <input type="text_field" name="repo_name">
+  </div>
+
+  <div class="field">
+    <label>Live Project URL</label>
+    <input type="text_field" name="url">
   </div>
  
 
   <div class="field">
-    <p>Upload cover image for your app:</p>
+    <label>Upload cover image for your app:</label>
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "cover" %>
@@ -38,7 +43,7 @@ $('document').ready(function(){
   </div>
 
   <div class="field">
-    <p>Upload screenshots of your app:</p>
+    <label>Upload screenshots of your app:</label>
     <div class="screenshot">
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
