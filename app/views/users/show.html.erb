@@ -1,30 +1,8 @@
-<h1> <%=@user.github_login%>'s Edit Page <h1>
-
-<p id="notice"><%= flash[:notice] %></p>
-<h2> Your Projects: </h2>
-<ul>
 <% @user.projects.each do |project| %>
 <li><%= project.name %> <%= link_to "edit", edit_project_path(project) %></li>
 <% end %>
 </ul>
 
-<%= form_for @user do |f| %>	
-<h2> Profile Photo: </h2>
- <div class="field">
- 	<%= "current profile photo:" %>
- 	<% if @user.profile_image %>
- 	<%= image_tag @user.profile_image.url(:medium) %>
- 	<% else %>
- 	<%= "nothing" %>
- 	<% end %>
-	<br/>
-    <p>Upload a profile photo:</p>
-      <%= f.file_field :profile_image %>
- </div>
+<%= link_to 'Edit Profile', edit_user_path %>
 
-<%= render :partial => "contact_info", :locals => {:user => @user, :f => f} %>
-
-<%= f.submit "update profile" %>
-<% end %>
-
-<%= link_to 'Add A Project', new_project_path %>
+<%= link_to 'Create a New Project', new_project_path %>
