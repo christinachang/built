@@ -1,13 +1,15 @@
 class Project < ActiveRecord::Base
 
+
   attr_accessible :description, :github_link, :name, :repo_name, :live_url, :forks, :watchers, :language, :images_attributes
+  add basic authorization
   has_many :images
   has_many :project_users
   has_many :users, :through => :project_users
 
   accepts_nested_attributes_for :images
 
-
+  validates :repo_name, :presence => {:message => "please enter a repo name"}
 
   def create_github_client(current_user)
     @@octokit_client = Octokit::Client.new(:login => current_user.github_login, :oauth_token => current_user.token)
@@ -15,7 +17,6 @@ class Project < ActiveRecord::Base
 
   def get_repo_hash(repo_name, current_user)
     create_github_client(current_user).repo(repo_name)
-    
   end
 
   def get_html_url(repo_name, current_user)
@@ -53,15 +54,15 @@ class Project < ActiveRecord::Base
     repo_hash[:name]
   end
 
-  def set_attributes(params, current_user) 
-    self.repo_name = params[:repo_name]
-    self.repo_url = self.get_html_url(params[:repo_name],current_user)
-    self.ssh_url = self.get_ssh_url(params[:repo_name],current_user)
-    self.description = self.get_description(params[:repo_name],current_user)
-    self.language = self.get_language(params[:repo_name],current_user)
-    self.watchers = self.get_watchers(params[:repo_name],current_user)
-    self.forks = self.get_forks(params[:repo_name],current_user)
-    self.name = self.get_repo_name(params[:repo_name],current_user)
+  def set_github_attributes(params, current_user) 
+    self.repo_name = params[:project][:repo_name]
+    self.repo_url = self.get_html_url(params[:project][:repo_name],current_user)
+    self.ssh_url = self.get_ssh_url(params[:project][:repo_name],current_user)
+    self.description = self.get_description(params[:project][:repo_name],current_user)
+    self.language = self.get_language(params[:project][:repo_name],current_user)
+    self.watchers = self.get_watchers(params[:project][:repo_name],current_user)
+    self.forks = self.get_forks(params[:project][:repo_name],current_user)
+    self.name = self.get_repo_name(params[:project][:repo_name],current_user)
   end
 
   def get_collaborator_logins(repo_name, current_user)
@@ -89,20 +90,23 @@ class Project < ActiveRecord::Base
   end
 
   def create_associated_user_records(params, current_user)
-    assignment_hash = self.prepare_mass_assignment(params[:repo_name],current_user)
+    assignment_hash = self.prepare_mass_assignment(params[:project][:repo_name],current_user)
     assignment_hash.each do |attributes|
       @user = User.find_by_github_login(attributes[:github_login])
       ##if the user being iterated over doesn't exist,create a user w/ an association 
     unless @user
-      @user = self.users.build(attributes)
-      @user.save
+      @user = User.new
+      @user.full_name = "Anonymous"
+      self.users.build(attributes)
     else #if user being iterated over DOES exist, just build the join row
+      unless @user.full_name
+        @user.full_name = "Anonymous"
       self.project_users.build(:user_id => @user.id)
       self.save
+      end
     end
-  end
+
+    end
   end
 
 end
-
-

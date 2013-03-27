@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+  	redirect_to '/auth/github'
+  end
+
 	def new
 		@user = User.new
 	end

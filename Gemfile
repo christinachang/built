@@ -1,4 +1,6 @@
+gemfile
 source 'https://rubygems.org'
+gem 'client_side_validations'
 gem 'omniauth'
 gem 'omniauth-github'
 gem "pry", "~> 0.9.12"
@@ -26,9 +28,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 2.7.5'
 # gem "rmagick", "~> 2.13.2"
-gem "cocaine"
+gem 'cocaine', '0.3.2'
 
 gem "pry", "~> 0.9.12"
 
@@ -46,3 +48,4 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 
 # To use debugger
 # gem 'debugger'
+

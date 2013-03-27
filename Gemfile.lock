@@ -32,10 +32,8 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.1)
-      climate_control (>= 0.0.3, < 1.0)
+    client_side_validations (3.2.5)
+    cocaine (0.3.2)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -44,7 +42,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
-    coffee-script-source (1.6.2)
     columnize (0.3.6)
     commonjs (0.2.6)
     debugger (1.5.0)
@@ -108,13 +105,11 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    paperclip (3.2.1)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.0)
+    paperclip (2.7.5)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (~> 0.3.0)
       mime-types
-    paperclip (3.4.1)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -180,7 +175,8 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
-  cocaine
+  client_side_validations
+  cocaine (= 0.3.2)
   coffee-rails (~> 3.2.1)
   debugger (~> 1.5.0)
   jquery-rails
@@ -188,7 +184,7 @@ DEPENDENCIES
   octokit (~> 1.23.0)
   omniauth
   omniauth-github
-  paperclip (~> 3.0)
+  paperclip (~> 2.7.5)
   pry (~> 0.9.12)
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
