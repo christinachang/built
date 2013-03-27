@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> add profile edit form
 	def update
 		@user = current_user
 
