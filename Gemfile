@@ -7,6 +7,7 @@ gem "pry", "~> 0.9.12"
 gem 'rails', '3.2.12'
 gem "octokit", "~> 1.23.0"
 gem "debugger", "~> 1.5.0"
+gem "seed-fu", "~> 2.2.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
