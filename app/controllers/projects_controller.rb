@@ -38,7 +38,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-
     unless Project.find_by_repo_name(params[:project][:repo_name])
       unless params[:project][:repo_name].strip != ""
         @project = Project.new
