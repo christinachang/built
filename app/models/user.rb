@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 
   @@admin = ["meowist", "christinachang","modernlegend","anabecker"]
 
-
   def is_authorized?(params)
     self.is_an_admin? || self.is_a_member_of_this_project?(params)
   end 
