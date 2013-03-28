@@ -25,9 +25,11 @@ class UsersController < ApplicationController
 		attributes.each do |attribute|
 			@user.update_attribute(params, attribute)
 		@user.save
+
 	 end
+	 	flash[:notice] = 'Project was successfully updated.'	 	
 	 	render 'show'
-	end
+	 end
 
 
 end
