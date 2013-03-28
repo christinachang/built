@@ -9,16 +9,16 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <%end%>
 
   <div class="field">
     <ul><% @user.projects.each do |project| %>
-    <li><% project.images.where(image_type: "cover").each do |image|%>
-        <%= image_tag image.upload.url(:thumb)%>
+        <li><% project.images.where(image_type: "cover").each do |image|%>
+              <%= image_tag image.upload.url(:thumb)%>
+            <%end%>
+        <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%></li>
         <%end%>
-      <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%></li>
-    <% end %>
     </ul>
   </div>
 
-<% end %>
+<%end%>
