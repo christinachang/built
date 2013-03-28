@@ -73,7 +73,30 @@
     <th>Project Cover Image</th>
   </tr>
 
+<<<<<<< HEAD
 <% #@projects.each do |project| %>
+=======
+<h5>Sort by: </h5>
+<form>
+<select id="dropdown">
+  <option value="alphabetical">Alphabetical</option>
+  <option value="watchers">Watchers</option>
+</select>
+<input type="submit" 
+</form>
+
+<script>
+$(document).ready(function() {
+   $('#dropdown').change(function (event) {
+      console.log(this.value);
+    if (this.value) == "watchers"
+      console.log("yo!");
+   })
+ });
+</script>
+
+<% @projects.each do |project| %>
+>>>>>>> begin sort filter attempt
   <tr>
     <td><%#= link_to project.name, project %></td>
     <td><%#= project.description %></td>
