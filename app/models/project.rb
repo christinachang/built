@@ -31,7 +31,6 @@ class Project < ActiveRecord::Base
     self.name = repo_hash[:name]
   end
 
-<<<<<<< HEAD
   def get_collaborator_logins(repo_name, client)
      assignment_hash = client.collabs(repo_name)
      assignment_hash.collect do |collaborator|
