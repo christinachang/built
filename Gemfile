@@ -31,7 +31,8 @@ end
 gem 'jquery-rails'
 gem 'paperclip', '~> 2.7.5'
 # gem "rmagick", "~> 2.13.2"
-gem 'cocaine', '0.3.2'
+
+gem "cocaine", '~> 0.3.2'
 
 gem "pry", "~> 0.9.12"
 
