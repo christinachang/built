@@ -19,74 +19,42 @@ class Project < ActiveRecord::Base
     create_github_client(current_user).repo(repo_name)
   end
 
-  def get_html_url(repo_name, current_user) #creates a new client
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:html_url]
-  end
-
-  def get_ssh_url(repo_name, current_user) #creates a new client
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:ssh_url]
-  end
-  
-
-
-  def get_description(repo_name, current_user)
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:description]
-  end
-
-  def get_forks(repo_name, current_user)
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:forks]
-  end
-
-  def get_watchers(repo_name, current_user)
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:watchers]
-  end
-
-  def get_language(repo_name, current_user)
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:language]
-  end
-
-  def get_repo_name(repo_name, current_user)
-    repo_hash = self.get_repo_hash(repo_name, current_user)
-    repo_hash[:name]
-  end
-
   def set_github_attributes(params, current_user) 
+    repo_hash = self.get_repo_hash(params[:project][:repo_name],current_user)
     self.repo_name = params[:project][:repo_name]
-    self.repo_url = self.get_html_url(params[:project][:repo_name],current_user)
-    self.ssh_url = self.get_ssh_url(params[:project][:repo_name],current_user)
-    self.description = self.get_description(params[:project][:repo_name],current_user)
-    self.language = self.get_language(params[:project][:repo_name],current_user)
-    self.watchers = self.get_watchers(params[:project][:repo_name],current_user)
-    self.forks = self.get_forks(params[:project][:repo_name],current_user)
-    self.name = self.get_repo_name(params[:project][:repo_name],current_user)
+    self.repo_url = repo_hash[:html_url]
+    self.ssh_url = repo_hash[:ssh_url]
+    self.description = repo_hash[:description]
+    self.language = repo_hash[:language]
+    self.watchers = repo_hash[:watchers]
+    self.forks = repo_hash[:forks]
+    self.name = repo_hash[:name]
   end
 
-  def get_collaborator_logins(repo_name, current_user)
-     repo_hash = create_github_client(current_user).collabs(repo_name)
-     repo_hash.collect do |collaborator|
+  def get_collaborator_logins(repo_name, client)
+     assignment_hash = client.collabs(repo_name)
+     assignment_hash.collect do |collaborator|
        {:github_login=> collaborator.login}
     end
   end
 
-  def get_name_from_login(login, current_user)
-    create_github_client(current_user).user(login[:github_login]).name
+  def get_name_from_login(login, client)
+    client.user(login[:github_login]).name
   end
 
-  def get_github_html_url_from_login(login, current_user)
-    create_github_client(current_user).user(login[:github_login]).html_url
+  def get_github_html_url_from_login(login, client)
+    client.user(login[:github_login]).html_url
   end
 
   def prepare_mass_assignment(repo_name, current_user)
-    logins = get_collaborator_logins(repo_name, current_user)
-    logins.collect do |login|
-      name = get_name_from_login(login, current_user)
-      html_url = get_github_html_url_from_login(login, current_user)
+    #create github client
+    client =  create_github_client(current_user)
+    #create collab logins
+    logins_assignment_hash = get_collaborator_logins(repo_name, client)
+    #use the logins from login hash to retrieve other attributes for each collaborator(i.e., 'user')
+    logins_assignment_hash.collect do |login|
+      name = get_name_from_login(login, client)
+      html_url = get_github_html_url_from_login(login, client)
     {:github_login=> login[:github_login], :full_name => name, :github_html_url => html_url}
     end
   end
