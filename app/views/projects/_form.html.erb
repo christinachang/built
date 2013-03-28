@@ -50,7 +50,7 @@ $('document').ready(function(){
   <div class="field">
     <label>Upload screenshots of your app:</label>
     <div class="screenshot">
-    <%= f.fields_for :images do |field| %>
+      <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "screenshot" %>
       <%= field.hidden_field :position, :value => "1" %>
