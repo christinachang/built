@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   validates :full_name, :presence => {:message => 'please enter full name'}
 
-  @@admin = ["not"]
+  @@admin = ["meowist", "christinachang","modernlegend","anabecker"]
 
 
 
