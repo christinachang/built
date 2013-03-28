@@ -19,15 +19,17 @@ class Project < ActiveRecord::Base
     create_github_client(current_user).repo(repo_name)
   end
 
-  def get_html_url(repo_name, current_user)
+  def get_html_url(repo_name, current_user) #creates a new client
     repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:html_url]
   end
 
-  def get_ssh_url(repo_name, current_user)
+  def get_ssh_url(repo_name, current_user) #creates a new client
     repo_hash = self.get_repo_hash(repo_name, current_user)
     repo_hash[:ssh_url]
   end
+  
+
 
   def get_description(repo_name, current_user)
     repo_hash = self.get_repo_hash(repo_name, current_user)

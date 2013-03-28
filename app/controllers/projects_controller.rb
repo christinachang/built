@@ -38,19 +38,24 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-  
-    unless params[:project][:repo_name].strip != ""
-      @project = Project.new
-      @project.images.build
-      flash[:error] = "Please enter a repo name."
-      render 'new'
+    unless Project.find_by_repo_name(params[:project][:repo_name])
+      unless params[:project][:repo_name].strip != ""
+        @project = Project.new
+        @project.images.build
+        flash[:error] = "Please enter a repo name."
+        render :new
+      else
+        @project = Project.new(params[:project])
+        @project.set_github_attributes(params,current_user)
+        @project.create_associated_user_records(params,current_user) 
+        @project.save
+        redirect_to(@project)
+      end
     else
-  
-    @project = Project.new(params[:project])
-    @project.set_github_attributes(params,current_user)
-    @project.create_associated_user_records(params,current_user) 
-    @project.save
-    redirect_to(@project)
+    @project = Project.new
+    @project.images.build
+    flash[:error] = "That Repo's already been inserted, yo."  
+    render 'new'
     end
   end
 

@@ -9,6 +9,7 @@ $('document').ready(function(){
 })
 </script>
 
+
 <%= form_for(@project, :html => { :multipart => true }) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -27,11 +28,15 @@ $('document').ready(function(){
     <input type="text_field" name="project[repo_name]">
   </div>
 
+
   <div class="field">
     <label>Live Project URL</label>
     <input type="text_field" name="live_url">
   </div>
- 
+
+  <% if flash[:error] %>
+    <p class='error' style="color:red"><%= flash[:error] %></p>
+  <% end %>
 
   <div class="field">
     <label>Upload cover image for your app:</label>
