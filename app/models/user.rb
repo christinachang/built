@@ -8,10 +8,17 @@ class User < ActiveRecord::Base
   :default_url => "/images/:style/missing.png"
 
   validates :full_name, :presence => {:message => 'please enter full name'}
+<<<<<<< HEAD
   validates_format_of :github_html_url, :allow_nil => true, :with => /github/, :message => "please provide an accurate github url"
   validates_format_of :linkedin_url, :allow_nil => true, :with => /linkedin/, :message => "please provide an accurate linkedin url"
   validates_format_of :facebook_url, :allow_nil => true, :with => /facebook/, :message => "please provide an accurate facebook url"
   validates_format_of :twitter_url, :allow_nil => true, :with => /twitter/, :message => "please provide an accurate twitter url"
+=======
+  validates_format_of :github_html_url, :with => /github/, :message => "please provide an accurate github url"
+  validates_format_of :linkedin_url, :with => /linkedin/, :message => "please provide an accurate linkedin url"
+  validates_format_of :facebook_url, :with => /facebook/, :message => "please provide an accurate facebook url"
+  validates_format_of :twitter_url, :with => /twitter/, :message => "please provide an accurate twitter url"
+>>>>>>> add "your profile settings have been saved", add minus button to remove images, add ability to upload cover images to projects, be able to differentiate between cover and screenshot image types
 
   @@admin = ["meowist", "christinachang","modernlegend","anabecker"]
 

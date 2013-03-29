@@ -13,7 +13,6 @@
     <div class="container">
     <ul class="login-status-text">
           <li class="submitproj"><%= link_to 'Submit A Project', new_project_path %></li>
-<<<<<<< HEAD
     	<% if current_user %>
     	  <li> Logged in as <%= current_user.github_login %></li>
         <li><%= link_to "Profile Page", current_user %></li>
@@ -26,19 +25,6 @@
     </div>
   </div>
 </div>
-=======
-<div class='navbar navbar-fixed-top'>
-  <div class='navbar-inner'>
-    <ul class="login-status-text">
-    	<% if current_user %>
-    	  <li> Logged in as <%= current_user.github_login %></li>
-    	   <li><%= link_to "Log Out", logout_path %></li>
-    	<% else %>
-    	  <li> <%= link_to "Sign up / Login with Github", login_path %></li>
-    	<% end %>
-    </ul>
-    <div id="built-logo"><img src="/assets/logo.png" />
-    </div>
   </div>
   <div>
     <%= flash[:alert] %> 
