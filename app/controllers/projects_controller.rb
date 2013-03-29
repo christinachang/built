@@ -38,10 +38,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-    unless Project.find_by_repo_name(params[:project][:repo_name])
-      unless params[:project][:repo_name].strip != ""
-        @project = Project.new
-        @project.images.build
+    if Project.find_by_repo_name(params[:project][:repo_name])
+      flash[:error] = "That Repo's already been inserted, yo."  
+      render 'new'
+    else
+      if params[:project][:repo_name].blank?
         flash[:error] = "Please enter a repo name."
         render :new
       else
@@ -96,7 +97,7 @@ class ProjectsController < ApplicationController
 
   private 
     def project_edit_authorization
-      redirect_to projects_path , alert: "Access denied!" unless current_user.is_authorized?(params)
+      redirect_to projects_path , alert: "ACCESS DENIED!" unless current_user.is_authorized?(params)
     end
 
 end
