@@ -13,7 +13,6 @@
 
 .navbar-inner .container{
   padding-top:0px
-
 }
 
 .navbar-inner ul li{
@@ -49,6 +48,7 @@ border-radius: 10px;
 background-color: #0088cc;
 color: #fff;
 }
+
 
 #built-main-container{
   padding-top:50px;
@@ -115,3 +115,20 @@ padding-top: 70px;
 
 .project h5{
   text-align:center;
+}
+
+.box{
+  border:2px solid red;
+  padding:10px;
+}
+
+.project-gallery{
+  border:2px solid green;
+  padding:10px;
+}
+
+.gallery-row{
+  border:2px solid blue;
+  padding:10px;
+  width:940px;
+}
