@@ -1,9 +1,23 @@
+<<<<<<< HEAD
 <div id="built-main-container">
 
 <p><%= notice %></p>
 <%= render :partial => "user_projects", :locals => {:user => @user} %>
 
 <%= link_to 'Edit Profile', edit_user_path %>&nbsp;|&nbsp;
+=======
+<p><%= notice %></p>
+<%= render :partial => "user_projects", :locals => {:user => @user} %>
+
+
+
+<%= link_to 'Edit Profile', edit_user_path %>
+
+
+<!-- 
+_list_of_editable_projects DO NOT YET HAVE
+-->
+>>>>>>> add "your profile settings have been saved", add minus button to remove images, add ability to upload cover images to projects, be able to differentiate between cover and screenshot image types
 
 <%= link_to 'Create a New Project', new_project_path %>
 
