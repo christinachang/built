@@ -60,6 +60,7 @@ class Project < ActiveRecord::Base
   end
 
   def create_associated_user_records(params, current_user)
+
     assignment_hash = self.prepare_mass_assignment(params[:project][:repo_name],current_user)
     assignment_hash.each do |attributes|
       @user = User.find_by_github_login(attributes[:github_login])
@@ -68,12 +69,13 @@ class Project < ActiveRecord::Base
       @user = User.new
       @user.full_name = "Anonymous"
       self.users.build(attributes)
+   
     else #if user being iterated over DOES exist, just build the join row
       unless @user.full_name
         @user.full_name = "Anonymous"
-      self.project_users.build(:user_id => @user.id)
-      self.save
       end
+    self.project_users.build(:user_id => @user.id)
+      self.save
     end
 
     end
