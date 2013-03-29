@@ -15,10 +15,7 @@
           <li class="submitproj"><%= link_to 'Submit A Project', new_project_path %></li>
     	<% if current_user %>
     	  <li> Logged in as <%= current_user.github_login %></li>
-<<<<<<< HEAD
         <li><%= link_to "Profile Page", current_user %></li>
-=======
->>>>>>> more pretty
     	   <li><%= link_to "Log Out", logout_path %></li>
     	<% else %>
     	  <li> <%= link_to "Sign up / Login with Github", login_path %></li>
@@ -35,7 +32,6 @@
 </div>
 
 <div class="container">
-
 			<%= yield %>
 </div>
 </div>
