@@ -53,8 +53,8 @@
 
 
 <p>
-  <b>Project Images:</b><br/>
-  <% @project.images.each do |image| %>
+<b>Project Images:</b><br/>
+    <% @project.images.each do |image| %>
     <%= image_tag image.upload.url(:medium) %>
   <%end%>
 </p>
