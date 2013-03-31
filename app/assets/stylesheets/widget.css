@@ -16,18 +16,18 @@ div.active.item img {
 	margin-right:auto;
 }
 
-.submitprojred a{
+.submitprojblue a{
  padding: 10px;
 border-radius: 10px;
 background-color: #dbdbdb;
 background-image: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, rgba(255, 255, 255, 0.9)),
-color-stop(100%, rgba(0, 0, 0, 0.6))
+color-stop(0%, rgba(0, 136, 204, 0.9)),
+color-stop(100%, rgba(0, 136, 204, 0.9))
 );
 
 }
 
-.submitprojred a:hover {
+.submitprojblue a:hover {
  -webkit-transition: background-color .4s linear;
 background-color: #353535;
 text-decoration: none;
@@ -109,6 +109,7 @@ display: inline;
   border:10px solid #fff;
   overflow:hidden;
 }
+
 
 .contributor_avatar {
   width: 100px;
