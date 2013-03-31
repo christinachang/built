@@ -1,18 +1,29 @@
     <h1> Collaborators: </h1>
 		<% project.users.each do |user| %>
 
-		<div class="row fluid">
-		<div class="span8"> 
-			<h5><%= user.github_login %></h5>
-			<%= user.profile_image.url %>
-			<a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a>, 
+	
+	
+			<h5>	<a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a> </h5>
+			<% if user.profile_image_file_size %>
+				<%= image_tag user.profile_image.url%>
+			<% else %>
+				<%= image_tag user.avatar_url, :class => "contributor_avatar"%>
+			<% end %>
+		
 				<ul class="contacts_nav">
-				    <li><a class="logo" href="#">social icons</a></li>
-				    <li><a class="logo twitter" href="#">social icons</a></li>
-				    <li><a class="logo facebook" href="#">social icons</a></li>
-				    <li><a class="logo google" href="#">social icons</a></li>
+					<% if user.linkedin_url %>
+				    <li><a class="logo" target= "_blank"href="<%= user.linkedin_url%>"></a></li>
+				  <% end %>
+				  <% if user.twitter_url %>
+				    <li><a class="logo twitter" target="_blank" href="<%= user.twitter_url%>"></a></li>
+				   <% end %>
+				   <% if user.facebook_url %>
+				    <li><a class="logo facebook" target="_blank" href="<%= user.facebook_url%>"></a></li>
+				   <% end %>
+				   <% if user.github_html_url %>
+				    <li><a class="logo github" target="_blank" href="<%= user.github_html_url%>"></a></li>
+				   <% end %>
  	 		</ul>
- 	 	</div>
- 	 	</div>
+
  	 	<% end %>
    

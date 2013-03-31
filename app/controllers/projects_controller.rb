@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
         flash[:error] = "Please enter a repo name."
         render :new
       else
-        @project = Project.new(params[:project])
+        @project = Project.create(params[:project])
         @project.set_github_attributes(params,current_user)
         @project.create_associated_user_records(params,current_user) 
         if @project.save

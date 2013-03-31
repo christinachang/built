@@ -56,9 +56,10 @@ class Project < ActiveRecord::Base
     #use the logins from login hash to retrieve other attributes for each collaborator(i.e., 'user')
     logins_assignment_hash.collect do |login|
       name = get_name_from_login(login, client)
+      full_name = "Anonymous" unless name
       html_url = get_github_html_url_from_login(login, client)
       avatar_url = get_avatar_url_from_login(login, client)
-    {:github_login=> login[:github_login], :full_name => name, :github_html_url => html_url, :avatar_url => avatar_url}
+    {:github_login=> login[:github_login], :full_name => name || full_name, :github_html_url => html_url, :avatar_url => avatar_url}
     end
   end
 
@@ -68,11 +69,13 @@ class Project < ActiveRecord::Base
     assignment_hash.each do |attributes|
       @user = User.find_by_github_login(attributes[:github_login])
       ##if the user being iterated over doesn't exist,create a user w/ an association 
+
     unless @user
+
       @user = User.new
-      @user.full_name = "Anonymous"
-      self.users.build(attributes)
-   
+     
+      self.users.create(attributes)
+      
     else #if user being iterated over DOES exist, just build the join row
       unless @user.full_name
         @user.full_name = "Anonymous"
@@ -80,7 +83,7 @@ class Project < ActiveRecord::Base
     self.project_users.build(:user_id => @user.id)
       self.save
     end
-
+     
     end
   end
 

@@ -10,8 +10,10 @@
 </p>
 
 <p>
+  <% if @project.live_url %>
   <b>Live URL:</b>
   <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
+  <% end %>
 </p>
 
 <p>

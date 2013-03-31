@@ -1,0 +1,16 @@
+
+
+<% @project = Project.new %>
+<% @project.images.build %>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Submit A Project</h3>
+  </div>
+ 
+
+    <%= render :partial => 'submit_project_modal_form', :locals => { :project => @project} %>
+
+</div>
