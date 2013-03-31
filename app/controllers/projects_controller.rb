@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
     else
     @project = Project.new
     @project.images.build
-    flash[:error] = "That Repo's already been inserted, yo."  
+    flash[:error] = "That repo's already been submitted, yo."  
     render 'new'
     end
   end
@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
 
   private 
     def project_edit_authorization
-      redirect_to projects_path , alert: "ACESS DENIED!" unless current_user.is_authorized?(params)
+      redirect_to projects_path , alert: "Access denied!" unless current_user.is_authorized?(params)
     end
 
 end

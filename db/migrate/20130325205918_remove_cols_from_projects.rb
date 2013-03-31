@@ -1,11 +1,14 @@
 class RemoveColsFromProjects < ActiveRecord::Migration
   def up
-    remove_column :projects, :github_link
-    rename_column :projects, :url, :live_url
+    drop_table :cover_photos
   end
 
   def down
-    add_column :projects, :github_link, :string
-    rename_column :projects, :live_url, :url
+    create_table :cover_photos do |t|
+    t.integer  "project_id"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
   end
 end
