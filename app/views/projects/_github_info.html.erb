@@ -1,0 +1,40 @@
+  <h1> Github Stats: </h1>
+<p>
+  <b>Repo Owner/Name:</b>
+  <%= @project.repo_name %>
+</p>
+
+<p>
+  <b>Github Repo URL:</b>
+  <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
+</p>
+
+<p>
+  <b>Live URL:</b>
+  <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Git Clone URL (SSH):</b>
+  <%= @project.ssh_url %>
+</p>
+
+<p>
+  <b>GitHub Forks Count:</b>
+  <%= @project.forks %>
+</p>
+
+<p>
+  <b>GitHub Star Count:</b>
+  <%= @project.watchers %>
+</p>
+
+<p>
+  <b>Technologies (ex: C++):</b>
+  <%= @project.language %>
+</p>

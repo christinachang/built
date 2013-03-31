@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331194853) do
+ActiveRecord::Schema.define(:version => 20130331031409) do
+
+  create_table "cover_photos", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+  end
 
   create_table "images", :force => true do |t|
     t.datetime "created_at",          :null => false
@@ -59,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130331194853) do
     t.string   "linkedin_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
+    t.string   "avatar_url"
   end
 
 end

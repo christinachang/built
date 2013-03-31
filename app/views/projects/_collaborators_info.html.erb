@@ -1,0 +1,18 @@
+    <h1> Collaborators: </h1>
+		<% project.users.each do |user| %>
+
+		<div class="row fluid">
+		<div class="span8"> 
+			<h5><%= user.github_login %></h5>
+			<%= user.profile_image.url %>
+			<a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a>, 
+				<ul class="contacts_nav">
+				    <li><a class="logo" href="#">social icons</a></li>
+				    <li><a class="logo twitter" href="#">social icons</a></li>
+				    <li><a class="logo facebook" href="#">social icons</a></li>
+				    <li><a class="logo google" href="#">social icons</a></li>
+ 	 		</ul>
+ 	 	</div>
+ 	 	</div>
+ 	 	<% end %>
+   

@@ -44,6 +44,10 @@ class Project < ActiveRecord::Base
     client.user(login[:github_login]).html_url
   end
 
+  def get_avatar_url_from_login(login, client)
+    client.user(login[:github_login]).avatar_url
+  end
+
   def prepare_mass_assignment(repo_name, current_user)
     #create github client
     client =  create_github_client(current_user)
@@ -53,7 +57,8 @@ class Project < ActiveRecord::Base
     logins_assignment_hash.collect do |login|
       name = get_name_from_login(login, client)
       html_url = get_github_html_url_from_login(login, client)
-    {:github_login=> login[:github_login], :full_name => name, :github_html_url => html_url}
+      avatar_url = get_avatar_url_from_login(login, client)
+    {:github_login=> login[:github_login], :full_name => name, :github_html_url => html_url, :avatar_url => avatar_url}
     end
   end
 

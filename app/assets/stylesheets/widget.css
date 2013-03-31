@@ -1,0 +1,87 @@
+
+
+.carousel {
+position: relative;
+margin-bottom: 20px;
+line-height: 1;
+margin-left: auto;
+margin-right: auto;
+width: 328px;
+}
+
+div.active.item img {
+	max-width: 100%;
+	max-height: 100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.submitprojred a{
+ padding: 10px;
+border-radius: 10px;
+background-color: #dbdbdb;
+background-image: -webkit-gradient(linear, left top, left bottom,
+color-stop(0%, rgba(255, 255, 255, 0.9)),
+color-stop(100%, rgba(0, 0, 0, 0.6))
+);
+
+}
+
+.submitprojred a:hover {
+ -webkit-transition: background-color .4s linear;
+background-color: #353535;
+text-decoration: none;
+}
+
+.letterpress {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.logo {
+  background: url(/assets/buttons.png);
+  display: block;
+  height: 44px;
+  width: 44px;
+  text-indent: -9999px;
+  background-position: 0 -43px;
+
+}
+
+.logo:hover, .logo:focus {
+  background-position: 0 0;
+}
+
+.logo.twitter {
+	 background-position: -45px 43px;
+}
+
+.logo.twitter:hover {
+	 background-position: -45px 0;
+}
+.logo.facebook {
+	 background-position: -90px 43px;
+}
+
+.logo.facebook:hover {
+	 background-position: -90px 0;
+}
+
+.logo.github {
+	 background-position: -135px 43px;
+}
+
+.logo.github:hover {
+	 background-position: -135px 0;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top a {
+	color: white ;
+}
+
+.contacts_nav li {
+display: inline;
+}
+
+.contacts_nav a{
+	display:inline-block;
+}

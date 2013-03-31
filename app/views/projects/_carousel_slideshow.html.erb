@@ -1,0 +1,33 @@
+<script>
+$(document).ready(function () {
+        $('.carousel').carousel({
+            interval: 3000,
+            cycle: false,
+            pause: ''
+        });
+        $('.carousel').carousel('pause')
+    });
+</script>
+
+<div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <% project.images.where("image_type = ?", "screenshot").each_with_index do |image, index| %>
+       <li data-target="#myCarousel" data-slide-to="<%= index %>">
+    <% end %>
+  </ol>
+  <!-- Carousel items -->
+
+  <div class="carousel-inner">
+   <% project.images.where("image_type = ?", "screenshot").each_with_index do |image, index| %>
+    <% if index == 0 %>
+        <div class="active item"><%= image_tag image.upload.url %></div>
+    <% else %>
+      <div class="item"><%= image_tag image.upload.url %></div>
+    <% end %>
+  <% end %>
+  </div>
+
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>

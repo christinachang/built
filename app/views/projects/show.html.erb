@@ -4,52 +4,21 @@
 
 <h1><%= @project.name%></h1>
 
-<p>
-  <b>Repo Owner/Name:</b>
-  <%= @project.repo_name %>
-</p>
 
-<p>
-  <b>Github Repo URL:</b>
-  <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
-</p>
+<%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
 
-<p>
-  <b>Live URL:</b>
-  <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
-</p>
+<div class="row fluid">
+  <div class="span6">
+<%= render :partial => 'github_info', :locals => {:project => @project} %>
+ </div>
 
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
 
-<p>
-  <b>Git Clone URL (SSH):</b>
-  <%= @project.ssh_url %>
-</p>
 
-<p>
-  <b>GitHub Forks Count:</b>
-  <%= @project.forks %>
-</p>
+  <div class="span6">
+<%= render :partial => 'collaborators_info', :locals => {:project => @project} %>
+ </div>
+</div>
 
-<p>
-  <b>GitHub Star Count:</b>
-  <%= @project.watchers %>
-</p>
-
-<p>
-  <b>Technologies (ex: C++):</b>
-  <%= @project.language %>
-</p>
-
-<p>
-  <b>Project Team Members:</b>
-  <% @project.users.each do |user| %>
-    <a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a>, 
-  <%end%>
-</p>
 
 <p>
   <b>Project Cover Image:</b><br/>
@@ -65,8 +34,10 @@
   <%end%>
 </p>
 
+<% if current_user %>
 <% if current_user.is_authorized?(params) %>
 <%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <% end %>
 <%= link_to 'Back', projects_path %>
 

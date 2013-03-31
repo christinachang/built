@@ -13,6 +13,10 @@
     <div class="container">
     <ul class="login-status-text">
           <li class="submitproj"><%= link_to 'Submit A Project', new_project_path %></li>
+          <li class="submitprojred"><a class="letterpress" href="#myModal" role="button" data-toggle="modal">Submit a MOFO</a></li>
+
+
+
     	<% if current_user %>
     	  <li> Logged in as <%= current_user.github_login %></li>
         <li><%= link_to "Profile Page", current_user %></li>
@@ -34,6 +38,6 @@
 <div class="container">
 			<%= yield %>
 </div>
-</div>
+
 </body>
 </html>
