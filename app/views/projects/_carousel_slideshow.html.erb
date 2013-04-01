@@ -18,8 +18,8 @@ $(document).ready(function () {
   <!-- Carousel items -->
 
   <div class="carousel-inner">
-   <% project.images.where("image_type = ?", "screenshot").each_with_index do |image, index| %>
-    <% if index == 0 %>
+   <% project.images.each_with_index do |image, index| %>
+    <% if image.image_type == "cover" %>
         <div class="active item"><%= image_tag image.upload.url %></div>
     <% else %>
       <div class="item"><%= image_tag image.upload.url %></div>

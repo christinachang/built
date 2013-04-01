@@ -40,7 +40,9 @@ class ProjectsController < ApplicationController
   def create
     #if the project is in our database
     if Project.find_by_repo_name(params[:project][:repo_name])
-      flash[:error] = "That Repo's already been inserted, yo."  
+      flash[:error] = "That Repo's already been inserted, yo." 
+      @project = Project.new 
+      @project.images.build
       render 'new'
       #if the project isn't in our db
     else
@@ -100,7 +102,8 @@ end
 
   private 
     def project_edit_authorization
-      redirect_to projects_path , alert: "ACCESS DENIED!" unless current_user.is_authorized?(params)
+      true
+      # redirect_to projects_path , alert: "ACCESS DENIED!" unless current_user.is_authorized?(params)
     end
 
 end

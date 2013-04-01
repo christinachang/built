@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   :default_url => "/images/:style/missing.png"
 
   validates :full_name, :presence => {:message => 'please enter full name'}
-  validates_format_of :github_html_url, :with => /github/, :if => :github_html_url, :message => "please provide an accurate github url"
-  validates_format_of :linkedin_url, :with => /linkedin/, :if => :linkedin_url, :message => "please provide an accurate linkedin url"
-  validates_format_of :facebook_url, :with => /facebook/, :if => :facebook_url, :message => "please provide an accurate facebook url"
-  validates_format_of :twitter_url, :with => /twitter/, :if => :twitter_url, :message => "please provide an accurate twitter url"
+  validates_format_of :github_html_url, :allow_blank => true, :with => /github/, :if => :github_html_url, :message => "please provide an accurate github url"
+  validates_format_of :linkedin_url, :allow_blank => true, :with => /linkedin/, :if => :linkedin_url, :message => "please provide an accurate linkedin url"
+  validates_format_of :facebook_url, :allow_blank => true, :with => /facebook/, :if => :facebook_url, :message => "please provide an accurate facebook url"
+  validates_format_of :twitter_url, :allow_blank => true, :with => /twitter/, :if => :twitter_url, :message => "please provide an accurate twitter url"
 
   @@admin = ["meowist", "christinachang","modernlegend","anabecker"]
 

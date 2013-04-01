@@ -1,0 +1,79 @@
+<script type="text/javascript">
+$('document').ready(function(){
+  var smart_counter = $(".screenshot").length;
+  console.log(smart_counter);
+  $('#add').click(function(){
+      smart_counter++;
+      console.log(smart_counter);
+      var new_field = '<input id="project_images_attributes_'+smart_counter+'_upload" name="project[images_attributes]['+smart_counter+'][upload]" type="file"><input id="project_images_attributes_'+smart_counter+'_image_type" name="project[images_attributes]['+smart_counter+'][image_type]" type="hidden" value="screenshot">';
+        $('.screenshot:last').append(new_field);
+  });
+});
+</script>
+
+<%= form_for(@project, :html => { :multipart => true }) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :live_url, "Live URL" %>
+    <%= f.text_field :live_url %>
+  </div>
+    <div class="field">
+    <%= f.label :language, "Technologies (ex: C++)" %>
+    <%= f.text_field :language %>
+  </div>
+
+  <div class="field">
+    <p> Cover Image:</p>
+    <% @project.images.where(:image_type => "cover").each do |image| %>
+    <%= image_tag image.upload.url(:thumb) %>
+    <%end%>
+    <div class="cover">
+      <input id="project_images_attributes_0_upload" name="project[images_attributes][0][upload]" type="file">
+      <input id="project_images_attributes_0_image_type" name="project[images_attributes][0][image_type]" type="hidden" value="cover">
+      <input id="project_images_attributes_0_id" name="project[images_attributes][0][id]" type="hidden" value="<%= @project.images.where(:image_type => "cover").first.id %>">
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="custom_error">
+      <% if flash[:notice] %>
+      <%= flash[:notice] %>
+      <%end%>
+    </div>
+    <p> Screenshots:</p>
+    <% @project.images.where(:image_type => "screenshot").each_with_index do |image, index| %>
+      <%= image_tag image.upload.url(:thumb) %>
+      <%= link_to 'Delete', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="screenshot">
+      <input id="project_images_attributes_<%=index+1%>_upload" name="project[images_attributes][<%=index+1%>][upload]" type="file">
+        <input id="project_images_attributes_<%=index+1%>_image_type" name="project[images_attributes][<%=index+1%>][image_type]" type="hidden" value="screenshot">
+        <input id="project_images_attributes_<%=index+1%>_id" name="project[images_attributes][<%=index+1%>][id]" type="hidden" value="<%= @project.images.where(:image_type => "screenshot").first.id %>">
+      </div>
+    <%end%>
+  </div>
+
+  <div class="add_new_images"></div>
+  <input type="button" name="add" id="add" value="+" />Upload more pics</input><br>
+
+<br>
+    <%= f.submit %>
+
+<% end %>
