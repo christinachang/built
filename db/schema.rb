@@ -11,17 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331031409) do
-
-  create_table "cover_photos", :force => true do |t|
-    t.integer  "project_id"
-    t.string   "upload_file_name"
-    t.string   "upload_content_type"
-    t.integer  "upload_file_size"
-    t.datetime "upload_updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20130401175057) do
 
   create_table "images", :force => true do |t|
+    t.string   "image_type"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "project_id"
@@ -30,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20130331031409) do
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
     t.integer  "position"
-    t.string   "image_type"
   end
 
   create_table "project_users", :id => false, :force => true do |t|
@@ -50,15 +42,17 @@ ActiveRecord::Schema.define(:version => 20130331031409) do
     t.integer  "watchers"
     t.integer  "forks"
     t.string   "language"
+    t.string   "semester_id"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "github_login"
+    t.string   "password_token"
+    t.string   "email"
     t.string   "full_name"
     t.string   "github_html_url"
-    t.string   "github_login"
     t.string   "token"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
@@ -68,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130331031409) do
     t.string   "facebook_url"
     t.string   "twitter_url"
     t.string   "avatar_url"
+    t.string   "semester_id"
   end
 
 end
