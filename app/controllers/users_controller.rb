@@ -19,19 +19,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
 	def update
 		@user = current_user
-
+   
 		attributes = params[:user].reject{ |k| k == "profile_image" }.keys
-		 @user.profile_image = params[:user][:profile_image] if params[:user][:profile_image]
+		@user.profile_image = params[:user][:profile_image] if params[:user][:profile_image]
 		
 		attributes.each do |attribute|
-			@user.update_attribute(params, attribute)
-		@user.save
+			@user.send("#{attribute}=", params[:user][attribute])
+	 	end
 
-	 end
-	 	flash[:notice] = 'Project was successfully updated.'	 	
-	 	render 'show'
+		if @user.save
+			flash[:notice] = 'User profile was successfully updated.'	 	
+			redirect_to :controller => 'users', :action => 'show'	
+	 	else
+	 		render 'edit'
+	 	end
 	 end
 
 

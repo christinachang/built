@@ -1,0 +1,121 @@
+
+
+.carousel {
+position: relative;
+margin-bottom: 20px;
+line-height: 1;
+margin-left: auto;
+margin-right: auto;
+width: 328px;
+}
+
+div.active.item img {
+	max-width: 100%;
+	max-height: 100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.submitprojblue a{
+ padding: 10px;
+border-radius: 10px;
+background-color: #dbdbdb;
+background-image: -webkit-gradient(linear, left top, left bottom,
+color-stop(0%, rgba(0, 136, 204, 0.9)),
+color-stop(100%, rgba(0, 136, 204, 0.9))
+);
+
+}
+
+.submitprojblue a:hover {
+ -webkit-transition: background-color .4s linear;
+background-color: #353535;
+text-decoration: none;
+}
+
+.letterpress {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.logo {
+  background: url(/assets/buttons.png);
+  display: block;
+  height: 41px;
+  width: 42px;
+  text-indent: -9999px;
+  background-position: 0 -39px;
+
+}
+
+.logo:hover, .logo:focus {
+  background-position: 0 0;
+}
+
+.logo.twitter {
+	 background-position: -40px -40px;
+}
+
+.logo.twitter:hover {
+	 background-position: -40px 0 ;
+}
+.logo.facebook {
+	 background-position: -82px -40px;
+}
+
+.logo.facebook:hover {
+	 background-position: -82px 0;
+}
+
+.logo.github {
+	 background-position: -124px -40px;
+}
+
+.logo.github:hover {
+	 background-position: -124px 0;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top a {
+	color: white ;
+}
+
+.contacts_nav li {
+display: inline;
+}
+
+.contacts_nav a{
+	display:inline-block;
+}
+
+.github_stats_window {
+  height: auto;
+  box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
+  background-color: #ccc;
+  border-radius: 2px;
+  border:10px solid #fff;
+  overflow:hidden;
+}
+
+
+.repo_name {
+	text-align: center;
+}
+
+.collaborator_box{
+  height: auto;
+  scroll: auto;
+  box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
+  background-color: #ccc;
+  border-radius: 2px;
+  border:10px solid #fff;
+  overflow:hidden;
+}
+
+
+.contributor_avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.modal-backdrop {
+z-index: 1029;
+}

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :token, :github_login, :full_name, :github_html_url, :profile_image
+  attr_accessible :email, :password, :password_confirmation, :token, :github_login, :full_name, :github_html_url, :profile_image, :avatar_url
   has_many :project_users
   has_many :projects, :through => :project_users
 
@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   :default_url => "/images/:style/missing.png"
 
   validates :full_name, :presence => {:message => 'please enter full name'}
+  validates_format_of :github_html_url, :with => /github/, :if => :github_html_url, :message => "please provide an accurate github url"
+  validates_format_of :linkedin_url, :with => /linkedin/, :if => :linkedin_url, :message => "please provide an accurate linkedin url"
+  validates_format_of :facebook_url, :with => /facebook/, :if => :facebook_url, :message => "please provide an accurate facebook url"
+  validates_format_of :twitter_url, :with => /twitter/, :if => :twitter_url, :message => "please provide an accurate twitter url"
 
   @@admin = ["meowist", "christinachang","modernlegend","anabecker"]
 

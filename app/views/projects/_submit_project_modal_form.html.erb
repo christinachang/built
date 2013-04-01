@@ -18,23 +18,35 @@ $('document').ready(function(){
 });
 </script>
 
+ <div class="modal-body">
+
 <%= form_for(@project, :html => { :multipart => true }) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <label>Github Repository (username/repo-name)</label><br />
     <input type="text_field" name="project[repo_name]">
   </div>
 
+
   <div class="field">
     <label>Live Project URL</label>
-    <input type="text_field" name="project[live_url]">
+    <input type="text_field" name="live_url">
   </div>
 
   <% if flash[:error] %>
     <p class='error' style="color:red"><%= flash[:error] %></p>
   <% end %>
-
-  <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
   <div class="field">
     <label>Upload cover image for your app:</label>
@@ -46,23 +58,20 @@ $('document').ready(function(){
   </div> 
 
   <div class="field">
-
     <label>Upload screenshots of your app:</label>
-
-    <div class="field">
-    <%= f.fields_for :images do |field| %>
-      <%= field.file_field :upload %>
-      <%= field.hidden_field :image_type, :value => "screenshot" %>
-      <%= field.hidden_field :position, :value => "0" %>
-    <% end %>
-  </div>
     <div class="screenshot">
     </div>
   </div>
   <input type="button" name="add" id="add" value="+" />
   <input type="button" name="remove" id="subtract" value="-" /><br><br>
+  </div>
 
-<br>
-    <%= f.submit %>
+	 <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <input type="submit" value="create project" class="btn btn-primary">
+  </div>
 
 <% end %>
+
+    
+

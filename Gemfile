@@ -7,11 +7,11 @@ gem "pry", "~> 0.9.12"
 gem 'rails', '3.2.12'
 gem "octokit", "~> 1.23.0"
 gem "debugger", "~> 1.5.0"
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem "seed-fu", "~> 2.2.0"
 gem 'sqlite3'
-
+gem 'paperclip', '~> 2.7.5'
+gem "cocaine", '~> 0.3.2'
+gem "pry", "~> 0.9.12"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,19 +21,11 @@ group :assets do
   gem "therubyracer"
   gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   gem "twitter-bootstrap-rails"
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
 end
 
-gem 'jquery-rails'
-gem 'paperclip', '~> 2.7.5'
-# gem "rmagick", "~> 2.13.2"
-gem 'cocaine', '0.3.2'
-
-gem "pry", "~> 0.9.12"
-
+  
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', :require => "bcrypt"
 
@@ -46,6 +38,5 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
-
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'

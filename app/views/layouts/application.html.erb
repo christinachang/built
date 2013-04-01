@@ -1,39 +1,43 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
-  <title>Built</title>
+  <title>Built@Flatiron: Projects Created by Students at the Flatiron School</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class='navbar navbar-fixed-top'>
+<div class='navbar navbar-inverse navbar-fixed-top'>
   <div class='navbar-inner'>
+    <div class="container">
     <ul class="login-status-text">
+          <li class="submitprojblue"><a class="letterpress" href="#myModal" role="button" data-toggle="modal">Submit a Project</a></li>
+
+          <%= render :partial => 'projects/submit_project_modal' %>
+
+
     	<% if current_user %>
-    	   Logged in as <%= current_user.github_login %>
-    	   <%= link_to "Log Out", logout_path %>
+    	  <li> Logged in as <%= current_user.github_login %></li>
+        <li><%= link_to "Profile Page", current_user %></li>
+    	   <li><%= link_to "Log Out", logout_path %></li>
     	<% else %>
-    	   <%= link_to "Sign up / Login with Github", login_path %>
+    	  <li> <%= link_to "Sign up / Login with Github", login_path %></li>
     	<% end %>
     </ul>
-    <div id="built-logo">
+    <div id="built-logo"><a href = "/"><img src="/assets/logo.png" /></a>
     </div>
   </div>
-
-
+</div>
+  </div>
   <div>
     <%= flash[:alert] %> 
   </div>
 </div>
 
-
-<div class="container-fluid">
-  <div id="row-fluid">
+<div class="container">
 			<%= yield %>
-    </div>
-  </div>
 </div>
+
 </body>
 </html>

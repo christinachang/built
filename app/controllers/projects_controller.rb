@@ -38,27 +38,35 @@ class ProjectsController < ApplicationController
   # POST /projects.json
  
   def create
-
-    unless Project.find_by_repo_name(params[:project][:repo_name])
-      unless params[:project][:repo_name].strip != ""
-        @project = Project.new
-        @project.images.build
+    #if the project is in our database
+    if Project.find_by_repo_name(params[:project][:repo_name])
+      flash[:error] = "That Repo's already been inserted, yo."  
+      render 'new'
+      #if the project isn't in our db
+    else
+      #if the user submitted a blank entry
+      if params[:project][:repo_name].blank?
         flash[:error] = "Please enter a repo name."
         render :new
+        #go through the process of creating this project and its associated users
       else
-        @project = Project.new(params[:project])
+        @project = Project.create(params[:project])
         @project.set_github_attributes(params,current_user)
         @project.create_associated_user_records(params,current_user) 
-        @project.save
-        redirect_to(@project)
+        
+        #if the project saves successfully (due to valid images), redirect to the show page for the project
+        if @project.save
+           redirect_to(@project)
+        #redirect user to back to the 'new' form 
+        else 
+          #the empty array code and build code is for dealing with the fields_for issue on the 'new form'
+          @project.images = []
+          @project.images.build       
+          render :new
+        end
       end
-    else
-    @project = Project.new
-    @project.images.build
-    flash[:error] = "That Repo's already been inserted, yo."  
-    render 'new'
-    end
   end
+end
 
   # PUT /projects/1
   # PUT /projects/1.json
@@ -92,7 +100,7 @@ class ProjectsController < ApplicationController
 
   private 
     def project_edit_authorization
-      redirect_to projects_path , alert: "ACESS DENIED!" unless current_user.is_authorized?(params)
+      redirect_to projects_path , alert: "ACCESS DENIED!" unless current_user.is_authorized?(params)
     end
 
 end

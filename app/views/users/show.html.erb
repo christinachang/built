@@ -1,5 +1,11 @@
+<div id="built-main-container">
+
+<p><%= notice %></p>
 <%= render :partial => "user_projects", :locals => {:user => @user} %>
 
-<%= link_to 'Edit Profile', edit_user_path %>
+<%= link_to 'Edit Profile', edit_user_path %>&nbsp;|&nbsp;
+
 
 <%= link_to 'Create a New Project', new_project_path %>
+
+</div>

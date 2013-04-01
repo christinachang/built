@@ -1,0 +1,29 @@
+    <h1> Collaborators: </h1>
+		<% project.users.each do |user| %>
+
+	
+	
+			<h5>	<a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a> </h5>
+			<% if user.profile_image_file_size %>
+				<%= image_tag user.profile_image.url%>
+			<% else %>
+				<%= image_tag user.avatar_url, :class => "contributor_avatar"%>
+			<% end %>
+		
+				<ul class="contacts_nav">
+					<% if user.linkedin_url %>
+				    <li><a class="logo" target= "_blank"href="<%= user.linkedin_url%>"></a></li>
+				  <% end %>
+				  <% if user.twitter_url %>
+				    <li><a class="logo twitter" target="_blank" href="<%= user.twitter_url%>"></a></li>
+				   <% end %>
+				   <% if user.facebook_url %>
+				    <li><a class="logo facebook" target="_blank" href="<%= user.facebook_url%>"></a></li>
+				   <% end %>
+				   <% if user.github_html_url %>
+				    <li><a class="logo github" target="_blank" href="<%= user.github_html_url%>"></a></li>
+				   <% end %>
+ 	 		</ul>
+
+ 	 	<% end %>
+   
