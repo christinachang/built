@@ -48,14 +48,19 @@ class ProjectsController < ApplicationController
         @project = Project.new(params[:project])
         @project.set_github_attributes(params,current_user)
         @project.create_associated_user_records(params,current_user) 
-        @project.save
-        redirect_to(@project)
+        if @project.save
+           redirect_to(@project)
+        else 
+          @project.images = []
+          @project.images.build       
+          render :new
+        end
       end
     else
     @project = Project.new
     @project.images.build
     flash[:error] = "That repo's already been submitted, yo."  
-    render 'new'
+    render :new
     end
   end
 

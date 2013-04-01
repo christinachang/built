@@ -9,7 +9,6 @@ class Project < ActiveRecord::Base
 
   validates :repo_name, :presence => {:message => "please enter a repo name"}
 
-
   def create_github_client(current_user)
     @@octokit_client = Octokit::Client.new(:login => current_user.github_login, :oauth_token => current_user.token)
   end
