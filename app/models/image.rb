@@ -6,13 +6,10 @@ class Image < ActiveRecord::Base
   :styles => { :medium => "4000x4000>", :thumb => "100x100>" },
   :default_url => "/images/:style/missing.png"
 
-  # validates :upload_file_size, :presence => true, :message => "please upload 1 cover image and at least 1 screenshot"
-  
-  validates :upload_file_size, :presence => { :message => "Need at least one screenshot" }, :if => lambda { |u| u.image_type=="screenshot" }
-  validates :upload_file_size, :presence => { :message => "Need one cover image" }, :if => lambda { |u| u.image_type=="cover" }
+  validates :upload_file_size, :presence => { :message => "Please upload at least one screenshot" }, :if => lambda { |u| u.image_type=="screenshot" }
+  validates :upload_file_size, :presence => { :message => "Please upload a cover image" }, :if => lambda { |u| u.image_type=="cover" }
+  #validates :upload_file_size, :less_than => 2.megabytes #=> { :message => "Images cannot be more than 2 megabytes in size" }
 
-  # validates :upload, :presence => {:message => "please upload 1 cover image and at least 1 screenshot"}
-  # :image_type, :value => "cover"
 end
 
   
