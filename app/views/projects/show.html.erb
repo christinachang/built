@@ -52,8 +52,15 @@
 </p>
 
 <p>
-<b>Project Images:</b><br/>
-    <% @project.images.each do |image| %>
+  <b>Project Cover Image:</b><br/>
+  <% @project.images.where(:image_type => "cover").each do |image| %>
+    <%= image_tag image.upload.url(:medium) %>
+  <%end%>
+</p>
+
+<p>
+  <b>Project Screenshot Images:</b><br/>
+  <% @project.images.where(:image_type => "screenshot").each do |image| %>
     <%= image_tag image.upload.url(:medium) %>
   <%end%>
 </p>
