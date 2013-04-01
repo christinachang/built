@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20130401175057) do
 
+  create_table "cover_photos", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+  end
+
   create_table "images", :force => true do |t|
     t.string   "image_type"
     t.datetime "created_at",          :null => false
@@ -46,13 +54,12 @@ ActiveRecord::Schema.define(:version => 20130401175057) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "email"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-    t.string   "github_login"
-    t.string   "password_token"
-    t.string   "email"
     t.string   "full_name"
     t.string   "github_html_url"
+    t.string   "github_login"
     t.string   "token"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
