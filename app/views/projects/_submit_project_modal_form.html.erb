@@ -48,6 +48,14 @@ $('document').ready(function(){
     <p class='error' style="color:red"><%= flash[:error] %></p>
   <% end %>
 
+  <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
+
+  <div class="field">
+  <label>Semester</label>
+  <!-- <input type="select" name="project[semester_id]"> -->
+  <%= f.select :semester_id, options_for_select([["Flatiron 000", "000"], ["Flatiron 001", "001"]], @project.semester_id) %>
+
+
   <div class="field">
     <label>Upload cover image for your app:</label>
     <%= f.fields_for :images do |field| %>
@@ -70,7 +78,7 @@ $('document').ready(function(){
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     <input type="submit" value="create project" class="btn btn-primary">
   </div>
-
+ </div>
 <% end %>
 
     
