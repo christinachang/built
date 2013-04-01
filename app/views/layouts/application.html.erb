@@ -8,16 +8,11 @@
 </head>
 <body>
 
-
-
 <div class='navbar navbar-inverse navbar-fixed-top'>
   <div class='navbar-inner'>
     <div class="container">
     <ul class="login-status-text">
-          <li class="submitprojblue"><a class="letterpress" href="#myModal" role="button" data-toggle="modal">Submit a Project</a></li>
-
-          <%= render :partial => 'projects/submit_project_modal' %>
-
+          <li class="submitprojblue"><%= link_to "Submit a Project", new_project_path %></li>
 
     	<% if current_user %>
     	  <li> Logged in as <%= current_user.github_login %></li>

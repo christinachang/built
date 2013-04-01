@@ -1,50 +1,8 @@
-<<<<<<< HEAD
-/*
-Syntax error: Invalid CSS after "...t-align:center;": expected "}", was ""
-        on line 117 of /Users/jkestler/Dropbox/flatiron/projects/built/app/assets/stylesheets/layout.css.scss
 
-Backtrace:
-/Users/jkestler/Dropbox/flatiron/projects/built/app/assets/stylesheets/layout.css.scss:117
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:1148:in `expected'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:1084:in `expected'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:1079:in `tok!'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:536:in `block'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:529:in `ruleset'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:553:in `block_child'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:546:in `block_contents'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:82:in `stylesheet'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/scss/parser.rb:27:in `parse'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/engine.rb:342:in `_to_tree'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/engine.rb:315:in `_render'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/engine.rb:262:in `render'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/update_project.rb:45:in `perform'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/bin/compass:44:in `call'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/bin/compass:19:in `load'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/bin/compass:19:in `<main>'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `eval'
-/Users/jkestler/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `<main>'
-*/
 body:before {
   white-space: pre;
   font-family: monospace;
   content: "Syntax error: Invalid CSS after \"...t-align:center;\": expected \"}\", was \"\"\A         on line 117 of /Users/jkestler/Dropbox/flatiron/projects/built/app/assets/stylesheets/layout.css.scss"; }
-=======
+
 @import url(http://fonts.googleapis.com/css?family=Sintony:400,700);.container{padding-top:130px;max-width:1100px}.navbar-inner{color:#45a0cd;height:110px;box-shadow:0px 1px 10px #000}.navbar-inner .container{padding-top:0px}.navbar-inner ul li{float:left;list-style-type:none;padding-right:20px}#built-logo{height:160px;margin:5px}#built-logo img{height:160px;position:relative;top:13px;left:-72px}.submitproj a{padding:10px;border-radius:10px;background-color:#0088cc;color:#fff}.submitproj a:hover,.submitproj a:visited{padding:10px;border-radius:10px;background-color:#0088cc;color:#fff}#built-main-container{padding-top:50px}.login-status-text{float:right;padding-right:20px;padding-top:70px}.project{padding:10px;display:inline-block;height:300px;margin-bottom:30px;color:#999;text-align:center}.cover-image{height:204px;box-shadow:inset 0px 0px 60px #ccc, 0px 2px 6px #999;background-color:#ccc;border-radius:2px;border:10px solid #fff;height:203px;overflow:hidden}.project img{display:block;margin:0 auto;width:100%;display:inline-block;margin:5px}.project h4{text-align:center;color:#ccc}.project h4 a{color:#0ba7f5}.project h5{text-align:center}.box{border:2px solid red;padding:10px}.project-gallery{border:2px solid green;padding:10px}.gallery-row{border:2px solid blue;padding:10px;width:940px}
->>>>>>> fixing last conflicts and getting the right css
+

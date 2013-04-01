@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :users, :through => :project_users
 
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, :users
 
   validates :repo_name, :presence => {:message => "please enter a repo name"}
 
@@ -69,21 +69,15 @@ class Project < ActiveRecord::Base
     assignment_hash.each do |attributes|
       @user = User.find_by_github_login(attributes[:github_login])
       ##if the user being iterated over doesn't exist,create a user w/ an association 
-
-    unless @user
-
-      @user = User.new
-     
-      self.users.create(attributes)
-      
-    else #if user being iterated over DOES exist, just build the join row
-      unless @user.full_name
-        @user.full_name = "Anonymous"
+      unless @user
+        attributes.merge!(:semester_id => self.semester_id)
+        self.users.build(attributes)
+      else #if user being iterated over DOES exist, just build the join row
+        unless @user.full_name
+          @user.full_name = "Anonymous"
+        end
+        self.project_users.build(:user_id => @user.id)        
       end
-    self.project_users.build(:user_id => @user.id)
-      self.save
-    end
-     
     end
   end
 

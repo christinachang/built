@@ -37,12 +37,7 @@ $('document').ready(function(){
   <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
     <div class="field">
-    <label>Live Project URL</label>
-    <input type="text_field" name="project[live_url]">
-
-    <div class="field">
     <label>Semester</label>
-    <input type="select" name="project[semester_id]">
     <%= f.select :semester_id, options_for_select([["Flatiron 000", "000"], ["Flatiron 001", "001"]], @project.semester_id) %>
 
   <div class="field">
