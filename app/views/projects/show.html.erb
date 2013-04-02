@@ -71,12 +71,12 @@ $(function () {
     <%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
 
 <div class="row fluid">
-  <div class="span5 github_stats_window cover-image">
+  <div class="spa12 github_stats_window cover-image">
 <%= render :partial => 'github_info', :locals => {:project => @project} %>
  </div>
 
-
-
+</div>
+<div class="row fluid">
   <div class="span6 collaborator_box">
 <%= render :partial => 'collaborators_info', :locals => {:project => @project} %>
  </div>

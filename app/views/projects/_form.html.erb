@@ -136,6 +136,10 @@ validateScreenshot()){
 
 <%= form_for(@project, :html => { :multipart => true }) do |f| %>
 
+  <% if flash[:error] %>
+    <p class='error' style="color:red"><%= flash[:error] %></p>
+  <% end %>
+
   <div class="field">
     <label>Github Repository (username/repo-name)</label><br />
     <input type="text_field" name="project[repo_name]" id="github_repo">
@@ -147,10 +151,6 @@ validateScreenshot()){
     <input type="text_field" name="project[live_url]" id="project_url">
     <p class="errors url_error">valid url, plskthx</p>
   </div>
-
-  <% if flash[:error] %>
-    <p class='error' style="color:red"><%= flash[:error] %></p>
-  <% end %>
 
   <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
