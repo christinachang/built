@@ -5,10 +5,18 @@ $('document').ready(function(){
   $('#add').click(function(){
       smart_counter++;
       console.log(smart_counter);
-      var new_field = '<input id="project_images_attributes_'+smart_counter+'_upload" name="project[images_attributes]['+smart_counter+'][upload]" type="file"><input id="project_images_attributes_'+smart_counter+'_image_type" name="project[images_attributes]['+smart_counter+'][image_type]" type="hidden" value="screenshot">';
+      var new_field = '<div class="screenshot"><input id="project_images_attributes_'+smart_counter+'_upload" name="project[images_attributes]['+smart_counter+'][upload]" type="file"><input id="project_images_attributes_'+smart_counter+'_image_type" name="project[images_attributes]['+smart_counter+'][image_type]" type="hidden" value="screenshot"></div>';
         $('.screenshot:last').append(new_field);
   });
+    $('#subtract').click(function(){
+      if (smart_counter > 1) {
+      smart_counter--;
+      console.log(smart_counter);
+        $('.screenshot:last').remove();
+         };
+  });
 });
+
 </script>
 
 <%= form_for(@project, :html => { :multipart => true }) do |f| %>
@@ -71,7 +79,8 @@ $('document').ready(function(){
   </div>
 
   <div class="add_new_images"></div>
-  <input type="button" name="add" id="add" value="+" />Upload more pics</input><br>
+  <input type="button" name="add" id="add" value="+" /></input>
+  <input type="button" name="subtract" id="subtract" value="-" />Add/Remove Pic</input><br>
 
 <br>
     <%= f.submit %>
