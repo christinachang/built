@@ -53,13 +53,72 @@ $("#github_repo").blur(function(){
   validateGithub();
 });
 
-// function validForm(){
-//     return validateGithub() && checkname() && passwordcheck();
-// }
 
 
+//url should be a full url (includes regex for url)
+function validateUrl() {
+    var url = $("#project_url").val();
+    console.log(url);
+
+  //crazy regex for URL validation
+    if (/http:\/\/(www\.)?/i.test(url))
+     {
+      console.log('This URL is valid');
+      $('.errors.url_error').hide();
+      return true;
+      }
+    else {
+      console.log('This URL is not valid');
+      $('.errors.url_error').show();
+      }
+    }
+
+  $("#project_url").blur(function(){
+    validateUrl();
+  });
+
+  //cover image has to exist
+function validateCover() {
+   var cover = $("#project_images_attributes_0_upload").val();
+   console.log(cover);
+   if (/jpg|jpeg|png|gif/.test(cover)) {
+     console.log('This div has an image');
+     $('.errors.cover_error').hide();
+     return true;
+    }
+    else {
+    console.log('This div has no jpeg');
+    $('.errors.cover_error').show();
+    }
+  }
+
+  //screenshot has to exist
+function validateScreenshot() {
+    var screenshot = $("#project_images_attributes_1_upload").val();
+    console.log(screenshot);
+    if (/jpg|jpeg|png|gif/.test(screenshot)) {
+      console.log('This div has an image');
+      $('.errors.screenshot_error').hide();
+      return true;
+    }
+    else {
+    console.log('This div has no jpeg');
+    $('.errors.screenshot_error').show();
+    }
+  }
+
+
+//valid entire form before submit
 $('.submit').click(function(event){
-  if(validateGithub()){
+  //run all the validation functions, so that they will show their errors
+  validateGithub();
+  validateUrl();
+  validateCover();
+  validateScreenshot();
+
+  //if they all pass, submit the form, if not prevent default & show submit's error
+  if(validateGithub() && validateUrl() && validateCover() &&
+validateScreenshot()){
  $(this).submit();
   }else{
     event.preventDefault();
@@ -67,25 +126,13 @@ $('.submit').click(function(event){
   }
 });
 
-
-
-
-
-
-  //url should be a full url (includes regex for url)
-
-  //cover image has to exist
-
-  //screenshot has to exist
-
-
+// close document ready function
 });
 </script>
 <style type="text/css">
   .errors{
     color:#ff0000;
   }
-
 </style>
 
 <%= form_for(@project, :html => { :multipart => true }) do |f| %>
@@ -97,9 +144,9 @@ $('.submit').click(function(event){
   </div>
 
   <div class="field">
-    <label>Live Project URL</label>
+    <label>Live Project URL (including http://)</label>
     <input type="text_field" name="project[live_url]" id="project_url">
-    <p class="errors">valid url, plskthx</p>
+    <p class="errors url_error">valid url, plskthx</p>
   </div>
 
   <% if flash[:error] %>
@@ -120,7 +167,7 @@ $('.submit').click(function(event){
       <%= field.hidden_field :image_type, :value => "cover" %>
       <%= field.hidden_field :position, :value => "0" %>
     <% end %>
-        <p class="errors">put in a picture, plskthx</p>
+        <p class="errors cover_error">put in a picture, plskthx</p>
   </div> 
 
   <div class="field">
@@ -133,6 +180,7 @@ $('.submit').click(function(event){
       <%= field.hidden_field :image_type, :value => "screenshot" %>
       <%= field.hidden_field :position, :value => "0" %>
     <% end %>
+   <p class="errors screenshot_error">put in a screenshot, plskthx</p>
   </div>
     <div class="screenshot">
     </div>
