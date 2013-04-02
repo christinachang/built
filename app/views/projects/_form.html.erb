@@ -23,17 +23,20 @@ $('document').ready(function(){
 
 function validateGithub() {
     var input = $("#github_repo").val(); 
-    var data = $.get('https://api.github.com/repos/'+input, function() {
+    var return_value;
+    $.get('https://api.github.com/repos/'+input, function() {
       $('.errors.github_error').hide();
+      return_value = true; 
     })
       .fail(function() { $('.errors.github_error').show();
     });
-  };
+      if return_value
+        return true;
+  }
 
 $("#github_repo").blur(function(){
   validateGithub();
 });
-
 
 
 //url should be a full url (includes regex for url)
@@ -62,7 +65,7 @@ function validateUrl() {
 function validateCover() {
    var cover = $("#project_images_attributes_0_upload").val();
    console.log(cover);
-   if (/jpg|jpeg|png|gif/.test(cover)) {
+   if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(cover)) {
      console.log('This div has an image');
      $('.errors.cover_error').hide();
      return true;
@@ -77,17 +80,16 @@ function validateCover() {
 function validateScreenshot() {
     var screenshot = $("#project_images_attributes_1_upload").val();
     console.log(screenshot);
-    if (/jpg|jpeg|png|gif/.test(screenshot)) {
+    if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(screenshot)) {
       console.log('This div has an image');
       $('.errors.screenshot_error').hide();
       return true;
     }
     else {
-    console.log('This div has no jpeg');
+    console.log('This div has no image');
     $('.errors.screenshot_error').show();
     }
   }
-
 
 //valid entire form before submit
 $('.submit').click(function(event){
@@ -96,10 +98,9 @@ $('.submit').click(function(event){
   validateUrl();
   validateCover();
   validateScreenshot();
-
+  debugger
   //if they all pass, submit the form, if not prevent default & show submit's error
-  if(validateGithub() && validateUrl() && validateCover() &&
-validateScreenshot()){
+  if(validateGithub() && validateUrl() && validateCover() && validateScreenshot()){
  $(this).submit();
   }else{
     event.preventDefault();
@@ -110,6 +111,7 @@ validateScreenshot()){
 // close document ready function
 });
 </script>
+
 <style type="text/css">
   .errors{
     color:#ff0000;
