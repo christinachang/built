@@ -15,18 +15,6 @@ $('document').ready(function(){
         console.log(counter);
   });  
 
-  // $('.submit').click(function(event){
-  //   var email = $('#email').val();
-  //   console.log(email);
-  //   var emailPattern = /^[A-Za-z0-9!@#]/g;
-  //   if (!emailPattern.test(email)) {
-  //     $('.error').show();
-  //     event.preventDefault();
-  //   } else {
-  //     console.log('email was an email');
-  //   }
-  // });
-
   //form validations go here
 
   //hide errors
@@ -34,19 +22,13 @@ $('document').ready(function(){
   //github repo name must be lowercase & include a /. can not be blank. check on form input blur
 
 function validateGithub() {
-    var value = $("#github_repo").val();
-    console.log(value);
-    if (value.indexOf('/') != -1) {
-      console.log('this shiz is valid');
+    var input = $("#github_repo").val(); 
+    var data = $.get('https://api.github.com/repos/'+input, function() {
       $('.errors.github_error').hide();
-      return true;
-    }
-  else {
-    console.log('what the heck');
-    $('.errors.github_error').show();
-    }
-  }
-
+    })
+      .fail(function() { $('.errors.github_error').show();
+    });
+  };
 
 $("#github_repo").blur(function(){
   validateGithub();

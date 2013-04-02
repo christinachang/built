@@ -55,7 +55,6 @@ class ProjectsController < ApplicationController
         @project = Project.create(params[:project])
         @project.set_github_attributes(params,current_user)
         @project.create_associated_user_records(params,current_user) 
-        
         #if the project saves successfully (due to valid images), redirect to the show page for the project
         if @project.save
            redirect_to(@project)
