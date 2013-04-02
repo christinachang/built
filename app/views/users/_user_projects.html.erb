@@ -1,25 +1,9 @@
-
-<%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this image from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <%end%>
-
-  <div class="field">
-    <ul><% user.projects.each do |project| %>
-        <li><% project.images.where(image_type: "cover").each do |image|%>
-              <%= image_tag image.upload.url(:thumb)%>
-            <%end%>
-        <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%></li>
-        <%end%>
-    </ul>
-  </div>
-
-<%end%>
+<div class="field">
+  <ul><% user.projects.each do |project| %>
+      <li><% project.images.where(image_type: "cover").each do |image|%>
+            <%= image_tag image.upload.url(:thumb)%>
+          <%end%>
+      <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%></li>
+      <%end%>
+  </ul>
+</div>

@@ -1,3 +1,15 @@
+<%= form_for user do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+      <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <%end%>
+
 <h3> Share Contact Info: </h3>
 
 <p><%= label_tag :full_name %> </p>
@@ -22,3 +34,6 @@
 
 <p><%= label_tag :twitter_url %>
 <%= f.text_field :twitter_url %></p>
+
+<%= f.submit "update profile" %>
+<% end %>
