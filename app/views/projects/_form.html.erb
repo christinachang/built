@@ -22,17 +22,19 @@ $('document').ready(function(){
   //github repo name must be lowercase & include a /. can not be blank. check on form input blur
 
 function validateGithub() {
-    var input = $("#github_repo").val(); 
-    var return_value;
-    $.get('https://api.github.com/repos/'+input, function() {
-      $('.errors.github_error').hide();
-      return_value = true; 
-    })
-      .fail(function() { $('.errors.github_error').show();
-    });
-      if return_value
-        return true;
-  }
+  var input = $("#github_repo").val(); 
+  var failure;
+  $.get('https://api.github.com/repos/'+input).fail(function() {
+      failure = true;
+  });
+    if(failure){
+      $('.errors.github_error').show();
+      return false;
+    } else {
+    $('.errors.github_error').hide();
+      return true;
+    }
+}
 
 $("#github_repo").blur(function(){
   validateGithub();
@@ -93,19 +95,13 @@ function validateScreenshot() {
 
 //valid entire form before submit
 $('.submit').click(function(event){
-  //run all the validation functions, so that they will show their errors
-  validateGithub();
-  validateUrl();
-  validateCover();
-  validateScreenshot();
-  debugger
-  //if they all pass, submit the form, if not prevent default & show submit's error
+  //if all validations pass, submit the form, if not prevent default & show submit's error
   if(validateGithub() && validateUrl() && validateCover() && validateScreenshot()){
- $(this).submit();
-  }else{
-    event.preventDefault();
-    $('.errors.submits').show();
-  }
+   $(this).submit();
+    }else{
+      event.preventDefault();
+      $('.errors.submits').show();
+    }
 });
 
 // close document ready function
