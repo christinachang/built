@@ -66,18 +66,14 @@ $(function () {
 
 <p id="notice"><%= notice %></p>
 
-<h1><%= @project.name%></h1>
+  <h1 class="repo_name"><%= @project.name%></h1>
 
-<p>
-  <b>Repo Owner/Name:</b>
-  <%= @project.repo_name %>
-</p>
+    <%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
 
-<p>
-  <b>Github Repo URL:</b>
-  <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
-</p>
-
+<div class="row fluid">
+  <div class="span5 github_stats_window cover-image">
+<%= render :partial => 'github_info', :locals => {:project => @project} %>
+ </div>
 
 
 
@@ -86,41 +82,13 @@ $(function () {
  </div>
 </div>
 
+<div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
 
-<p>
-  <b>Technologies (ex: C++):</b>
-  <%= @project.language %>
-</p>
-
-<p>
-  <b>Project Team Members:</b>
-  <% @project.users.each do |user| %>
-    <a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a>, 
-  <%end%>
-</p>
-<!-- <p>
-  <b>Contribs' GitHub Links:</b>
-  <ul><% @project.users.each do |user| %>
-  <li><a href = "<%= user.github_html_url %>">
-    <%= user.github_login %></a></li>
-  <%end%></ul>
-</p> -->
-
-
-<p>
-  <b>Project Images:</b><br/>
-  <% @project.images.each do |image| %>
-    <%= image_tag image.upload.url(:medium) %>
-  <%end%>
-</p>
-
-<<<<<<< HEAD
-=======
 
 <% if current_user %>
->>>>>>> operation_save_carousel
 <% if current_user.is_authorized?(params) %>
 <%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <% end %>
 <%= link_to 'Back', projects_path %>
 
