@@ -56,10 +56,10 @@ class Project < ActiveRecord::Base
     #use the logins from login hash to retrieve other attributes for each collaborator(i.e., 'user')
     logins_assignment_hash.collect do |login|
       name = get_name_from_login(login, client)
-      full_name = "Anonymous" unless name
+      full_name = "Anonymous" if name=="" || !name
       html_url = get_github_html_url_from_login(login, client)
       avatar_url = get_avatar_url_from_login(login, client)
-    {:github_login=> login[:github_login], :full_name => name || full_name, :github_html_url => html_url, :avatar_url => avatar_url}
+    {:github_login=> login[:github_login], :full_name => full_name || name, :github_html_url => html_url, :avatar_url => avatar_url}
     end
   end
 

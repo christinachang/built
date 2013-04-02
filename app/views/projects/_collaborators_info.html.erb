@@ -2,7 +2,7 @@
 		<% project.users.each do |user| %>
 
 	
-	
+	<div class="person span2">
 			<h5>	<a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a> </h5>
 			<% if user.profile_image_file_size %>
 				<%= image_tag user.profile_image.url%>
@@ -24,6 +24,7 @@
 				    <li><a class="logo github" target="_blank" href="<%= user.github_html_url%>"></a></li>
 				   <% end %>
  	 		</ul>
-
+	</div>
  	 	<% end %>
+
    
