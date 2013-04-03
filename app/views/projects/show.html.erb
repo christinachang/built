@@ -1,10 +1,13 @@
-<div id="built-main-container">
-
-<p id="notice"><%= flash[:notice] %></p>
- 
+<div class="subnav">
   <h1 class="repo_name"><%= @project.name%></h1>
+</div>
+<div class="jumbotron">
+<p id="notice"><%= notice %></p>
 
     <%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
+
+</div>
+<div class="container">
 
 <div class="row fluid">
   <div class="span12">
@@ -13,7 +16,7 @@
 
 </div>
 <div class="row fluid">
-  <div class="span6 collaborator_box">
+  <div class="span12">
 <%= render :partial => 'collaborators_info', :locals => {:project => @project} %>
  </div>
 </div>
