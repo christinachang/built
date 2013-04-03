@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 	def show
 		@user = current_user
 		@project = Project.new
+		@project.images.build
 	end
 
   def edit

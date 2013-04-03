@@ -39,6 +39,7 @@ class ProjectsController < ApplicationController
  
   def create
     #if the project is in our database
+
     if Project.find_by_repo_name(params[:project][:repo_name])
       flash[:error] = "That Repo's already been inserted, yo." 
       @project = Project.new 
