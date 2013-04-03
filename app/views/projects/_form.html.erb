@@ -50,7 +50,7 @@ function validateUrl() {
     var url_response;
 
   //crazy regex for URL validation
-    if (/http:\/\/(www\.)?/i.test(url_response) || url_response == "")
+    if (/http:\/\/(www\.)?/i.test(url) || url == "")
      {
       $('.errors.url_error').hide();
       url_response = true;
@@ -68,7 +68,7 @@ function validateUrl() {
 function validateCover() {
    var cover = $("#project_images_attributes_0_upload").val();
    var cover_response;
-   if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(cover_response)) {
+   if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(cover)) {
      $('.errors.cover_error').hide();
      cover_response = true;
     }
@@ -81,7 +81,7 @@ function validateCover() {
 function validateScreenshot() {
     var screenshot = $("#project_images_attributes_1_upload").val();
     var screenshot_response;
-    if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(screenshot_response)) {
+    if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(screenshot)) {
       $('.errors.screenshot_error').hide();
       screenshot_response = true;
     }
