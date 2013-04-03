@@ -1,7 +1,7 @@
 <div id="built-main-container">
 
-<p id="notice"><%= notice %></p>
-
+<p id="notice"><%= flash[:notice] %></p>
+ 
   <h1 class="repo_name"><%= @project.name%></h1>
 
     <%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
@@ -19,7 +19,6 @@
 </div>
 
 <div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
-
 
 <% if current_user %>
 <% if current_user.is_authorized?(params) %>
