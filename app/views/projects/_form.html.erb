@@ -23,15 +23,18 @@ $('document').ready(function(){
 
 function validateGithub() {
   var input = $("#github_repo").val(); 
-  var failure;
-  $.get('https://api.github.com/repos/'+input).fail(function() {
-      failure = true;
-  });
-    if(failure = true){
+  var response;
+  $.get('https://api.github.com/repos/'+input, function() {
+    response = "success";
+    $('.errors.github_error').hide();
+  })
+    .fail(function() {
+      response = "fail";
       $('.errors.github_error').show();
+  });
+    if(response == "fail"){
       return false;
     } else {
-    $('.errors.github_error').hide();
       return true;
     }
 }
