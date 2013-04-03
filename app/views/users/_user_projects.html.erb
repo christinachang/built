@@ -1,10 +1,9 @@
-<div class="field">
-  <ul><% user.projects.each do |project| %>
-      <li><% project.images.where(image_type: "cover").each do |image|%>
+  <% user.projects.each do |project| %>
+        <div class="user-project-container">
+          <% project.images.where(image_type: "cover").each do |image|%>
             <%= image_tag image.upload.url(:thumb)%>
           <%end%>
       <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%>
-      <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>
       <%end%>
-  </ul>
-</div>
+

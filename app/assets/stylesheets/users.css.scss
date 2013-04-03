@@ -9,3 +9,13 @@
 .nav-pills li a:hover {
   background-color:#1e1e1e;
 }
+
+.user-project-container {
+height: 125px;
+width: 300px;
+box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
+background-color: #ccc;
+border-radius: 2px;
+border: 10px solid #fff;
+overflow: hidden;
+}
