@@ -27,7 +27,7 @@ function validateGithub() {
   $.get('https://api.github.com/repos/'+input).fail(function() {
       failure = true;
   });
-    if(failure){
+    if(failure = true){
       $('.errors.github_error').show();
       return false;
     } else {
