@@ -4,12 +4,13 @@
 	
 	<div class="person span2">
 			<h5>	<a href = "<%= user.github_html_url %>" target="_blank"><%= user.full_name %></a> </h5>
+			<div class="vignette">
 			<% if user.profile_image_file_size %>
 				<%= image_tag user.profile_image.url%>
 			<% else %>
 				<%= image_tag user.avatar_url, :class => "contributor_avatar"%>
 			<% end %>
-		
+			</div>
 				<ul class="contacts_nav">
 					<% if user.linkedin_url %>
 				    <li><a class="logo" target= "_blank"href="<%= user.linkedin_url%>"></a></li>
