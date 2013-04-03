@@ -80,9 +80,8 @@ $('document').ready(function(){
 
   <div class="add_new_images"></div>
   <input type="button" name="add" id="add" value="+" /></input>
-  <input type="button" name="subtract" id="subtract" value="-" />Add/Remove Pic</input><br>
-
-<br>
-    <%= f.submit %>
+  <input type="button" name="subtract" id="subtract" value="-" />&nbsp;Add or Remove Photo</input><br><br>
+  
+  <%= f.submit %> | <%= link_to 'Delete Project', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <% end %>
