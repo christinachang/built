@@ -3,6 +3,11 @@ class SessionsController < ApplicationController
     redirect_to '/auth/github'
   end
 
+
+@@flatiron_members = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN']).organization_members('flatiron-school').collect do |user|
+      user.login  
+    end
+
   def create
     #pull the information frrom the return hash
     #check if the User exists (find by github login)
@@ -14,7 +19,11 @@ class SessionsController < ApplicationController
     returned_github_login = github_oauth_return_hash[:extra][:raw_info][:login]
     returned_github_image_url = github_oauth_return_hash[:info][:image]
     @user = User.find_or_create_by_github_login(:github_login => returned_github_login, :token => returned_github_token, :full_name => 'anonymous')
-  	if @user
+  
+    unless @@flatiron_members.include?(returned_github_login)
+        redirect_to projects_path, notice: "You gotta be a flatiron-school member. Sorry, bud!" and return
+    end
+    if @user
   		session[:user_id] = @user.id
   		redirect_to @user, notice: "Logged in!"
   	else
