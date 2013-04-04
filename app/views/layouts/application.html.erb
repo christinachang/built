@@ -8,12 +8,26 @@
 </head>
 <body>
 
-<div class='navbar navbar-inverse navbar-fixed-top'>
-  <div class='navbar-inner'>
-    <div class="container">
-      <%= render 'layouts/navigation' %>
-      <div id="built-logo"><a href = "/"><img src="/assets/logo.png" /></a></div>
-    </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div id="built-logo">
+            <a href = "/"><img src="/assets/logo.png" /></a>
+          </div>
+          <ul class="nav login-status-text">
+            <li class="submitprojblue"><%= link_to "Submit a Project", new_project_path %></li>
+            <% if current_user %>
+            <li> Logged in as <%= current_user.github_login %></li>
+            <li><%= link_to "Profile Page", current_user %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
+            <% else %>
+            <li> <%= link_to "Sign up / Login with Github", login_path %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <%= flash[:alert] %> 
   </div>
 </div>
 
