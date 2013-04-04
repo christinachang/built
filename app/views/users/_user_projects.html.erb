@@ -1,25 +1,7 @@
+<% user.projects.each_slice(2) do |projects| %>
   <div class="row-fluid">
-  <% user.projects.each_with_index do |project, i| %>
-    <% if i%2 == 0 %>
-        <div class="row-fluid">
-          <div class="user-project-container span6">
-            <% project.images.where(image_type: "cover").each do |image|%>
-              <%= image_tag image.upload.url(:thumb), :class => "user-project-cover" %>
-            <%end%>
-        <span class="project-title"><%= project.name %></span><%= link_to 'Edit', edit_project_path(project)%>
-        <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-        </div>
-    <%else%>
-      <div class="user-project-container span6">
-          <% project.images.where(image_type: "cover").each do |image|%>
-            <%= image_tag image.upload.url(:thumb), :class => "user-project-cover" %>
-          <%end%>
-        <span class="project-title"><%= project.name %></span><%= link_to 'Edit', edit_project_path(project)%>
-        <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-      <%end%>
-  <%end%>
-</div>
-
-
+    <% projects.each do |project| %>
+      <%= render :partial => 'projects/row', :locals => {:project => project} %>
+    <% end %>
+  </div>
+<%end%>
