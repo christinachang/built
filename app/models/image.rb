@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   belongs_to :project
 
   has_attached_file :upload,
-  :styles => { :medium => "4000x4000>", :thumb => "100x100>" },
+  :styles => { :cover => "300x200>", :screenshot => "800x600", :thumb => "150x100>" },
   :default_url => "/images/:style/missing.png"
 
   validates :upload_file_size, :presence => { :message => "Please upload at least one screenshot" }, :if => lambda { |u| u.image_type=="screenshot" }

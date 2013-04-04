@@ -1,9 +1,16 @@
+<div class="row-fluid">
+  <div class="span12">
+    <div class="row-fluid">
   <% user.projects.each do |project| %>
-        <div class="user-project-container">
+        <div class="user-project-container span6">
           <% project.images.where(image_type: "cover").each do |image|%>
-            <%= image_tag image.upload.url(:thumb)%>
+            <%= image_tag image.upload.url(:thumb), :class => "user-project-cover" %>
           <%end%>
-      <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%>
-      <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <span class="project-title"><%= project.name %></span><%= link_to 'Edit', edit_project_path(project)%>
+      <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
       <%end%>
+    </div>
+  </div>
+</div>
 
