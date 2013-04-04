@@ -17,6 +17,8 @@
 #Ignore DS_Store
 *.DS_Store
 
+#Ignore Application.yml
+/config/initializers/flatiron_admin_key.rb
 
 #Ignore our image uploads
 /public/system/images/uploads/
