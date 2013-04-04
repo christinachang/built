@@ -11,19 +11,27 @@
 }
 
 .user-project-container {
-height: 125px;
-box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
-background-color: #ccc;
-border-radius: 2px;
-border: 10px solid #fff;
-overflow: hidden;
+  box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
+  background-color: #ccc;
+  border-radius: 2px;
+  border: 10px solid #fff;
+  overflow: hidden;
+  margin-bottom: 25px;
 }
 
-.project-title {
-  font-size:1.2em;
-}
-
-.user-project-cover {
+.user-project-container img {
   height:100%;
   width:auto;
+  border: 1px black;
+  display: inline-block;
+  margin-right: 15px;
+  float:left;
+}
+
+.user-project-container h3 {
+  display: block;
+}
+
+.edit-del-link {
+  display: inline-block;
 }
