@@ -4,19 +4,15 @@ Built::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-
   match '/auth/github/callback', to: 'sessions#create'
-  
-  resources :badge
   
   resources :users
 
-  resources :images
+  resources :images, :only => [:destroy]
 
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
 
   resources :projects
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -102,8 +102,8 @@ end
 
   private 
     def project_edit_authorization
-      true
-      # redirect_to projects_path , alert: "ACCESS DENIED!" unless current_user.is_authorized?(params)
+      # true
+      redirect_to projects_path , alert: "ACCESS DENIED!" unless current_user.is_authorized?(params)
     end
 
 end
