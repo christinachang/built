@@ -1,0 +1,9 @@
+<div class="user-project-container span6">
+  <% project.images.where(image_type: "cover").each do |image|%>
+    <%= image_tag image.upload.url(:thumb) %>
+  <%end%>
+  <h3><%= project.name %></h3>
+  <span class="edit-del-link"><%= link_to 'Edit', edit_project_path(project)%> | 
+    <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </span>
+</div>

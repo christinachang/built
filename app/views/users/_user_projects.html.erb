@@ -1,10 +1,7 @@
-<div class="field">
-  <ul><% user.projects.each do |project| %>
-      <li><% project.images.where(image_type: "cover").each do |image|%>
-            <%= image_tag image.upload.url(:thumb)%>
-          <%end%>
-      <%= project.name %> <%= link_to 'Edit', edit_project_path(project)%>
-      <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      <%end%>
-  </ul>
-</div>
+<% user.projects.each_slice(2) do |projects| %>
+  <div class="row-fluid">
+    <% projects.each do |project| %>
+      <%= render :partial => 'projects/row', :locals => {:project => project} %>
+    <% end %>
+  </div>
+<%end%>

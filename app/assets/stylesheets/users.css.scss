@@ -1,3 +1,37 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.nav-pills li {
+  padding-right:15px;
+}
+
+.nav-pills li a:hover {
+  background-color:#1e1e1e;
+}
+
+.user-project-container {
+  box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
+  background-color: #ccc;
+  border-radius: 2px;
+  border: 10px solid #fff;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.user-project-container img {
+  height:100%;
+  width:auto;
+  border: 1px black;
+  display: inline-block;
+  margin-right: 15px;
+  float:left;
+}
+
+.user-project-container h3 {
+  display: block;
+}
+
+.edit-del-link {
+  display: inline-block;
+}
