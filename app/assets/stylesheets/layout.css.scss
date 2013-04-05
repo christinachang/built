@@ -16,6 +16,10 @@ body:before {
 
 #built-logo img{height:160px;position:relative;top:13px;left:-72px}
 
+#built-logo a:hover{
+  background-color:transparent;
+}
+
 .submitproj a{padding:10px;border-radius:10px;background-color:#0088cc;color:#fff}
 .submitproj a:hover,
 .submitproj a:visited{padding:10px;border-radius:10px;background-color:#0088cc;color:#fff}
