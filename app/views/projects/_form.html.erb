@@ -137,7 +137,7 @@ $('.submit').click(function(event){
   </div>
 
   <div class="field">
-    <label>Upload cover image for your app:</label>
+    <label>Upload a cover image for your app (300x200 is ideal):</label>
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "cover" %>
@@ -148,7 +148,7 @@ $('.submit').click(function(event){
 
   <div class="field">
 
-    <label>Upload screenshots of your app:</label>
+    <label>Upload screenshots of your app (800x600 is ideal):</label>
 
     <div class="field">
     <%= f.fields_for :images do |field| %>
