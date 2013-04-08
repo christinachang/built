@@ -37,14 +37,4 @@ Built::Application.configure do
 
   Paperclip.options[:command_path] = "/opt/ImageMagick/bin/"
 
-  # Make S3 upload destination for paperclip image uploads
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['built'],
-      :access_key_id => ENV['AKIAJ4VEWYI7UUKM3VUA'],
-      :secret_access_key => ENV['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']
-  }
-}
-
 end
