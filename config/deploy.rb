@@ -5,7 +5,6 @@ set :repository,  "git@github.com:flatiron-school/built.git"
 
 set :user, 'Feline'
 set :deploy_to, "/home/#{user}/#{application}"
-set :branch, 'fix-deploy-issues'
 
 set :use_sudo, false
 
