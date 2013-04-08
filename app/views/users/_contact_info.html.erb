@@ -3,19 +3,20 @@
 $('document').ready(function(){
  
 var name_response;
- 
+
 function validateName() {
-  var full_name = $("#full_name").val().trim();
+  var full_name = $("#full_name").val().trim(); 
   // var name_response;
   console.log("hi");
  
   if (full_name == "") {
     $('.errors.name_error').show();
-    name_response = false;
+    return false;
   }
   else {
     $('.errors.name_error').hide();
-    name_response = true;
+    console.log("has a name");
+    return true;
   }
 }
  
@@ -24,10 +25,10 @@ $("#full_name").blur(function(){
 });
  
 $('.submit-profile').click(function(event){
-  if (name_response == true) {
+  if (validateName()) {
+    console.log("has a name");
     $(this).submit();
       console.log("yo true!");
- 
   } else {
     console.log("yo false!");
     event.preventDefault();
