@@ -30,9 +30,9 @@ function validateGithub() {
   })
     .fail(function() {
       response = "fail";
-      $('.errors.github_error').show();
   });
     if(response == "fail"){
+    $('.errors.github_error').show();
       return false;
     } else {
       return true;
@@ -62,9 +62,7 @@ $("#github_repo").blur(function(){
       console.log(typeof url);
       console.log('This URL is not valid');
       $('.errors.url_error').show();
-      }
-    else
-     return true;
+    }
   }
 
     $("#project_url").blur(function(){

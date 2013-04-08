@@ -26,11 +26,8 @@ $("#full_name").blur(function(){
  
 $('.submit-profile').click(function(event){
   if (validateName()) {
-    console.log("has a name");
     $(this).submit();
-      console.log("yo true!");
   } else {
-    console.log("yo false!");
     event.preventDefault();
     $('.errors.submits').show();
   }
