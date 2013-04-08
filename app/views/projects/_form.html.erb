@@ -50,13 +50,14 @@ function validateUrl() {
     console.log(url);
 
   //crazy regex for URL validation
-    if (/http:\/\/(www\.)?/i.test(url))
+    if (/http:\/\/(www\.)?/i.test(url) || url.trim() === "")
      {
       console.log('This URL is valid');
       $('.errors.url_error').hide();
       return true;
       }
     else {
+      console.log(typeof url);
       console.log('This URL is not valid');
       $('.errors.url_error').show();
       }
