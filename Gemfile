@@ -7,7 +7,15 @@ gem 'rails', '3.2.12'
 gem "octokit", "~> 1.23.0"
 gem "debugger", "~> 1.5.0"
 gem "seed-fu", "~> 2.2.0"
-gem 'sqlite3'
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
 gem "aws-sdk", '~> 1.6.0'
 gem 'paperclip'
 gem "cocaine", '~> 0.3.2'
