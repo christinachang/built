@@ -9,7 +9,7 @@ gem "debugger", "~> 1.5.0"
 gem "seed-fu", "~> 2.2.0"
 gem 'sqlite3'
 gem "aws-sdk", '~> 1.6.0'
-gem 'paperclip', '~> 2.7.5'
+gem 'paperclip'
 gem "cocaine", '~> 0.3.2'
 gem "pry", "~> 0.9.12"
 gem "figaro"
