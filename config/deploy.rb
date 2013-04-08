@@ -14,7 +14,7 @@ default_run_options[:pty] = true
 
 role :web, "198.211.102.167"                          # Your HTTP server, Apache/etc
 role :app, "198.211.102.167"                          # This may be the same as your `Web` server
-
+role :db, "198.211.102.167", :primay => true
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
