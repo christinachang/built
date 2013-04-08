@@ -23,19 +23,19 @@ $('document').ready(function(){
 
 function validateGithub() {
   var input = $("#github_repo").val(); 
-  var github_response;
+  var response;
   $.get('https://api.github.com/repos/'+input, function() {
-    github_response = "success";
+    response = "success";
     $('.errors.github_error').hide();
   })
     .fail(function() {
-      github_response = "fail";
+      response = "fail";
       $('.errors.github_error').show();
   });
-    if(github_response == "fail"){
-      github_response = false;
+    if(response == "fail"){
+      return false;
     } else {
-      github_response = true;
+      return true;
     }
 }
 
@@ -43,18 +43,21 @@ $("#github_repo").blur(function(){
   validateGithub();
 });
 
+
 //url should be a full url (includes regex for url)
 function validateUrl() {
     var url = $("#project_url").val();
-    var url_response;
+    console.log(url);
 
   //crazy regex for URL validation
-    if (/http:\/\/(www\.)?/i.test(url) || url == "")
+    if (/http:\/\/(www\.)?/i.test(url))
      {
+      console.log('This URL is valid');
       $('.errors.url_error').hide();
-      url_response = true;
+      return true;
       }
     else {
+      console.log('This URL is not valid');
       $('.errors.url_error').show();
       }
     }
@@ -66,12 +69,14 @@ function validateUrl() {
   //cover image has to exist
 function validateCover() {
    var cover = $("#project_images_attributes_0_upload").val();
-   var cover_response;
+   console.log(cover);
    if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(cover)) {
+     console.log('This div has an image');
      $('.errors.cover_error').hide();
-     cover_response = true;
+     return true;
     }
     else {
+    console.log('This div has no jpeg');
     $('.errors.cover_error').show();
     }
   }
@@ -79,27 +84,28 @@ function validateCover() {
   //screenshot has to exist
 function validateScreenshot() {
     var screenshot = $("#project_images_attributes_1_upload").val();
-    var screenshot_response;
+    console.log(screenshot);
     if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(screenshot)) {
+      console.log('This div has an image');
       $('.errors.screenshot_error').hide();
-      screenshot_response = true;
+      return true;
     }
     else {
+    console.log('This div has no image');
     $('.errors.screenshot_error').show();
     }
   }
 
 //valid entire form before submit
 $('.submit').click(function(event){
-  //if all validations pass, submit the form, if not prevent default & show submit's error  
-  if(github_response && validateCover() && validateScreenshot()){
+  //if all validations pass, submit the form, if not prevent default & show submit's error
+  if(validateGithub() && validateUrl() && validateCover() && validateScreenshot()){
    $(this).submit();
     }else{
       event.preventDefault();
       $('.errors.submits').show();
     }
 });
-
 // close document ready function
 });
 </script>
