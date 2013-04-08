@@ -45,26 +45,32 @@ $("#github_repo").blur(function(){
 
 
 //url should be a full url (includes regex for url)
-function validateUrl() {
+  
+  function validateUrl() {
     var url = $("#project_url").val();
     console.log(url);
 
-  //crazy regex for URL validation
-    if (/http:\/\/(www\.)?/i.test(url))
-     {
-      console.log('This URL is valid');
-      $('.errors.url_error').hide();
-      return true;
+    //only run this validation if live URL field is not empty
+    if (url != "") {    
+    //crazy regex for URL validation
+      if (/http:\/\/(www\.)?/i.test(url))
+       {
+        console.log('This URL is valid');
+        $('.errors.url_error').hide();
+        return true;
+        }
+      else {
+        console.log('This URL is not valid');
+        $('.errors.url_error').show();
+        }
       }
-    else {
-      console.log('This URL is not valid');
-      $('.errors.url_error').show();
-      }
-    }
+    else
+     return true;
+  }
 
-  $("#project_url").blur(function(){
-    validateUrl();
-  });
+    $("#project_url").blur(function(){
+      validateUrl();
+    });
 
   //cover image has to exist
 function validateCover() {
@@ -123,8 +129,10 @@ $('.submit').click(function(event){
     <p class='error' style="color:red"><%= flash[:error] %></p>
   <% end %>
 
+  <p>Fields with * are required.</p>
+
   <div class="field">
-    <label>Github Repository (username/repo-name)</label><br />
+    <label>Github Repository* (username/repo-name)</label><br />
     <input type="text_field" name="project[repo_name]" id="github_repo">
     <p class="errors github_error">valid repo, plskthx</p>
   </div>
@@ -138,12 +146,12 @@ $('.submit').click(function(event){
   <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
     <div class="field">
-    <label>Semester</label>
+    <label>Semester*</label>
     <%= f.select :semester_id, options_for_select([["Flatiron 000", "000"], ["Flatiron 001", "001"]], @project.semester_id) %>
   </div>
 
   <div class="field">
-    <label>Upload a cover image for your app (300x200 is ideal):</label>
+    <label>Upload a cover image for your app* (300x200 is ideal):</label>
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "cover" %>
@@ -153,7 +161,7 @@ $('.submit').click(function(event){
   </div> 
 
   <div class="field">
-    <label>Upload screenshots of your app (800x600 is ideal):</label>
+    <label>Upload screenshots of your app* (800x600 is ideal):</label>
     <div class="field">
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>

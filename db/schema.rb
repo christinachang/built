@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(:version => 20130401175057) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "url"
-    t.string   "github_link"
+    t.string   "live_url"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "repo_name"
@@ -47,12 +46,13 @@ ActiveRecord::Schema.define(:version => 20130401175057) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "github_login"
+    t.string   "password_token"
+    t.string   "email"
     t.string   "full_name"
     t.string   "github_html_url"
-    t.string   "github_login"
     t.string   "token"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
