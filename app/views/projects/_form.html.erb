@@ -43,7 +43,6 @@ $("#github_repo").blur(function(){
   validateGithub();
 });
 
-
 //url should be a full url (includes regex for url)
 function validateUrl() {
     var url = $("#project_url").val();
@@ -147,9 +146,7 @@ $('.submit').click(function(event){
   </div> 
 
   <div class="field">
-
     <label>Upload screenshots of your app (800x600 is ideal):</label>
-
     <div class="field">
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>

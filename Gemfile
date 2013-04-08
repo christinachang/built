@@ -12,6 +12,7 @@ gem 'sqlite3'
 gem 'paperclip', '~> 2.7.5'
 gem "cocaine", '~> 0.3.2'
 gem "pry", "~> 0.9.12"
+gem "aws-sdk"
 
 # Gems used only for assets and not required
 # in production environments by default.

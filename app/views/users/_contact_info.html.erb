@@ -1,3 +1,52 @@
+<script type="text/javascript">
+ 
+$('document').ready(function(){
+ 
+var name_response;
+ 
+function validateName() {
+  var full_name = $("#full_name").val().trim();
+  // var name_response;
+  console.log("hi");
+ 
+  if (full_name == "") {
+    $('.errors.name_error').show();
+    name_response = false;
+  }
+  else {
+    $('.errors.name_error').hide();
+    name_response = true;
+  }
+}
+ 
+$("#full_name").blur(function(){
+  validateName();
+});
+ 
+$('.submit-profile').click(function(event){
+  if (name_response == true) {
+    $(this).submit();
+      console.log("yo true!");
+ 
+  } else {
+    console.log("yo false!");
+    event.preventDefault();
+    $('.errors.submits').show();
+  }
+});
+ 
+});
+ 
+</script>
+ 
+ 
+<style type="text/css">
+  .errors{
+    color:#ff0000;
+  }
+</style>
+ 
+ 
 <%= form_for user do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -9,31 +58,33 @@
       </ul>
     </div>
   <%end%>
-
-<h3>Your Profile Info: </h3>
-
-<p><label>Full Name</label></p>
-<%= f.text_field :full_name%></p>
-<% if @user.errors[:full_name] %>
-	<% @user.errors[:full_name].each do |message| %>	
-		<h5> <%= message %> </h5>
-	<% end %>
-<% end %> 
-
-<p><label>Github URL</label>
-<%= f.text_field :github_html_url %></p>
-
-
-<p><label>LinkedIn URL</label>
-<%= f.text_field :linkedin_url %></p>
-
-
-<p><label>Facebook URL</label>
-<%= f.text_field :facebook_url %></p>
  
-
-<p><label>Twitter</label>
-<%= f.text_field :twitter_url %></p>
-
-<%= f.submit "Update Profile" %>
+  <h3>Your Profile Info: </h3>
+ 
+  <p><label>Full Name</label></p>
+  <%= f.text_field :full_name, :id => "full_name"%></p>
+  <% if @user.errors[:full_name] %>
+    <% @user.errors[:full_name].each do |message| %>  
+      <h5> <%= message %> </h5>
+    <% end %>
+  <% end %> 
+  <p class="errors name_error">cannot be blank, plskthx</p>
+ 
+  <p><label>Github URL</label>
+  <%= f.text_field :github_html_url %></p>
+ 
+ 
+  <p><label>LinkedIn URL</label>
+  <%= f.text_field :linkedin_url %></p>
+ 
+ 
+  <p><label>Facebook URL</label>
+  <%= f.text_field :facebook_url %></p>
+   
+ 
+  <p><label>Twitter</label>
+  <%= f.text_field :twitter_url %></p>
+ 
+  <%= f.submit "Update Profile", :class => "submit-profile"%>
+  <p class="errors submits">fix that shit, then submit!</p>
 <% end %>
