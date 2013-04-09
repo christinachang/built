@@ -18,7 +18,7 @@
             <div class="project span4"> 
              <div class="cover-image">
               <% project.images.where(image_type: "cover").each do |cover| %>
-                  <%= image_tag cover.upload.url(:cover)%>
+                  <%= link_to image_tag(cover.upload.url(:cover)), project %>
               <%end%>
              </div>
             <h4><%= link_to project.name, project %></h4>
@@ -28,7 +28,7 @@
         <div class="project span4"> 
             <div class="cover-image"> 
               <% project.images.where(image_type: "cover").each do |cover| %>
-                  <%= image_tag cover.upload.url(:cover)%>
+                  <%= link_to image_tag(cover.upload.url(:cover)), project %>
               <%end%>
              </div>
             <h4><%= link_to project.name, project %></h4>
