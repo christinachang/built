@@ -21,8 +21,10 @@ $('document').ready(function(){
 
 <span style= color:"red"><%= notice %></span>
 
-<p>sort by: </p><a href="#"><p id="sort-by-name">name</a>
-<a href="#"><p id="sort-by-stars">github stars</a></p>
+<div id="sort">
+  <p>Sort by:</p>
+  <p class="btn btn-link" id="sort-by-name">Name</p>
+    <p class="btn btn-link" id="sort-by-stars">Github Stars</p></div>
 
 <div class="row-fluid">
   <% @projects.each do |project| %>
