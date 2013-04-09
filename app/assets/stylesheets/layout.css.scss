@@ -1,4 +1,7 @@
-
+ul li{
+  list-style-type:none;
+  display:inline;
+}
 
 .two-column{
   -moz-column-count:2; 
@@ -181,6 +184,33 @@ z-index: 0;
 
 #sort {
  text-align:right;
+}
+
+footer{
+  position: relative;
+padding: 35px 0 5px 0;
+background-color: rgb(83, 83, 82);
+text-align: center;
+color: rgb(255, 255, 255);
+box-shadow: inset 0 0px 261px rgba(0,0,0, 1);
+}
+
+footer h4{
+  font-style: italic;
+}
+
+footer ul li{
+color:#fff;
+padding-right:20px;
+}
+
+footer ul li a{
+  color:#45a0cd;
+}
+footer ul li a:hover{
+color:#fff;
+text-decoration:underline;
+background-color:transparent;
 }
 
 
