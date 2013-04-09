@@ -5,6 +5,16 @@ class ProjectsController < ApplicationController
 
   #check to see if return 
 
+  def filter
+
+  @projects = Project.where("semester_id = ?", params[:semesterID])
+
+   respond_to do |format|
+      format.js {}
+      format.html { render 'show'}
+    end
+  end 
+
   # GET /projects
   # GET /projects.json
   def index
