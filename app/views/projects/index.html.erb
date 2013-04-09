@@ -3,11 +3,19 @@ $('document').ready(function(){
 
   $('#sort-by-name').click(function(){
     $('.span4').tsort({data:'name'});
-      })
+      });
 
   $('#sort-by-stars').click(function(){
     $('.span4').tsort({data:'stars', order:'desc'});
-  })
+  });
+
+  $('#test').change(function() {
+
+    var my_val = $('#test').val();  alert("projects/filter/semesterID=" + my_val);
+    $.getScript("/projects/filter?semesterID=" + my_val);
+    alert('made it');
+    });
+  });
 
 });
 
@@ -17,7 +25,9 @@ $('document').ready(function(){
   <h4>Projects by the students of the Flatiron School</h4>
 </div>
 
+<div class="test">
 <div class="container">
+
 
 <span style= color:"red"><%= notice %></span>
 
@@ -39,4 +49,6 @@ $('document').ready(function(){
     </div>
   <%end%>
 </div>
+
+ 
 
