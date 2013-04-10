@@ -2,20 +2,22 @@
 $('document').ready(function(){
 
   $('#sort-by-name').click(function(){
+    console.log('fire');
     $('.span4').tsort({data:'name'});
       });
 
   $('#sort-by-stars').click(function(){
+    console.log('fireup');
     $('.span4').tsort({data:'stars', order:'desc'});
   });
-
-  $('#test').change(function() {
 
 
   $('#my_filter').change(function() {
     var my_val = $('#my_filter').val(); 
     $.getScript("/projects/filter?semesterID=" + my_val);
     });
+
+
 
 });
 
@@ -32,14 +34,17 @@ $('document').ready(function(){
   <option value="001">Spring '13</option>
 </select>
 
+<div id="sort">
+  <ul>
+  <li>Sort by:</li>
+  <li class="btn btn-link" id="sort-by-name">Name</li>
+    <li class="btn btn-link" id="sort-by-stars">Github Stars</li></div>
+  <ul>
 <div id="filter_point">
 
 <span style= color:"red"><%= notice %></span>
 
-<div id="sort">
-  <p>Sort by:</p>
-  <p class="btn btn-link" id="sort-by-name">Name</p>
-    <p class="btn btn-link" id="sort-by-stars">Github Stars</p></div>
+
 
 <div class="row-fluid">
   <% @projects.each do |project| %>

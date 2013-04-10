@@ -1,30 +1,18 @@
- <div class="container">
-    <span style= color:"red"><%= notice %></span>
-      <div class="row-fluid">
-        <% @projects.each_with_index do |project, i| %>
-        <% if i%3 == 0 %>
-      </div>
-    <div class="row-fluid">
-      <div class="project span4"> 
-        <div class="cover-image">
-           <% project.images.where(image_type: "cover").each do |cover| %>
-           <%= image_tag cover.upload.url(:cover)%>
-           <%end%>
-        </div>
-           <h4><%= link_to project.name, project %></h4>
-           <%= project.description %>
-      </div>
-        <% else %>
-      <div class="project span4"> 
-        <div class="cover-image"> 
-          <% project.images.where(image_type: "cover").each do |cover| %>
-          <%= image_tag cover.upload.url(:cover)%>
-        <%end%>
-      </div>
-      <h4><%= link_to project.name, project %></h4>
-       <%= project.description %>
-    </div>
+
+<span style= color:"red"><%= notice %></span>
+
+<div id="sort">
+
+<div class="row-fluid">
+  <% @projects.each do |project| %>
+    <div class="project span4" data-name="<%= project.name %>" data-stars="<%= project.watchers %>"> 
+     <div class="cover-image">
+      <% project.images.where(image_type: "cover").each do |cover| %>
+          <%= link_to image_tag(cover.upload.url(:cover)), project %>
       <%end%>
-      <%end%>
+     </div>
+    <h4><%= link_to project.name, project %></h4>
+    <%= short_description(project.description) %>
     </div>
-  </div>
+  <%end%>
+
