@@ -35,7 +35,7 @@ $('document').ready(function(){
       <%end%>
      </div>
     <h4><%= link_to project.name, project %></h4>
-    <%= project.description %>
+    <%= short_description(project.description) %>
     </div>
   <%end%>
 </div>
