@@ -198,6 +198,7 @@ z-index: 0;
 
 #sort {
  text-align:right;
+ padding-right: 30px;
 }
 
 footer{
@@ -227,6 +228,12 @@ text-decoration:underline;
 background-color:transparent;
 }
 
+
+#my_filter{
+  float: left;
+margin-top: 6px;
+margin-left: 10px;
+}
 
 /*-------media queries---------------*/
 
