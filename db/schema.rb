@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410183102) do
+ActiveRecord::Schema.define(:version => 20130410185301) do
 
   create_table "images", :force => true do |t|
     t.string   "image_type"
@@ -48,16 +48,12 @@ ActiveRecord::Schema.define(:version => 20130410183102) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "full_name"
     t.string   "github_html_url"
     t.string   "github_login"
     t.string   "token"
-    t.string   "profile_image_file_name"
-    t.string   "profile_image_content_type"
-    t.integer  "profile_image_file_size"
-    t.datetime "profile_image_updated_at"
     t.string   "linkedin_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
