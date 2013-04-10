@@ -11,11 +11,11 @@ $('document').ready(function(){
 
   $('#test').change(function() {
 
-    var my_val = $('#test').val();  alert("projects/filter/semesterID=" + my_val);
+
+  $('#my_filter').change(function() {
+    var my_val = $('#my_filter').val(); 
     $.getScript("/projects/filter?semesterID=" + my_val);
-    alert('made it');
     });
-  });
 
 });
 
@@ -25,9 +25,14 @@ $('document').ready(function(){
   <h4>Projects by the students of the Flatiron School</h4>
 </div>
 
-<div class="test">
-<div class="container">
 
+
+<select id='my_filter' class='btn btn-warning' style="width:auto;">
+  <option value="000">Fall '12</option>
+  <option value="001">Spring '13</option>
+</select>
+
+<div id="filter_point">
 
 <span style= color:"red"><%= notice %></span>
 
@@ -48,7 +53,8 @@ $('document').ready(function(){
     <%= short_description(project.description) %>
     </div>
   <%end%>
-</div>
+  </div>
 
  
+
 
