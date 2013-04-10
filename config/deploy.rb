@@ -34,6 +34,7 @@ namespace :deploy do
   task :symlink_conf do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/application.yml #{release_path}/config/application.yml"
+    run "ln -nfs #{shared_path}/admin_auth.rb #{release_path}/config/initializers/admin_auth.rb"
   end
 end
 
