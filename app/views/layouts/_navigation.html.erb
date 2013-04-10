@@ -1,4 +1,7 @@
 <ul class="login-status-text">
+  <div id="filter_point">
+  <span style= color:"red"><%= notice %></span>
+  </div>
   <li class="submitprojblue"><%= link_to "Submit a Project", new_project_path %></li>
   <% if current_user %>
     <li> Logged in as <%= current_user.github_login %></li>
