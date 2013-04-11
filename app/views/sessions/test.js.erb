@@ -1,0 +1,59 @@
+console.log('test');
+ var xAxiscategories = <%= @sorted.to_json.html_safe %>
+ console.log(xAxiscategories);
+
+
+$(function () {
+        $('#container_one').highcharts({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: 'Commits over Time'
+            },
+            subtitle: {
+                text: 'Source: <a href="github".com</a>'
+            },
+            xAxis: {
+                labels: {
+                    formatter: function() {
+                        return this.value; // clean, unformatted number for year
+                    }
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Commits'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value;
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            },
+            plotOptions: {
+                area: {
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+            	<% @login_hash.each do |key, value| %>
+            	 name: <%= key.to_json.html_safe %>,
+            	 data: <%= value.to_json.html_safe %>
+            }, { <% end %>
+            }]
+        });
+    });
+

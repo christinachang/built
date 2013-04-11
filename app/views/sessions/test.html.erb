@@ -1,0 +1,43 @@
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<br>
+<div id="container_one" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<%= @data_hash %>
+<%= @login_array %>
+
+
+<h1> X-axis categories </h1>
+<%= @sorted = @data_hash.keys.sort %>
+
+<h2> Y-data series number one   </h2> 
+
+<% @login_array.each do |person| %>
+<% @login_hash[person.to_sym] = %>
+	<% @sorted.collect do |date| %>
+	 <%	@data_hash[date.to_sym][person.to_sym] || 0 %>
+	 <%	end %>
+	<% end %>
+
+<%= @login_hash %>
+
+<%= javascript_tag do %>
+	<%= render :template => '/sessions/test.js.erb' %>
+<% end %>

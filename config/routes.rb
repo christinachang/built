@@ -1,5 +1,6 @@
 Built::Application.routes.draw do
 
+  get '/sessions/test', to:  'sessions#test'
   get '/projects/filter', to: 'projects#filter'
 
   get 'signup', to: 'users#new', as: 'signup'

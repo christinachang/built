@@ -3,6 +3,24 @@ class SessionsController < ApplicationController
     redirect_to '/auth/github'
   end
 
+  def test
+    client = Octokit::Client.new(:login => current_user.github_login, :oauth_token => current_user.token, :auto_traversal => true)
+    data_structure = client.commits('flatiron-school/built')
+    @data_hash = { }
+    @login_array = []
+    @login_hash = {}
+   
+    data_structure.each do |instance|
+      committer_name = instance.author.login
+      commit_date = instance.commit.author.date.to_date.strftime('%m-%d')
+      commit_date = instance.commit.author.date.to_date.to_s
+      message = instance.commit.message
+      @data_hash[commit_date.to_sym] ||= {}
+      @data_hash[commit_date.to_sym][committer_name.to_sym] ||= 0
+      @data_hash[commit_date.to_sym][committer_name.to_sym] += 1
+      @login_array << committer_name unless @login_array.include?(committer_name)
+  end
+end
 
 @@flatiron_members = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN']).organization_members('flatiron-school').collect do |user|
       user.login  
@@ -37,3 +55,5 @@ class SessionsController < ApplicationController
   	redirect_to projects_path, notice: "Logged out"
   end
 end
+
+
