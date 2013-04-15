@@ -74,6 +74,32 @@ $("#github_repo").blur(function(){
       validateUrl();
     });
 
+
+//video url should be a full url (includes regex for url)
+  
+  function validateVideoUrl() {
+    var video_url = $("#video_url").val();
+    console.log(video_url);
+
+  //crazy regex for URL validation
+    if (/http:\/\/(www\.)?/i.test(video_url) || video_url.trim() === "")
+     {
+      console.log('This video URL is valid');
+      $('.errors.video_url_error').hide();
+      return true;
+      }
+    else {
+      console.log(typeof video_url);
+      console.log('This video URL is not valid');
+      $('.errors.video_url_error').show();
+    }
+  }
+
+    $("#video_url").blur(function(){
+      validateVideoUrl();
+    });
+
+
   //cover image has to exist
 function validateCover() {
    var cover = $("#project_images_attributes_0_upload").val();
@@ -107,7 +133,7 @@ function validateScreenshot() {
 //valid entire form before submit
 $('.submit').click(function(event){
   //if all validations pass, submit the form, if not prevent default & show submit's error
-  if(validateGithub() && validateUrl() && validateCover() && validateScreenshot()){
+  if(validateGithub() && validateUrl() && validateVideoUrl() && validateCover() && validateScreenshot()){
    $(this).submit();
     }else{
       event.preventDefault();
@@ -145,6 +171,12 @@ $('.submit').click(function(event){
     <p class="errors url_error">valid url, plskthx</p>
   </div>
 
+   <div class="field">
+    <label>Demo Video URL (YouTube, Vimeo, etc):</label>
+    <%= f.text_field :video_url, :id => "video_url" %>
+    <p class="errors video_url_error">valid url, plskthx</p>
+ </div>
+
   <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
     <div class="field">
@@ -177,12 +209,7 @@ $('.submit').click(function(event){
   </div>
   <input type="button" name="add" id="add" value="+" />
   <input type="button" name="remove" id="subtract" value="-" /><br><br>
- 
- <div class="field">
-    <label>Demo Video (youtube URL):</label>
-    <%= f.text_field :youtube_url %>
- </div>
-<br>
+
     <%= f.submit :class => "submit" %>
     <p class="errors submits">fix that shit, then submit!</p>
 

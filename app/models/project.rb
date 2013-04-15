@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-  attr_accessible :description, :github_link, :name, :repo_name, :live_url, :forks, :watchers, :language, :images_attributes, :semester_id
+  attr_accessible :description, :github_link, :name, :repo_name, :live_url, :video_url, :forks, :watchers, :language, :images_attributes, :semester_id
   has_many :images
   has_many :project_users
   has_many :users, :through => :project_users

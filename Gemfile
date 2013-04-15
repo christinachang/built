@@ -12,12 +12,18 @@ gem 'paperclip'
 gem 'cocaine', '~> 0.3.2'
 gem 'figaro'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
   gem 'pry', '~> 0.9.12'
   gem 'debugger', '~> 1.5.0'
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec'
+  gem 'guard-rspec'    
+  gem 'rspec-rails'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'capybara'
 end
 
 group :production do

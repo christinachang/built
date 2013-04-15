@@ -1,44 +1,51 @@
   <h1> Github Stats: </h1>
 <p>
   <div class="two-column">
-  <b>Repo Owner/Name:</b>
+  <strong>Repo Owner/Name:</strong>
   <%= @project.repo_name %>
 </p>
 
 <p>
-  <b>Github Repo URL:</b>
+  <strong>Github Repo URL:</strong>
   <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
 </p>
 
 <p>
   <% if !@project.live_url.blank? %>
-  <b>Live URL:</b>
+  <strong>Live URL:</strong>
   <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
   <% end %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <% if !@project.video_url.blank? %>
+  <strong>Video URL:</strong>
+  <a href = "<%= @project.video_url %>" target="_blank"><%= @project.video_url %></a>
+  <% end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <b>Git Clone URL (SSH):</b>
+  <strong>Git Clone URL (SSH):</strong>
   <%= @project.ssh_url %>
 </p>
 
 <p>
-  <b>GitHub Forks Count:</b>
+  <strong>GitHub Forks Count:</strong>
   <%= @project.forks %>
 </p>
 
 <p>
-  <b>GitHub Star Count:</b>
+  <strong>GitHub Star Count:</strong>
   <%= @project.watchers %>
 </p>
 
 <p>
-  <b>Technologies (ex: C++):</b>
+  <strong>Technologies (ex: C++):</strong>
   <%= @project.language %>
 </p>
 </div>
