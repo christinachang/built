@@ -6,9 +6,11 @@ class ProjectsController < ApplicationController
   #check to see if return 
 
   def filter
-
-  @projects = Project.where("semester_id = ?", params[:semesterID])
-
+    if params[:semesterID] == "all"
+      @projects = Project.all
+    else
+      @projects = Project.where("semester_id = ?", params[:semesterID])
+    end
    respond_to do |format|
       format.js {}
       format.html { render 'show'}
