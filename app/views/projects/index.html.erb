@@ -9,6 +9,9 @@ $('document').ready(function(){
     $('.project').tsort({data:'stars', order:'desc'});
   });
 
+  $('#sort-by-recently-active').click(function(){
+    $('.project').tsort({data:'lastupdate', order:'desc'});
+  });
 
   $('#my_filter').change(function() {
     var my_val = $('#my_filter').val(); 
@@ -39,6 +42,7 @@ $('document').ready(function(){
           <li>Sort by:</li>
           <li class="btn btn-link" id="sort-by-name">Name</li>
           <li class="btn btn-link" id="sort-by-stars">Github Stars</li>
+          <li class="btn btn-link" id="sort-by-recently-active">Recently Active</li>
       </ul>
     </div>
   </div>
@@ -46,7 +50,7 @@ $('document').ready(function(){
       <span style= color:"red"><%= notice %></span>
       <div class="row-fluid">
       <% @projects.each do |project| %>
-      <div class="project span4" data-name="<%= project.name %>" data-stars="<%= project.watchers %>"> 
+      <div class="project span4" data-name="<%= project.name %>" data-stars="<%= project.watchers %>" data-lastupdate="<%= project.last_repo_update %>"> 
        <div class="cover-image">
         <% project.images.where(image_type: "cover").each do |cover| %>
             <%= link_to image_tag(cover.upload.url(:cover)), project %>

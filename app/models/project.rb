@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-  attr_accessible :description, :github_link, :name, :repo_name, :live_url, :video_url, :forks, :watchers, :language, :images_attributes, :semester_id
+  attr_accessible :description, :github_link, :name, :repo_name, :live_url, :video_url, :forks, :watchers, :language, :images_attributes, :semester_id, :last_repo_update
   has_many :images
   has_many :project_users
   has_many :users, :through => :project_users
@@ -27,6 +27,7 @@ class Project < ActiveRecord::Base
     self.watchers = repo_hash[:watchers]
     self.forks = repo_hash[:forks]
     self.name = repo_hash[:name]
+    self.last_repo_update = repo_hash[:updated_at]
   end
 
   def get_collaborator_logins(repo_name, client)

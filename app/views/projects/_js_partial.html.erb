@@ -5,7 +5,7 @@
 
 <div class="row-fluid">
   <% @projects.each do |project| %>
-    <div class="project span4" data-name="<%= project.name %>" data-stars="<%= project.watchers %>"> 
+    <div class="project span4" data-name="<%= project.name %>" data-stars="<%= project.watchers %>" data-lastupdate="<%= project.last_repo_update %>"> 
      <div class="cover-image">
       <% project.images.where(image_type: "cover").each do |cover| %>
           <%= link_to image_tag(cover.upload.url(:cover)), project %>
