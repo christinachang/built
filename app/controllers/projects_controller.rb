@@ -28,7 +28,57 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-  end
+
+    client = Octokit::Client.new(:login => current_user.github_login, :oauth_token => current_user.token, :auto_traversal => true)
+    data_structure = client.commits(@project.repo_name)
+    @data_hash = {}
+    @login_array = []
+    @login_hash = {}
+   
+    data_structure.each do |instance|
+      committer_name = instance.author.login
+      commit_date = instance.commit.author.date.to_date.to_s
+#go through each commit - 
+  #if the day doesn't exist as a key, create it
+  #if the day exists, make a key inside of it with the committers name
+  #and add a counter
+      @data_hash[commit_date.to_sym] ||= {}
+      @data_hash[commit_date.to_sym][committer_name.to_sym] ||= 0
+      @data_hash[commit_date.to_sym][committer_name.to_sym] += 1
+      @login_array << committer_name unless @login_array.include?(committer_name)
+    end
+
+#################
+  @sorted_array = @data_hash.keys.sort 
+
+
+@login_array.each do |person| 
+@login_hash[person.to_sym] = @sorted_array.collect do |date| 
+   @data_hash[date.to_sym][person.to_sym] || 0 
+   end 
+end
+
+##putting the data_hash in sequential order as 'sorted_hash'
+ @sorted_hash = {} 
+ @sorted_array.each do |element| 
+ @sorted_hash[element] ||= { } 
+ @sorted_hash[element] = @data_hash[element] 
+
+ end 
+
+
+ @final_hash = {} 
+
+ @login_array.each do |person| 
+ @sorted_hash.each do |k,v| 
+ @final_hash[person] ||= [] 
+ @final_hash[person] << [(Date.parse(k.to_s).to_time.to_i * 1000), @sorted_hash[k][person.to_sym]] 
+  end 
+end 
+
+
+
+end
 
   # GET /projects/new
   # GET /projects/new.json

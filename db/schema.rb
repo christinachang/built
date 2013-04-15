@@ -13,8 +13,15 @@
 
 ActiveRecord::Schema.define(:version => 20130415184033) do
 
+  create_table "cover_photos", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+  end
+
   create_table "images", :force => true do |t|
-    t.string   "image_type"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "project_id"
@@ -23,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130415184033) do
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
     t.integer  "position"
+    t.string   "image_type"
   end
 
   create_table "project_users", :id => false, :force => true do |t|
@@ -34,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20130415184033) do
     t.string   "name"
     t.text     "description"
     t.string   "live_url"
-    t.string   "github_link"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "repo_name"
