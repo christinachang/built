@@ -1,0 +1,48 @@
+console.log('test');
+
+
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: 'Commit dsitribution over a day'
+            },
+            subtitle: {
+                text: 'source: github'
+            },
+            xAxis: {
+                title: {
+        enabled: true,
+        text: 'Hours of the Day'
+    },
+
+            },
+            yAxis: {
+                title: {
+                    text: 'Percent'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value  + '%';
+                    }
+                }
+            },
+    
+            xAxis: {
+                min: 0,
+                max: 24 * 3600 * 1000,
+                dateTimeLabelFormats: { hour: '%H:%M' },
+                type: 'datetime',
+                title: {
+                    text: 'Hours'
+                }
+            },
+            series: [{
+                name: 'Project Name',
+                data: <%= @percent_array.to_json.html_safe %>
+            }]
+
+        });
+    });

@@ -1,5 +1,5 @@
 Built::Application.routes.draw do
-
+  get '/sessions/commits', to:  'sessions#commits'
   get '/sessions/test', to:  'sessions#test'
   get '/projects/filter', to: 'projects#filter'
 

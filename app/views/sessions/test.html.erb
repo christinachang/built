@@ -20,12 +20,10 @@
 <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 <br>
 <div id="container_one" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-<%= @data_hash %>
-<%= @login_array %>
 
 
 <h1> X-axis categories </h1>
-<%= @sorted = @data_hash.keys.sort %>
+<% @sorted = @data_hash.keys.sort %>
 
 <h2> Y-data series number one   </h2> 
 
@@ -36,7 +34,23 @@
 	 <%	end %>
 	<% end %>
 
-<%= @login_hash %>
+<% @final_hash = {} %>
+<% @sorted.each do |element| %>
+<% @final_hash[element] ||= { } %>
+<% @final_hash[element] = @data_hash[element] %>
+
+<% end %>
+
+
+<% @my_hash = {} %>
+
+<% @login_array.each do |person| %>
+<% @final_hash.each do |k,v| %>
+<% @my_hash[person] ||= [] %>
+<% @my_hash[person] << [(Date.parse(k.to_s).to_time.to_i * 1000), @final_hash[k][person.to_sym]] %>
+<% end %>
+<% end %> 
+
 
 <%= javascript_tag do %>
 	<%= render :template => '/sessions/test.js.erb' %>

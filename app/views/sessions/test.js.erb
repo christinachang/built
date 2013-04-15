@@ -1,59 +1,55 @@
-console.log('test');
- var xAxiscategories = <%= @sorted.to_json.html_safe %>
- console.log(xAxiscategories);
 
 
-$(function () {
-        $('#container_one').highcharts({
+    $(function () {
+        $('#container').highcharts({
             chart: {
-                type: 'area'
+                type: 'spline'
             },
             title: {
-                text: 'Commits over Time'
+                text: 'Snow depth in the Vikjafjellet mountain, Norway'
             },
             subtitle: {
-                text: 'Source: <a href="github".com</a>'
+                text: 'An example of irregular time data in Highcharts JS'
             },
             xAxis: {
-                labels: {
-                    formatter: function() {
-                        return this.value; // clean, unformatted number for year
-                    }
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    month: '%e. %b',
+                    year: '%b'
                 }
             },
             yAxis: {
                 title: {
-                    text: 'Commits'
+                    text: 'Snow depth (m)'
                 },
-                labels: {
-                    formatter: function() {
-                        return this.value;
-                    }
-                }
+                min: 0
             },
             tooltip: {
-                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-            },
-            plotOptions: {
-                area: {
-                    marker: {
-                        enabled: false,
-                        symbol: 'circle',
-                        radius: 2,
-                        states: {
-                            hover: {
-                                enabled: true
-                            }
-                        }
-                    }
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' m';
                 }
             },
+            
             series: [{
-            	<% @login_hash.each do |key, value| %>
-            	 name: <%= key.to_json.html_safe %>,
-            	 data: <%= value.to_json.html_safe %>
-            }, { <% end %>
-            }]
+                <% @my_hash.each_with_index do |(person, value), index| %>
+                name: <%= person.to_json.html_safe %>,
+                data: [  <% value.each_with_index do |pair, index| %>
+                <% unless index == value.length - 1 %> 
+                 <%= pair.to_json.html_safe + ','  %>
+                <% else  %>
+                  <%= pair.to_json.html_safe  %>
+                   <% end  %>
+                   <% end %>]
+                 }
+
+                <% unless index == @my_hash.length - 1 %>
+                 , {
+                 <% end %>
+            <% end %>
+            ]
         });
     });
+    
+
 
