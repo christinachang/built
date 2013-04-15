@@ -177,7 +177,11 @@ $('.submit').click(function(event){
   </div>
   <input type="button" name="add" id="add" value="+" />
   <input type="button" name="remove" id="subtract" value="-" /><br><br>
-
+ 
+ <div class="field">
+    <label>Demo Video (youtube URL):</label>
+    <%= f.text_field :youtube_url %>
+ </div>
 <br>
     <%= f.submit :class => "submit" %>
     <p class="errors submits">fix that shit, then submit!</p>
