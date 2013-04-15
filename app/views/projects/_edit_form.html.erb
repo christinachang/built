@@ -49,6 +49,11 @@ $('document').ready(function(){
   </div>
 
   <div class="field">
+    <label>Demo Video (youtube URL):</label>
+    <%= f.text_field :youtube_url %>
+ </div>
+
+  <div class="field">
     <p> Cover Image (300x200 is ideal):</p>
     <% @project.images.where(:image_type => "cover").each do |image| %>
     <%= image_tag image.upload.url(:thumb) %>
