@@ -15,11 +15,14 @@
               <a href = "/"><img src="/assets/logo.png" /></a>
             </div>
             <ul class="nav login-status-text">
-              <li><%= flash[:alert] %> </li>
+              <li class="navtext"><%= flash[:alert] %> </li>
+              <li class="navtext"><p><%= notice %></p></li>
+              <% if current_user %>
+              <li class="navtext"> Welcome, <%= current_user.github_login %></li>
+              <% end %>
               <li class="submitprojblue"><%= link_to "Submit a Project", new_project_path %></li>
               <% if current_user %>
-              <li> Logged in as <%= current_user.github_login %></li>
-              <li><%= link_to "Profile Page", current_user %></li>
+              <li><%= link_to "Dashboard", current_user %></li>
               <li><%= link_to "Log Out", logout_path %></li>
               <% else %>
               <li> <%= link_to "Sign up / Login with Github", login_path %>

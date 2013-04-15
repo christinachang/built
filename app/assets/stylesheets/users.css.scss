@@ -2,21 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$blue: #0088cc;
+
 .nav-pills li {
   padding-right:15px;
 }
 
 .nav-pills li a:hover {
-  background-color:#1e1e1e;
+  background-color:$blue;
+  color:#fff;
 }
 
 .user-project-container {
+  height: 204px;
   box-shadow: inset 0px 0px 60px #ccc, 0px 2px 6px #999;
   background-color: #ccc;
   border-radius: 2px;
   border: 10px solid #fff;
+  height: 203px;
   overflow: hidden;
-  margin-bottom: 25px;
 }
 
 .user-project-container img {

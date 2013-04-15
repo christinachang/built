@@ -1,7 +1,7 @@
+<div class="row-fluid">
 <% user.projects.each_slice(2) do |projects| %>
-  <div class="row-fluid">
     <% projects.each do |project| %>
       <%= render :partial => 'projects/row', :locals => {:project => project} %>
     <% end %>
-  </div>
 <%end%>
+</div>

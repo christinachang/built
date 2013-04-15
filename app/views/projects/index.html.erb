@@ -17,9 +17,6 @@ $('document').ready(function(){
     var my_val = $('#my_filter').val(); 
     $.getScript("/projects/filter?semesterID=" + my_val);
     });
-
-
-
 });
 
 </script>
@@ -27,7 +24,7 @@ $('document').ready(function(){
 <div class="subnav">
   <h4>Projects by the students of the Flatiron School</h4>
 </div>
-<div class="container">
+<div class="container main">
   <div class="row-fluid">
     <div class="span4">
       <select id='my_filter' class='btn btn-warning' style="width:auto;">
