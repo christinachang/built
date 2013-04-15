@@ -24,13 +24,18 @@ $('document').ready(function(){
 function validateGithub() {
   var input = $("#github_repo").val(); 
   var response;
-  $.get('https://api.github.com/repos/'+input, function() {
+  $.get('https://api.github.com/repos/'+input+'?access_token='+'<%=current_user.token%>', function() {
     response = "success";
     $('.errors.github_error').hide();
+    return true;
   })
     .fail(function() {
+      console.log("after fail function");
       response = "fail";
+    $('.errors.github_error').show();
+      return false;
   });
+    console.log("before if logic");
     if(response == "fail"){
     $('.errors.github_error').show();
       return false;
