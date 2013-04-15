@@ -28,8 +28,10 @@ $('document').ready(function(){
   <div class="row-fluid">
     <div class="span4">
       <select id='my_filter' class='btn btn-warning' style="width:auto;">
-        <option value="000">Fall '12</option>
-        <option value="001">Spring '13</option>
+        <option value="all"> All </option>
+        <% Project.select("semester_id").uniq.each do |this| %>
+        <option value="<%= this.semester_id %>"><%= this.semester_id %></option>
+        <% end %>
       </select>
     </div>
     <div class="span8" id="sort">
