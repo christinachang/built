@@ -1,4 +1,4 @@
-# Built @ Flatiron School
+## Built @ Flatiron School
 ------
 
 Built is a CMS designed to store and share galleries of open-source software projects. 
@@ -11,25 +11,25 @@ Check out our live site: http://built.flatironschool.com.
 
 If you are a current or former Flatiron School student, you can submit your projects on the Built site by signing up for the site with your Github account.
 
-# Key Components
+## Key Components
 ------
 
 Built uses Ruby on Rails.
 
 All information for any given Github repository, including its name, contributors, contributor gravatars, and star and fork counts, are retrieved using the Github API.
 
-Built uses: 
+Built uses:    
 1) Octokit, a GitHub API wrapper, to interact with the Github API.   
 2) Paperclip gem to upload images.  
 3) Omniauth for authentication.  
 4) Twitter Bootstrap for front end pretty-ness.  
 
-# Contributing to Built
+## Contributing to Built
 ------
 
 If you'd like to contribute to Built, fork our repository and submit a pull request!
 
-# About Us
+## About Us
 ------
 
 Built was built by [Ana Asnes Becker][Ana], [Christina Chang][Christina], [Yanik Jayaram][Yanik], and [Justin Kestler][Justin] while attending [the Flatiron School][flatiron].
