@@ -25,8 +25,6 @@ function validateGithub() {
   var input = $("#github_repo").val(); 
   var response;
   $.get('https://api.github.com/repos/'+input+'?access_token='+'<%=current_user.token%>', function() {
-    var token = '<%=current_user.token%>';
-    console.log(token);
     response = "success";
     $('.errors.github_error').hide();
     return true;
