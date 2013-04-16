@@ -30,10 +30,10 @@ class Project < ActiveRecord::Base
     self.last_repo_update = repo_hash[:updated_at]
   end
 
-  def get_collaborator_logins(repo_name, client)
-     assignment_hash = client.collabs(repo_name)
-     assignment_hash.collect do |collaborator|
-       {:github_login=> collaborator.login}
+  def get_contributor_logins(repo_name, client)
+     assignment_hash = client.contribs(repo_name)
+     assignment_hash.collect do |contributor|
+       {:github_login=> contributor.login}
     end
   end
 
@@ -53,8 +53,8 @@ class Project < ActiveRecord::Base
     #create github client
     client =  create_github_client(current_user)
     #create collab logins
-    logins_assignment_hash = get_collaborator_logins(repo_name, client)
-    #use the logins from login hash to retrieve other attributes for each collaborator(i.e., 'user')
+    logins_assignment_hash = get_contributor_logins(repo_name, client)
+    #use the logins from login hash to retrieve other attributes for each contributor(i.e., 'user')
     logins_assignment_hash.collect do |login|
       name = get_name_from_login(login, client)
       full_name = "Anonymous" if name=="" || !name
