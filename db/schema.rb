@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20130415193112) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "live_url"
     t.string   "github_link"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -44,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130415193112) do
     t.integer  "forks"
     t.string   "language"
     t.string   "semester_id"
+    t.string   "live_url"
     t.string   "video_url"
     t.string   "last_repo_update"
   end

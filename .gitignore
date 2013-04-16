@@ -26,8 +26,8 @@ config/database.yml
 /public/system/users/profile_images/
 /public/system/uploads/
 
-#Ignore our image uploads
-db/migrate/Schema.rb
+#Ignore our db schema file
+db/migrate/schema.rb
 
 #Ignore admin_auth.rb
 config/initializers/admin_auth.rb

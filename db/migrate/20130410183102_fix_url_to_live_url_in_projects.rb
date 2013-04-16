@@ -1,8 +1,6 @@
 class FixUrlToLiveUrlInProjects < ActiveRecord::Migration
-  def up
-    #rename_column :projects, :url, :live_url
-  end
-
-  def down
+  def change
+    remove_column :projects, :url
+    add_column :projects, :live_url, :string
   end
 end
