@@ -18,7 +18,10 @@ class SessionsController < ApplicationController
     returned_github_token = github_oauth_return_hash[:credentials][:token]
     returned_github_login = github_oauth_return_hash[:extra][:raw_info][:login]
     returned_github_image_url = github_oauth_return_hash[:info][:image]
-    @user = User.find_or_create_by_github_login(:github_login => returned_github_login, :token => returned_github_token, :full_name => 'anonymous')
+    returned_github_avatar_url = github_oauth_return_hash[:extra][:raw_info][:avatar_url]
+    returned_github_html_url = github_oauth_return_hash[:extra][:raw_info][:html_url]
+    
+    @user = User.find_or_create_by_github_login(:github_login => returned_github_login, :token => returned_github_token, :full_name => 'anonymous', :avatar_url => returned_github_avatar_url, :github_html_url => returned_github_html_url)
     unless @@flatiron_members.include?(returned_github_login)
         redirect_to projects_path, notice: "You gotta be a flatiron-school member. Sorry, bud!" and return
     end
