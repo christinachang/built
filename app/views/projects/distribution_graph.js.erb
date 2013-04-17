@@ -1,0 +1,41 @@
+$(function () {
+        $('#distribution_container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Commit Distribution Over a 24 Hour Period'
+            },
+            subtitle: {
+                text: 'Source: Github.com'
+            },
+            xAxis: {
+                categories: 
+                    <%= @hour_array.to_json.html_safe %>
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Commits (%)'
+                }
+            },
+            tooltip: {
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Commits',
+                data: <%= @percent_array.to_json %>     
+    
+            }]
+        });
+    });
