@@ -58,39 +58,39 @@ function validateVideoUrl() {
       validateVideoUrl();
     });
 
-    function validateCover() {
-   var cover = $("#project_images_attributes_0_upload").val();
-   console.log(cover);
-   if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(cover)) {
-     console.log('This div has an image');
-     $('.errors.cover_error').hide();
-     return true;
-    }
-    else {
-    console.log('This div has no jpeg');
-    $('.errors.cover_error').show();
-    }
-  }
+  //   function validateCover() {
+  //  var cover = $("#project_images_attributes_0_upload").val();
+  //  console.log(cover);
+  //  if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(cover)) {
+  //    console.log('This div has an image');
+  //    $('.errors.cover_error').hide();
+  //    return true;
+  //   }
+  //   else {
+  //   console.log('This div has no jpeg');
+  //   $('.errors.cover_error').show();
+  //   }
+  // }
 
   //screenshot has to exist
-function validateScreenshot() {
-    var screenshot = $("#project_images_attributes_1_upload").val();
-    console.log(screenshot);
-    if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(screenshot)) {
-      console.log('This div has an image');
-      $('.errors.screenshot_error').hide();
-      return true;
-    }
-    else {
-    console.log('This div has no image');
-    $('.errors.screenshot_error').show();
-    }
-  }
+// function validateScreenshot() {
+//     var screenshot = $("#project_images_attributes_1_upload").val();
+//     console.log(screenshot);
+//     if (/jpg|jpeg|JPG|png|PNG|gif|GIF/.test(screenshot)) {
+//       console.log('This div has an image');
+//       $('.errors.screenshot_error').hide();
+//       return true;
+//     }
+//     else {
+//     console.log('This div has no image');
+//     $('.errors.screenshot_error').show();
+//     }
+//   }
 
 //valid entire form before submit
 $('.submit').click(function(event){
   //if all validations pass, submit the form, if not prevent default & show submit's error
-  if(validateUrl() && validateVideoUrl() && validateCover() && validateScreenshot()){
+  if(validateUrl() && validateVideoUrl()){
    $(this).submit();
     }else{
       event.preventDefault();
