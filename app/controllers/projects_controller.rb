@@ -78,7 +78,8 @@ class ProjectsController < ApplicationController
 
 
 
-####################### second method #########################
+# ####################### second method #########################
+
 
  #    @data_array = []
   
@@ -119,6 +120,47 @@ class ProjectsController < ApplicationController
  # end
 
 #########################
+
+#     @data_array = []
+  
+#     data_structure.each do |instance|
+        
+#       commit_time = instance.commit.author.date.to_datetime.in_time_zone("Eastern Time (US & Canada)")
+#       if commit_time.min >= 30
+#       commit_hour = commit_time.beginning_of_hour
+#       else 
+#       commit_hour = commit_time.end_of_hour
+#       end
+#       @data_array << commit_hour.strftime("%l%P").strip.to_sym
+#     end
+
+#      day_hour_array = (0..23).to_a
+#      @count = {}
+#      day_hour_array.each do |element|
+#       hour = DateTime.parse(element.to_s + ":00").strftime("%l%P").strip.to_sym
+#       @count[hour] = 0
+#      end
+    
+
+#      @total = 0.to_f
+#      @data_array.sort.each do |value| 
+#       @count[value] ||= 0
+#       @count[value] += 1    
+#       @total += 1              
+#     end
+
+#       @count.each do |key, value|
+#       @count[key] = ((value/@total) * 100).round(2)
+#    end
+#    @percent_array = []
+#    @hour_array = []
+#    @count.each do |k,v|
+#    @hour_array << k
+#    @percent_array << v
+#  end
+
+# #########################
+
 
 end
 

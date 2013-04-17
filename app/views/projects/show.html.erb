@@ -24,15 +24,6 @@
   <div id="distribution_container" class=""></div>
 </div>
 
-
-  <%= javascript_tag do %>
-  	<%= render :template => '/projects/graph.js.erb' %>
-  <% end %>
-
-  <%= javascript_tag do %>
-  	<%= render :template => '/projects/distribution_graph.js.erb' %>
-  <% end %>
-
   <div class="edit_delete">
     <% if current_user %>
     <% if current_user.is_authorized?(params) %>
