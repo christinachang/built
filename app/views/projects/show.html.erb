@@ -19,6 +19,14 @@
     <h3> Analytics: </h3>
    <div id="container" class="" style="height: 300px; margin: 0 auto"></div>
  </div>
+ 
+   <%= javascript_tag do %>
+       <%= render :template => '/projects/graph.js.erb' %>
+  <% end %>
+
+  <%= javascript_tag do %>
+       <%= render :template => '/projects/distribution_graph.js.erb' %>
+  <% end %>
 
 <div class="row-fluid">
   <div id="distribution_container" class=""></div>

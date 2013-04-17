@@ -27,140 +27,97 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project = Project.find(params[:id])
+ @project = Project.find(params[:id])
 
-#     client = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN'], :auto_traversal => true)
-#     data_structure = client.commits(@project.repo_name)
-#     @data_hash = {}
-#     @login_array = []
-#     @login_hash = {}
+
+    client = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN'], :auto_traversal => true)
+    data_structure = client.commits(@project.repo_name)
+    @data_hash = {}
+    @login_array = []
+    @login_hash = {}
    
-#     data_structure.each do |instance|
-#       committer_name = instance.author.login
-#       commit_date = instance.commit.author.date.to_date.to_s
-# #go through each commit - 
-#   #if the day doesn't exist as a key, create it
-#   #if the day exists, make a key inside of it with the committers name
-#   #and add a counter
-#       @data_hash[commit_date.to_sym] ||= {}
-#       @data_hash[commit_date.to_sym][committer_name.to_sym] ||= 0
-#       @data_hash[commit_date.to_sym][committer_name.to_sym] += 1
-#       @login_array << committer_name unless @login_array.include?(committer_name)
-#     end
+    data_structure.each do |instance|
+      committer_name = instance.author.login
+      commit_date = instance.commit.author.date.to_date.to_s
+#go through each commit - 
+  #if the day doesn't exist as a key, create it
+  #if the day exists, make a key inside of it with the committers name
+  #and add a counter
+      @data_hash[commit_date.to_sym] ||= {}
+      @data_hash[commit_date.to_sym][committer_name.to_sym] ||= 0
+      @data_hash[commit_date.to_sym][committer_name.to_sym] += 1
+      @login_array << committer_name unless @login_array.include?(committer_name)
+    end
 
-# #################
-#   @sorted_array = @data_hash.keys.sort 
-
-
-# @login_array.each do |person| 
-# @login_hash[person.to_sym] = @sorted_array.collect do |date| 
-#    @data_hash[date.to_sym][person.to_sym] || 0 
-#    end 
-# end
-
-# ##putting the data_hash in sequential order as 'sorted_hash'
-#  @sorted_hash = {} 
-#  @sorted_array.each do |element| 
-#  @sorted_hash[element] ||= { } 
-#  @sorted_hash[element] = @data_hash[element] 
-
-#  end 
+#################
+  @sorted_array = @data_hash.keys.sort 
 
 
-#  @final_hash = {} 
+@login_array.each do |person| 
+@login_hash[person.to_sym] = @sorted_array.collect do |date| 
+   @data_hash[date.to_sym][person.to_sym] || 0 
+   end 
+end
 
-#  @login_array.each do |person| 
-#  @sorted_hash.each do |k,v| 
-#  @final_hash[person] ||= [] 
-#  @final_hash[person] << [(Date.parse(k.to_s).to_time.to_i * 1000), @sorted_hash[k][person.to_sym]] 
-#   end 
-# end 
+##putting the data_hash in sequential order as 'sorted_hash'
+ @sorted_hash = {} 
+ @sorted_array.each do |element| 
+ @sorted_hash[element] ||= { } 
+ @sorted_hash[element] = @data_hash[element] 
+
+ end 
+
+
+ @final_hash = {} 
+
+ @login_array.each do |person| 
+ @sorted_hash.each do |k,v| 
+ @final_hash[person] ||= [] 
+ @final_hash[person] << [(Date.parse(k.to_s).to_time.to_i * 1000), @sorted_hash[k][person.to_sym]] 
+  end 
+end 
 
 
 
-# ####################### second method #########################
+####################### second method #########################
 
-
- #    @data_array = []
+    @data_array = []
   
- #    data_structure.each do |instance|
+    data_structure.each do |instance|
         
- #      commit_time = instance.commit.author.date.to_datetime.in_time_zone("Eastern Time (US & Canada)")
- #      if commit_time.min >= 30
- #      commit_hour = commit_time.beginning_of_hour
- #      else 
- #      commit_hour = commit_time.end_of_hour
- #      end
- #      @data_array << commit_hour.strftime("%l%P").strip.to_sym
- #    end
+      commit_time = instance.commit.author.date.to_datetime.in_time_zone("Eastern Time (US & Canada)")
+      if commit_time.min >= 30
+      commit_hour = commit_time.beginning_of_hour
+      else 
+      commit_hour = commit_time.end_of_hour
+      end
+      @data_array << commit_hour.strftime("%l%P").strip.to_sym
+    end
 
- #     day_hour_array = (0..23).to_a
- #     @count = {}
- #     day_hour_array.each do |element|
- #      hour = DateTime.parse(element.to_s + ":00").strftime("%l%P").strip.to_sym
- #      @count[hour] = 0
- #     end
+     day_hour_array = (0..23).to_a
+     @count = {}
+     day_hour_array.each do |element|
+      hour = DateTime.parse(element.to_s + ":00").strftime("%l%P").strip.to_sym
+      @count[hour] = 0
+     end
     
 
- #     @total = 0.to_f
- #     @data_array.sort.each do |value| 
- #      @count[value] ||= 0
- #      @count[value] += 1    
- #      @total += 1              
- #    end
+     @total = 0.to_f
+     @data_array.sort.each do |value| 
+      @count[value] ||= 0
+      @count[value] += 1    
+      @total += 1              
+    end
 
- #      @count.each do |key, value|
- #      @count[key] = ((value/@total) * 100).round(2)
- #   end
- #   @percent_array = []
- #   @hour_array = []
- #   @count.each do |k,v|
- #   @hour_array << k
- #   @percent_array << v
- # end
-
-#########################
-
-#     @data_array = []
-  
-#     data_structure.each do |instance|
-        
-#       commit_time = instance.commit.author.date.to_datetime.in_time_zone("Eastern Time (US & Canada)")
-#       if commit_time.min >= 30
-#       commit_hour = commit_time.beginning_of_hour
-#       else 
-#       commit_hour = commit_time.end_of_hour
-#       end
-#       @data_array << commit_hour.strftime("%l%P").strip.to_sym
-#     end
-
-#      day_hour_array = (0..23).to_a
-#      @count = {}
-#      day_hour_array.each do |element|
-#       hour = DateTime.parse(element.to_s + ":00").strftime("%l%P").strip.to_sym
-#       @count[hour] = 0
-#      end
-    
-
-#      @total = 0.to_f
-#      @data_array.sort.each do |value| 
-#       @count[value] ||= 0
-#       @count[value] += 1    
-#       @total += 1              
-#     end
-
-#       @count.each do |key, value|
-#       @count[key] = ((value/@total) * 100).round(2)
-#    end
-#    @percent_array = []
-#    @hour_array = []
-#    @count.each do |k,v|
-#    @hour_array << k
-#    @percent_array << v
-#  end
-
-# #########################
-
+      @count.each do |key, value|
+      @count[key] = ((value/@total) * 100).round(2)
+   end
+   @percent_array = []
+   @hour_array = []
+   @count.each do |k,v|
+   @hour_array << k
+   @percent_array << v
+ end
 
 end
 
