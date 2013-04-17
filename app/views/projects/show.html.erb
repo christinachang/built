@@ -3,7 +3,6 @@
 
 
 
-
 <div class="subnav">
   <h1 class="repo_name"><%= @project.name%></h1>
 </div>
@@ -22,12 +21,17 @@
 </div>
 
 
+
 <%= javascript_tag do %>
 	<%= render :template => '/projects/graph.js.erb' %>
 <% end %>
 
  <div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
  
+
+<div id="distribution_container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
+
+
 
 <% if current_user %>
 <% if current_user.is_authorized?(params) %>
