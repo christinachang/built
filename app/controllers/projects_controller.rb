@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
 
-    client = Octokit::Client.new(:login => current_user.github_login, :oauth_token => current_user.token, :auto_traversal => true)
+    client = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN'], :auto_traversal => true)
     data_structure = client.commits(@project.repo_name)
     @data_hash = {}
     @login_array = []
