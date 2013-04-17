@@ -160,7 +160,7 @@ $('.submit').click(function(event){
   <p>Fields with * are required.</p>
 
   <div class="field">
-    <label>Github Repository* (username/repo-name)</label><br />
+    <label>*Github Repository (username/repo-name)</label>
     <input type="text_field" name="project[repo_name]" id="github_repo">
     <p class="errors github_error">please enter a valid repo</p>
   </div>
@@ -179,14 +179,14 @@ $('.submit').click(function(event){
 
 
     <div class="field">
-    <label>Semester*</label>
+    <label>*Semester</label>
     <%= f.select :semester_id, options_for_select([["Flatiron 000", "000"], ["Flatiron 001", "001"]], @project.semester_id) %>
   </div>
 
   <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
   <div class="field">
-    <label>Upload a cover image for your app* (300x200 is ideal)</label>
+    <label>*Upload a cover image for your app (300x200 is ideal. Max: 2MB)</label>
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "cover" %>
@@ -196,7 +196,7 @@ $('.submit').click(function(event){
   </div> 
 
   <div class="field">
-    <label>Upload screenshots of your app* (800x600 is ideal. Max file size: 2MB)</label>
+    <label>*Upload screenshots of your app (800x600 is ideal. Max: 2MB)</label>
     <div class="field">
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
@@ -212,6 +212,6 @@ $('.submit').click(function(event){
   <input type="button" name="remove" id="subtract" value="-" /><br><br>
 
     <%= f.submit :class => "submit" %>
-    <p class="errors submits">please fix these errors, then submit!</p>
+    <p class="errors submits">please fix any errors above, then submit!</p>
 
 <% end %>
