@@ -44,7 +44,7 @@ $('document').ready(function(){
     </div>
   </div>
     <div id="filter_point">
-      <span style= color:"red"><%= notice %></span>
+<!--       <span style= color:"red"><%= notice %></span> -->
       <div class="row-fluid">
       <% @projects.each do |project| %>
       <div class="project span4" data-name="<%= project.name %>" data-stars="<%= project.watchers %>" data-lastupdate="<%= project.last_repo_update %>"> 
