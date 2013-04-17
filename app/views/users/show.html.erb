@@ -27,16 +27,16 @@
     <li><a href="#editprofile">Edit Your Profile</a></li>
   </ul>
 
-  <div class="tab-content" id="your_projects">
+  <div class="tab-content row-fluid" id="your_projects">
       <%= render :partial => 'user_projects', :locals => {:user => @user} %>
     </div>
 
-    <div class="tab-content" id="submit_project">
+    <div class="tab-content row-fluid" id="submit_project">
     <h3>Submit a New Project</h3>
       <%= render :partial => '/projects/form', :locals => {:project => @project} %> 
     </div>
 
-    <div class="tab-content" id="editprofile">
+    <div class="tab-content row-fluid" id="editprofile">
       <%= render :partial => 'contact_info', :locals => {:user => @user} %>
     </div>
 </div>

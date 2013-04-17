@@ -1,34 +1,38 @@
 <script>
 $(document).ready(function () {
         $('.carousel').carousel({
-            interval: 3000,
-            cycle: false,
-            pause: ''
+            interval: 3000
+            // cycle: false,
+            // pause: ''
         });
         $('.carousel').carousel('pause')
     });
 </script>
 
 <div id="myCarousel" class="carousel slide">
-  <ol class="carousel-indicators">
-    <% project.images.where("image_type = ?", "screenshot").each_with_index do |image, index| %>
-       <li data-target="#myCarousel" data-slide-to="<%= index %>">
-    <% end %>
-  </ol>
   <!-- Carousel items -->
 
   <div class="carousel-inner">
-   <% project.images.each_with_index do |image, index| %>
-    <% if image.image_type == "cover" %>
+   <%# project.images.each_with_index do |image, index| %>
+    <% project.images.where("image_type = ?", "screenshot").each_with_index do |image, index| %>
+    <% if index == 0 %>
         <div class="active item"><%= image_tag image.upload.url(:screenshot) %></div>
     <% else %>
       <div class="item"><%= image_tag image.upload.url(:screenshot) %></div>
     <% end %>
   <% end %>
   </div>
-
+      <ol class="carousel-indicators">
+    <% project.images.where("image_type = ?", "screenshot").each_with_index do |image, index| %>
+        <% if index == 0 %>
+         <li data-target="#myCarousel" class="active" data-slide-to="<%= index %>">
+        <% else %>
+         <li data-target="#myCarousel" data-slide-to="<%= index %>">
+        <% end %>
+    <% end %>
+  </ol>
   <!-- Carousel nav -->
   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-  
+
 </div>

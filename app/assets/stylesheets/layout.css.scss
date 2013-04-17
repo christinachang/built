@@ -4,6 +4,10 @@ html, body {
     height: 100%;
 }
 
+h1, h2, h3{
+  letter-spacing:0.05em;
+}
+
 ul li{
   list-style-type:none;
   display:inline;
@@ -124,7 +128,7 @@ border:10px solid #fff;
 height:203px;overflow:hidden;
 }
 
-.project img{display:block;margin:0 auto;width:100%;display:inline-block;}.project h4{text-align:center;color:#ccc}
+.cover-image img{display:block;margin:0 auto;width:100%;display:inline-block;}.project h4{text-align:center;color:#ccc}
 
 .project h4 a{color:$blue}.project h5{text-align:center}
 
@@ -167,6 +171,7 @@ div.vignette img {
   background:url(bluewash.png) no-repeat center center;
   background-size:cover;
   margin-top:-10px;
+  border-top:1px solid #000;
 }
 
 .jumbotron h1{
@@ -271,6 +276,10 @@ margin-left: 10px;
 
 .tab-content{
   overflow:hidden;
+}
+
+hr{
+  margin:50px 20px;
 }
 
 /*-------media queries---------------*/

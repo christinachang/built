@@ -1,51 +1,65 @@
-  <h1> Github Stats: </h1>
-<p>
-  <div class="two-column">
-  <strong>Repo Owner/Name:</strong>
-  <%= @project.repo_name %>
-</p>
-
-<p>
-  <strong>Github Repo URL:</strong>
-  <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
-</p>
-
-<p>
-  <% if !@project.live_url.blank? %>
-  <strong>Live URL:</strong>
-  <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
-  <% end %>
-</p>
-
-<p>
-  <% if !@project.video_url.blank? %>
-  <strong>Video URL:</strong>
-  <a href = "<%= @project.video_url %>" target="_blank"><%= @project.video_url %></a>
-  <% end %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
-  <strong>Git Clone URL (SSH):</strong>
-  <%= @project.ssh_url %>
-</p>
-
-<p>
-  <strong>GitHub Forks Count:</strong>
-  <%= @project.forks %>
-</p>
-
-<p>
-  <strong>GitHub Star Count:</strong>
-  <%= @project.watchers %>
-</p>
-
-<p>
-  <strong>Technologies (ex: C++):</strong>
-  <%= @project.language %>
-</p>
+<div class="span4">
+  <% project.images.where("image_type = ?", "cover").each_with_index do |image, index| %>
+  <% if index == 0 %>
+  <div class="cover-image"><%= image_tag image.upload.url(:cover) %></div>
+    <%end%>
+  <%end%>
 </div>
+  <div class="span8">
+    <div class="row-fluid">
+      <h3> Github Stats: </h3>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <p>
+        <strong>Repo Owner/Name:</strong>
+        <%= @project.repo_name %>
+        </p>
+
+        <p>
+        <strong>Github Repo URL:</strong>
+        <a href = "<%= @project.repo_url %>" target="_blank"><%= @project.repo_url %></a>
+        </p>
+
+        <p>
+        <% if !@project.live_url.blank? %>
+        <strong>Live URL:</strong>
+        <a href = "<%= @project.live_url %>" target="_blank"><%= @project.live_url %></a>
+        <% end %>
+        </p>
+
+        <p>
+        <% if !@project.video_url.blank? %>
+        <strong>Video URL:</strong>
+        <a href = "<%= @project.video_url %>" target="_blank"><%= @project.video_url %></a>
+        <% end %>
+        </p>
+
+        <p>
+        <strong>Description:</strong>
+        <%= @project.description %>
+        </p>
+      </div>
+      <div class="span6">
+        <p>
+        <strong>Git Clone URL (SSH):</strong>
+        <%= @project.ssh_url %>
+        </p>
+
+        <p>
+        <strong>GitHub Forks Count:</strong>
+        <%= @project.forks %>
+        </p>
+
+        <p>
+        <strong>GitHub Star Count:</strong>
+        <%= @project.watchers %>
+        </p>
+
+        <p>
+        <strong>Technologies (ex: C++):</strong>
+        <%= @project.language %>
+        </p>
+      </div>
+    </div>
+  </div>

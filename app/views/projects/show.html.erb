@@ -2,26 +2,17 @@
   <h1 class="repo_name"><%= @project.name%></h1>
 </div>
 <div class="jumbotron">
-<p id="notice"><%= notice %></p>
-
     <%= render :partial =>'carousel_slideshow', :locals => {:project => @project} %>
 
 </div>
-<div class="container">
-
-  <div class="span12">
-  <div class="row fluid">
+<div class="container main">
+  <div class="row-fluid">
 <%= render :partial => 'github_info', :locals => {:project => @project} %>
- </div>
-
-</div>
-  <div class="span12">
-  <div class="row fluid">
+  </div>
+  <hr />
+  <div class="row-fluid">
 <%= render :partial => 'collaborators_info', :locals => {:project => @project} %>
- </div>
 </div>
-
-<div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
 
 <% if current_user %>
 <% if current_user.is_authorized?(params) %>
