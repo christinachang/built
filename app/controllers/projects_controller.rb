@@ -29,41 +29,40 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
-
-    client = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN'], :auto_traversal => true)
-    data_structure = client.commits(@project.repo_name)
-    @data_hash = {}
-    @login_array = []
-    @login_hash = {}
+#     client = Octokit::Client.new(:login => ENV['GITHUB_FLATIRON_ID'], :oauth_token => ENV['GITHUB_FLATIRON_TOKEN'], :auto_traversal => true)
+#     data_structure = client.commits(@project.repo_name)
+#     @data_hash = {}
+#     @login_array = []
+#     @login_hash = {}
    
-    data_structure.each do |instance|
-      committer_name = instance.author.login
-      commit_date = instance.commit.author.date.to_date.to_s
-#go through each commit - 
-  #if the day doesn't exist as a key, create it
-  #if the day exists, make a key inside of it with the committers name
-  #and add a counter
-      @data_hash[commit_date.to_sym] ||= {}
-      @data_hash[commit_date.to_sym][committer_name.to_sym] ||= 0
-      @data_hash[commit_date.to_sym][committer_name.to_sym] += 1
-      @login_array << committer_name unless @login_array.include?(committer_name)
-    end
+#     data_structure.each do |instance|
+#       committer_name = instance.author.login
+#       commit_date = instance.commit.author.date.to_date.to_s
+# #go through each commit - 
+#   #if the day doesn't exist as a key, create it
+#   #if the day exists, make a key inside of it with the committers name
+#   #and add a counter
+#       @data_hash[commit_date.to_sym] ||= {}
+#       @data_hash[commit_date.to_sym][committer_name.to_sym] ||= 0
+#       @data_hash[commit_date.to_sym][committer_name.to_sym] += 1
+#       @login_array << committer_name unless @login_array.include?(committer_name)
+#     end
 
-#################
-  @sorted_array = @data_hash.keys.sort 
+# #################
+#   @sorted_array = @data_hash.keys.sort 
 
 
-@login_array.each do |person| 
-@login_hash[person.to_sym] = @sorted_array.collect do |date| 
-   @data_hash[date.to_sym][person.to_sym] || 0 
-   end 
-end
+# @login_array.each do |person| 
+# @login_hash[person.to_sym] = @sorted_array.collect do |date| 
+#    @data_hash[date.to_sym][person.to_sym] || 0 
+#    end 
+# end
 
-##putting the data_hash in sequential order as 'sorted_hash'
- @sorted_hash = {} 
- @sorted_array.each do |element| 
- @sorted_hash[element] ||= { } 
- @sorted_hash[element] = @data_hash[element] 
+# ##putting the data_hash in sequential order as 'sorted_hash'
+#  @sorted_hash = {} 
+#  @sorted_array.each do |element| 
+#  @sorted_hash[element] ||= { } 
+#  @sorted_hash[element] = @data_hash[element] 
 
  end 
 
