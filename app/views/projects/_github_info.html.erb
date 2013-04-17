@@ -1,7 +1,7 @@
 <div class="span4">
   <% project.images.where("image_type = ?", "cover").each_with_index do |image, index| %>
   <% if index == 0 %>
-  <div class="cover-image"><%= image_tag image.upload.url(:cover) %></div>
+  <div class="show cover-image"><%= image_tag image.upload.url(:cover) %></div>
     <%end%>
   <%end%>
 </div>
