@@ -1,7 +1,7 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
- <div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
+
 
 
 <div class="subnav">
@@ -15,6 +15,7 @@
   <div class="row-fluid">
 <%= render :partial => 'github_info', :locals => {:project => @project} %>
   </div>
+
   <hr />
   <div class="row-fluid">
 <%= render :partial => 'collaborators_info', :locals => {:project => @project} %>
@@ -25,6 +26,8 @@
 	<%= render :template => '/projects/graph.js.erb' %>
 <% end %>
 
+ <div id="container" class="span4" style="width: 500px; height: 300px; margin: 0 auto"></div>
+ 
 
 <% if current_user %>
 <% if current_user.is_authorized?(params) %>
