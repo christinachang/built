@@ -1,0 +1,48 @@
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'Timeline of Commits'
+            },
+
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    month: '%e. %b',
+                    year: '%b'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of Commits'
+                },
+                min: 0
+            },
+            tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' m';
+                }
+            },
+            
+            series: [{
+                <% @sorted_hash.each_with_index do |(person, value), index| %>
+                name: <%= person.to_json.html_safe %>,
+                data: [  <% value.each_with_index do |pair, index| %>
+                <% unless index == value.length - 1 %> 
+                 <%= pair.to_json.html_safe + ','  %>
+                <% else  %>
+                  <%= pair.to_json.html_safe  %>
+                   <% end  %>
+                   <% end %>]
+                 }
+
+                <% unless index == @sorted_hash.length - 1 %>
+                 , {
+                 <% end %>
+            <% end %>
+            ]
+        });
+    });
