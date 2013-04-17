@@ -116,6 +116,7 @@ border-radius:0px;}
 
 .row-fluid {
   padding-left:2.25%;
+  padding-bottom: 20px;
 }
 
 .row-fluid [class*="span"]{
@@ -282,7 +283,12 @@ margin-left: 10px;
 }
 
 hr{
-  margin:50px 20px;
+  margin:30px 20px;
+}
+
+.edit_delete{
+margin: 40px auto;
+text-align: center;
 }
 
 /*-------media queries---------------*/
