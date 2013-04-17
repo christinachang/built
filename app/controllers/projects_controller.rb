@@ -56,7 +56,6 @@ class ProjectsController < ApplicationController
 @login_hash[person.to_sym] = @sorted_array.collect do |date| 
    @data_hash[date.to_sym][person.to_sym] || 0 
    end 
-
 end
 
 ##putting the data_hash in sequential order as 'sorted_hash'
@@ -64,8 +63,21 @@ end
  @sorted_array.each do |element| 
  @sorted_hash[element] ||= { } 
  @sorted_hash[element] = @data_hash[element] 
- 
+
  end 
+
+
+ @final_hash = {} 
+
+ @login_array.each do |person| 
+ @sorted_hash.each do |k,v| 
+ @final_hash[person] ||= [] 
+ @final_hash[person] << [(Date.parse(k.to_s).to_time.to_i * 1000), @sorted_hash[k][person.to_sym]] 
+  end 
+end 
+
+
+
 end
 
   # GET /projects/new

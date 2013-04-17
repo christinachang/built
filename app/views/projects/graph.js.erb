@@ -28,7 +28,7 @@ $(function () {
             },
             
             series: [{
-                <% @sorted_hash.each_with_index do |(person, value), index| %>
+                <% @final_hash.each_with_index do |(person, value), index| %>
                 name: <%= person.to_json.html_safe %>,
                 data: [  <% value.each_with_index do |pair, index| %>
                 <% unless index == value.length - 1 %> 
@@ -39,7 +39,7 @@ $(function () {
                    <% end %>]
                  }
 
-                <% unless index == @sorted_hash.length - 1 %>
+                <% unless index == @final_hash.length - 1 %>
                  , {
                  <% end %>
             <% end %>
