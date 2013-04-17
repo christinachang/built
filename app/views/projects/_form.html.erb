@@ -177,15 +177,16 @@ $('.submit').click(function(event){
     <p class="errors video_url_error">please enter a valid url</p>
  </div>
 
-  <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
 
     <div class="field">
     <label>Semester*</label>
     <%= f.select :semester_id, options_for_select([["Flatiron 000", "000"], ["Flatiron 001", "001"]], @project.semester_id) %>
   </div>
 
+  <p class='error' style="color:red"><%= @project.errors.messages[:"images.upload_file_size"] %></p>
+
   <div class="field">
-    <label>Upload a cover image for your app* (300x200 is ideal):</label>
+    <label>Upload a cover image for your app* (300x200 is ideal)</label>
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
       <%= field.hidden_field :image_type, :value => "cover" %>
@@ -195,7 +196,7 @@ $('.submit').click(function(event){
   </div> 
 
   <div class="field">
-    <label>Upload screenshots of your app* (800x600 is ideal):</label>
+    <label>Upload screenshots of your app* (800x600 is ideal. Max file size: 2MB)</label>
     <div class="field">
     <%= f.fields_for :images do |field| %>
       <%= field.file_field :upload %>
