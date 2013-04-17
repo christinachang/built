@@ -133,7 +133,7 @@ function validateScreenshot() {
 //valid entire form before submit
 $('.submit').click(function(event){
   //if all validations pass, submit the form, if not prevent default & show submit's error
-  if(validateGithub() && validateUrl() && validateVideoUrl() && validateCover() && validateScreenshot()){
+  if(validateUrl() && validateVideoUrl() && validateCover() && validateScreenshot()){
    $(this).submit();
     }else{
       event.preventDefault();
