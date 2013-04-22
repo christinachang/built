@@ -18,12 +18,12 @@ class User < ActiveRecord::Base
   def has_full_name?
     self.full_name.downcase.capitalize == 'Anonymous'
   end
-  
+
   def is_authorized?(params)
     self.is_an_admin? || self.is_a_member_of_this_project?(params)
-  end 
+  end
 
-  def is_an_admin?  
+  def is_an_admin?
    @@admin.include?(self.github_login)
   end
 
@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
 
   def is_filled_out?(params, attribute_name_as_string)
     params[:user][attribute_name_as_string.to_sym].strip != ""
-  end  
+  end
 
   def update_attribute(params, attribute_name_as_string)
     updated_value ||= self.attribute_value(params, attribute_name_as_string) if self.is_filled_out?(params, attribute_name_as_string)
-    self.send("#{attribute_name_as_string}=", updated_value) 
+    self.send("#{attribute_name_as_string}=", updated_value)
   end
 
   def attribute_value(params, attribute_name_as_string)
