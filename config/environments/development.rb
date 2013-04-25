@@ -39,15 +39,15 @@ Built::Application.configure do
 
   config.middleware.use ExceptionNotifier,
     sender_address: 'builtexceptions@gmail.com',
-    exception_recipients: 'anabdesigns@gmail.com'
+    exception_recipients: ['anabdesigns@gmail.com', 'builtexceptions@gmail.com']
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'localhost:3000',
-    :user_name            => 'builtexceptions@gmail.com',
-    :password             => 'flatiron2013',
+    :user_name            => ENV['EMAIL_USERNAME'],
+    :password             => ENV['EMAIL_PASSWORD'],
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 

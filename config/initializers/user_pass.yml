@@ -1,2 +1,0 @@
-ENV['EMAIL_USERNAME']="builtexceptions"
-ENV['EMAIL_PASSWORD']="flatiron2013"
