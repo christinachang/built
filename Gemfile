@@ -55,7 +55,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 
 #gem exception notification
   gem 'exception_notification', :require => 'exception_notifier'
-  gem 'letter_opener'
+  gem 'letter_opener', group: :development
 
 # Deploy with Capistrano
 gem 'capistrano'
