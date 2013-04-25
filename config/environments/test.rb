@@ -34,4 +34,11 @@ Built::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  
+  config.middleware.use ExceptionNotifier,
+    sender_address: 'anabdesigns@gmail.com',
+    exception_recipients: 'anabdesigns@gmail.com'
+
+  config.action_mailer.delivery_method = :letter_opener
 end

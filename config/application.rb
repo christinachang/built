@@ -71,6 +71,13 @@ module Built
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+  config.middleware.use ExceptionNotifier,
+  :email_prefix => "[Exception] - Built at Flatiron",
+  :sender_address => %{"Exception Notifier" <anabdesigns@gmail.com>},
+  :exception_recipients => %w{anabdesigns@gmail.com}
+
+  config.action_mailer.delivery_method = :letter_opener
+  
   end
 end
 

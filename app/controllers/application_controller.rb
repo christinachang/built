@@ -18,4 +18,8 @@ private
 		redirect_to projects_path, alert: "Please log in" if current_user.nil?
 	end
 
+  def test_exception_notification
+    raise 'Testing, 1 2 3.'
+end
+
 end
