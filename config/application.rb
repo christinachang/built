@@ -71,12 +71,12 @@ module Built
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
-  config.middleware.use ExceptionNotifier,
-  :email_prefix => "[Exception] - Built at Flatiron",
-  :sender_address => %{"Exception Notifier" <anabdesigns@gmail.com>},
-  :exception_recipients => %w{anabdesigns@gmail.com}
-
-  config.action_mailer.delivery_method = :letter_opener
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'user_pass.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
   
   end
 end

@@ -38,9 +38,17 @@ Built::Application.configure do
   Paperclip.options[:command_path] = "/opt/ImageMagick/bin/"
 
   config.middleware.use ExceptionNotifier,
-    sender_address: 'anabdesigns@gmail.com',
+    sender_address: 'builtexceptions@gmail.com',
     exception_recipients: 'anabdesigns@gmail.com'
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'localhost:3000',
+    :user_name            => 'builtexceptions@gmail.com',
+    :password             => 'flatiron2013',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 
 end
