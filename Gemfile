@@ -53,6 +53,10 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+#gem exception notification
+  gem 'exception_notification', :require => 'exception_notifier'
+  gem 'letter_opener'
+
 # Deploy with Capistrano
 gem 'capistrano'
 
