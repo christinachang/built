@@ -33,3 +33,6 @@ db/migrate/schema.rb
 config/initializers/admin_auth.rb
 # Ignore application configuration
 /config/application.yml
+
+#Ignore mailer info
+config/user_pass.yml
