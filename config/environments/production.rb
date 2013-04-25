@@ -64,4 +64,19 @@ Built::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.middleware.use ExceptionNotifier,
+    sender_address: 'builtexceptions@gmail.com',
+    exception_recipients: ['anabdesigns@gmail.com', 'builtexceptions@gmail.com']
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'built.flatironschool.com',
+    :user_name            => ENV['EMAIL_USERNAME'],
+    :password             => ENV['EMAIL_PASSWORD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
+
 end
