@@ -6,6 +6,10 @@ protect_from_forgery
   end
  
 helper_method :current_user
+  
+  def test_exception_notification
+    raise 'Testing, 1 2 3.'
+  end
 
 private 
 
@@ -17,9 +21,5 @@ private
 	def authorize
 		redirect_to projects_path, alert: "Please log in" if current_user.nil?
 	end
-
-  def test_exception_notification
-    raise 'Testing, 1 2 3.'
-end
 
 end
